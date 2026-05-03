@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Panels & Appearances — Moonlit Mari</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Dancing+Script:wght@500;700&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{--lilac:#D8A7FF;--blush:#FFC8EA;--periwinkle:#A59EF6;--apricot:#FFD6A0;--peach:#FFBA85;--rose-dusk:#F9C5D1;--moonbeam:#C5DEFF;--pale-lav:#E8E0FF;--ghost:#F5F0FF;--mauve:#D4C8E8;--indigo:#3D2B6B;--deep-indigo:#2a1d4d;--cream:#FDF8FF}
+html{scroll-behavior:smooth}
+body{font-family:'Jost',sans-serif;background:var(--cream);color:var(--indigo);overflow-x:hidden;cursor:none}
+.cursor{width:12px;height:12px;background:var(--lilac);border-radius:50%;position:fixed;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);mix-blend-mode:multiply}
+.cursor-trail{width:30px;height:30px;border:1px solid var(--periwinkle);border-radius:50%;position:fixed;pointer-events:none;z-index:9998;transform:translate(-50%,-50%);transition:transform 0.25s ease;opacity:0.6}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:1.2rem 3rem;background:rgba(253,248,255,0.85);backdrop-filter:blur(12px);border-bottom:1px solid rgba(165,158,246,0.18)}
+.nav-logo{font-family:'Dancing Script',cursive;font-size:1.7rem;color:var(--indigo);text-decoration:none}
+.nav-logo span{color:var(--periwinkle)}
+.nav-links{display:flex;gap:2.2rem;list-style:none;align-items:center}
+.nav-links a{font-size:0.78rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--indigo);text-decoration:none;opacity:0.6;transition:opacity 0.2s}
+.nav-links a:hover,.nav-links a.active{opacity:1}
+.nav-cta{border:1px solid var(--periwinkle);padding:0.45rem 1.1rem;border-radius:99px;opacity:1!important;transition:background 0.2s,color 0.2s!important}
+.nav-cta:hover{background:var(--periwinkle)!important;color:white!important}
+.orb{position:absolute;border-radius:50%;filter:blur(60px);pointer-events:none;animation:floatOrb 8s ease-in-out infinite alternate}
+.orb-1{width:350px;height:350px;background:rgba(216,167,255,0.3);top:-80px;right:5%}
+.orb-2{width:200px;height:200px;background:rgba(255,200,234,0.35);bottom:-40px;left:10%;animation-delay:-3s}
+@keyframes floatOrb{from{transform:translate(0,0)}to{transform:translate(15px,20px)}}
+.page-eyebrow{font-size:0.7rem;letter-spacing:0.22em;text-transform:uppercase;color:var(--periwinkle);margin-bottom:1rem;display:flex;align-items:center;gap:0.6rem}
+.page-eyebrow::before{content:'';width:28px;height:1px;background:var(--periwinkle);display:inline-block}
+.page-title{font-family:'Cormorant Garamond',serif;font-size:clamp(3rem,5vw,4.5rem);font-weight:300;line-height:1.05;color:var(--deep-indigo);margin-bottom:1rem}
+.page-title em{font-style:italic;color:var(--periwinkle)}
+.page-sub{font-size:0.95rem;line-height:1.8;color:var(--indigo);opacity:0.65;max-width:560px}
+.section-tag{font-size:0.68rem;letter-spacing:0.22em;text-transform:uppercase;color:var(--periwinkle);margin-bottom:1rem;display:flex;align-items:center;gap:0.6rem}
+.section-tag::before{content:'';width:20px;height:1px;background:var(--periwinkle);display:inline-block}
+.section-title{font-family:'Cormorant Garamond',serif;font-size:clamp(2rem,3.5vw,3rem);font-weight:300;line-height:1.15;color:var(--deep-indigo);margin-bottom:1.5rem}
+.section-title em{font-style:italic;color:var(--periwinkle)}
+.fade-up{opacity:0;transform:translateY(24px);transition:opacity 0.6s ease,transform 0.6s ease}
+.fade-up.visible{opacity:1;transform:translateY(0)}
+.d1{transition-delay:0.1s}.d2{transition-delay:0.2s}.d3{transition-delay:0.3s}
+.btn-primary{font-family:'Jost',sans-serif;font-size:0.75rem;letter-spacing:0.14em;text-transform:uppercase;background:var(--indigo);color:white;border:none;padding:0.85rem 2rem;border-radius:99px;cursor:none;text-decoration:none;display:inline-block;transition:background 0.2s,transform 0.2s}
+.btn-primary:hover{background:var(--deep-indigo);transform:translateY(-2px)}
+
+/* HERO */
+.page-hero{padding:9rem 5rem 5rem;background:linear-gradient(135deg,#F5F0FF,#EDE5FF 40%,#FFE8F5 100%);position:relative;overflow:hidden}
+
+/* PANEL TOPICS */
+.panels-section{padding:6rem 5rem;background:white}
+.panels-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:3rem}
+.panel-card{background:var(--ghost);border-radius:20px;padding:2rem;border:1px solid rgba(165,158,246,0.15);position:relative;overflow:hidden;transition:transform 0.3s,box-shadow 0.3s}
+.panel-card:hover{transform:translateY(-6px);box-shadow:0 20px 50px rgba(61,43,107,0.1)}
+.panel-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;border-radius:20px 20px 0 0}
+.panel-card:nth-child(1)::before{background:linear-gradient(90deg,var(--lilac),var(--periwinkle))}
+.panel-card:nth-child(2)::before{background:linear-gradient(90deg,var(--blush),var(--apricot))}
+.panel-card:nth-child(3)::before{background:linear-gradient(90deg,var(--moonbeam),var(--lilac))}
+.panel-card:nth-child(4)::before{background:linear-gradient(90deg,var(--rose-dusk),var(--blush))}
+.panel-card:nth-child(5)::before{background:linear-gradient(90deg,var(--periwinkle),var(--moonbeam))}
+.panel-card:nth-child(6)::before{background:linear-gradient(90deg,var(--apricot),var(--lilac))}
+.panel-icon{font-size:1.8rem;margin-bottom:1rem}
+.panel-title{font-family:'Cormorant Garamond',serif;font-size:1.25rem;color:var(--deep-indigo);margin-bottom:0.7rem}
+.panel-desc{font-size:0.85rem;line-height:1.75;color:var(--indigo);opacity:0.65;margin-bottom:1rem}
+.panel-length{font-size:0.68rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--periwinkle);border:1px solid rgba(165,158,246,0.4);padding:0.25rem 0.8rem;border-radius:99px;display:inline-block}
+
+/* PAST APPEARANCES */
+.past-section{padding:6rem 5rem;background:var(--ghost)}
+.appearances-list{margin-top:3rem;display:flex;flex-direction:column;gap:1px;border:1px solid rgba(165,158,246,0.2);border-radius:16px;overflow:hidden}
+.appearance-item{background:white;padding:1.5rem 2rem;display:grid;grid-template-columns:120px 1fr auto;gap:1.5rem;align-items:center;transition:background 0.2s}
+.appearance-item:hover{background:var(--ghost)}
+.app-year{font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:300;color:var(--periwinkle)}
+.app-info{}
+.app-con{font-family:'Cormorant Garamond',serif;font-size:1.1rem;color:var(--deep-indigo);margin-bottom:0.2rem}
+.app-panel{font-size:0.82rem;color:var(--indigo);opacity:0.6}
+.app-badge{font-size:0.65rem;letter-spacing:0.12em;text-transform:uppercase;padding:0.3rem 0.8rem;border-radius:99px;white-space:nowrap}
+.badge-guest{background:var(--pale-lav);color:var(--indigo)}
+.badge-panel{background:linear-gradient(90deg,var(--blush),var(--apricot));color:var(--indigo)}
+.badge-judge{background:var(--moonbeam);color:var(--indigo)}
+
+/* BOOKING CTA */
+.booking-section{background:var(--indigo);padding:6rem 5rem;display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center;position:relative;overflow:hidden}
+.booking-bg{position:absolute;inset:0;background:radial-gradient(ellipse at 80% 30%,rgba(165,158,246,0.15),transparent 60%)}
+.booking-text{position:relative;z-index:2}
+.booking-eyebrow{font-size:0.68rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--lilac);margin-bottom:1rem;display:flex;align-items:center;gap:0.5rem}
+.booking-eyebrow::before{content:'';width:16px;height:1px;background:var(--lilac);display:inline-block}
+.booking-title{font-family:'Cormorant Garamond',serif;font-size:2.8rem;font-weight:300;color:white;line-height:1.1;margin-bottom:1.2rem}
+.booking-title em{font-style:italic;color:var(--lilac)}
+.booking-body{font-size:0.9rem;line-height:1.8;color:rgba(255,255,255,0.55);margin-bottom:2rem}
+.booking-form{position:relative;z-index:2;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);border-radius:20px;padding:2.5rem}
+.form-group{margin-bottom:1.2rem}
+.form-label{font-size:0.72rem;letter-spacing:0.12em;text-transform:uppercase;color:rgba(255,255,255,0.5);margin-bottom:0.5rem;display:block}
+.form-input,.form-select,.form-textarea{width:100%;background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.12);border-radius:10px;padding:0.75rem 1rem;color:white;font-family:'Jost',sans-serif;font-size:0.88rem;outline:none;transition:border-color 0.2s}
+.form-input::placeholder,.form-textarea::placeholder{color:rgba(255,255,255,0.3)}
+.form-input:focus,.form-select:focus,.form-textarea:focus{border-color:var(--lilac)}
+.form-select option{background:var(--indigo);color:white}
+.form-textarea{min-height:100px;resize:vertical}
+
+footer{background:var(--deep-indigo);color:white;padding:3rem 5rem 2rem}
+.footer-bottom{display:flex;justify-content:space-between;align-items:center;font-size:0.75rem;color:rgba(255,255,255,0.25);padding-top:2rem;border-top:1px solid rgba(255,255,255,0.08)}
+.footer-logo{font-family:'Dancing Script',cursive;font-size:1.5rem;color:white;text-decoration:none;margin-bottom:0.5rem;display:inline-block}
+.footer-logo span{color:var(--lilac)}
+.social-links{display:flex;gap:0.7rem;margin-top:1rem}
+.social-link{width:34px;height:34px;border:1px solid rgba(255,255,255,0.12);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:0.75rem;color:rgba(255,255,255,0.5);text-decoration:none;transition:border-color 0.2s,color 0.2s}
+.social-link:hover{border-color:var(--lilac);color:var(--lilac)}
+@media(max-width:900px){nav{padding:1rem 1.5rem}.nav-links{display:none}.page-hero,.panels-section,.past-section,.booking-section{padding-left:1.5rem;padding-right:1.5rem}.panels-grid{grid-template-columns:1fr 1fr}.booking-section{grid-template-columns:1fr}.appearance-item{grid-template-columns:80px 1fr;}.app-badge{display:none}footer{padding:2rem 1.5rem}}
+@media(max-width:600px){.panels-grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="cursor" id="cursor"></div>
+<div class="cursor-trail" id="cursorTrail"></div>
+
+<nav>
+  <a href="moonlitmari.html" class="nav-logo">Moonlit <span>Mari</span></a>
+  <ul class="nav-links">
+    <li><a href="gallery.html">Portfolio</a></li>
+    <li><a href="videos.html">Videos</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="panels.html" class="active">Panels</a></li>
+    <li><a href="calendar.html">Calendar</a></li>
+    <li><a href="links.html">Shop Links</a></li>
+    <li><a href="contact.html" class="nav-cta">Contact</a></li>
+  </ul>
+</nav>
+
+<section class="page-hero">
+  <div class="orb orb-1"></div>
+  <div class="orb orb-2"></div>
+  <svg style="position:absolute;top:15%;right:10%;opacity:0.13;width:55px" viewBox="0 0 60 60" fill="none"><path d="M30 2L32 28L58 30L32 32L30 58L28 32L2 30L28 28Z" fill="#3D2B6B"/></svg>
+  <p class="page-eyebrow fade-up">Guest appearances & convention panels</p>
+  <h1 class="page-title fade-up">Panels &amp; <em>Appearances</em></h1>
+  <p class="page-sub fade-up">One of my favourite parts of con culture is the shared space of a panel room — where strangers who love the same things become instant friends. I'd love to bring that energy to your event.</p>
+</section>
+
+<!-- PANEL TOPICS -->
+<section class="panels-section">
+  <p class="section-tag fade-up">What I talk about</p>
+  <h2 class="section-title fade-up d1">Panel <em>offerings</em></h2>
+  <div class="panels-grid">
+    <div class="panel-card fade-up d1">
+      <div class="panel-icon"></div>
+      <h3 class="panel-title">Beginner Cosplay: You Already Have Everything You Need</h3>
+      <p class="panel-desc">A warm, encouraging intro to the world of cosplay for anyone who's felt too intimidated to start. We cover mindset, materials, and the magic of just beginning.</p>
+      <span class="panel-length">60–90 min</span>
+    </div>
+    <div class="panel-card fade-up d2">
+      <div class="panel-icon"></div>
+      <h3 class="panel-title">Storytelling Through Costume: Character, Identity & Craft</h3>
+      <p class="panel-desc">A deeper conversation about why we cosplay, what our characters mean to us, and how putting on a costume can help us step into who we want to become.</p>
+      <span class="panel-length">60 min</span>
+    </div>
+    <div class="panel-card fade-up d3">
+      <div class="panel-icon"></div>
+      <h3 class="panel-title">Building Your Cosplay Community: Finding Your Crew</h3>
+      <p class="panel-desc">How to find your people online and offline, build a space that's drama-light and encouragement-heavy, and why community is the best part of this whole journey.</p>
+      <span class="panel-length">45–60 min</span>
+    </div>
+    <div class="panel-card fade-up d1">
+      <div class="panel-icon"></div>
+      <h3 class="panel-title">Convention First Timer: Everything I Wish I'd Known</h3>
+      <p class="panel-desc">Practical tips, social wisdom, and heartfelt encouragement for anyone heading to their first con. Packing, panels, photos, and being kind to yourself throughout.</p>
+      <span class="panel-length">45 min</span>
+    </div>
+    <div class="panel-card fade-up d2">
+      <div class="panel-icon"></div>
+      <h3 class="panel-title">Progress Over Perfection: The Cosplay Mindset</h3>
+      <p class="panel-desc">A pep talk panel for anyone who's compared themselves, felt "not good enough," or almost quit. We celebrate the messy middle and the courage it takes to show up.</p>
+      <span class="panel-length">60 min</span>
+    </div>
+    <div class="panel-card fade-up d3">
+      <div class="panel-icon"></div>
+      <h3 class="panel-title">Content Creation for Cosplayers: Sharing Your Journey Online</h3>
+      <p class="panel-desc">A beginner-friendly guide to documenting your builds, growing a genuine audience, and creating content that feels like *you* — not just an algorithm.</p>
+      <span class="panel-length">60–75 min</span>
+    </div>
+  </div>
+</section>
+
+<!-- PAST APPEARANCES -->
+<section class="past-section">
+  <p class="section-tag fade-up">Where I've been</p>
+  <h2 class="section-title fade-up d1">Past <em>appearances</em></h2>
+  <div class="appearances-list fade-up d2">
+    <div class="appearance-item">
+      <div class="app-year">2025</div>
+      <div class="app-info">
+        <p class="app-con">MomoCon</p>
+        <p class="app-panel">"Beginner Cosplay: You Already Have Everything You Need"</p>
+      </div>
+      <span class="app-badge badge-panel">Panel</span>
+    </div>
+    <div class="appearance-item">
+      <div class="app-year">2024</div>
+      <div class="app-info">
+        <p class="app-con">Anime Weekend Atlanta</p>
+        <p class="app-panel">"Progress Over Perfection: The Cosplay Mindset" + Guest Cosplayer</p>
+      </div>
+      <span class="app-badge badge-guest">Guest</span>
+    </div>
+    <div class="appearance-item">
+      <div class="app-year">2024</div>
+      <div class="app-info">
+        <p class="app-con">DragonCon</p>
+        <p class="app-panel">Cosplay Craftsmanship Showcase — Participant</p>
+      </div>
+      <span class="app-badge badge-panel">Showcase</span>
+    </div>
+    <div class="appearance-item">
+      <div class="app-year">2023</div>
+      <div class="app-info">
+        <p class="app-con">Anime Expo</p>
+        <p class="app-panel">"Building Your Cosplay Community" + Cosplay Contest Judge</p>
+      </div>
+      <span class="app-badge badge-judge">Judge</span>
+    </div>
+    <div class="appearance-item">
+      <div class="app-year">2023</div>
+      <div class="app-info">
+        <p class="app-con">Supercon</p>
+        <p class="app-panel">"Convention First Timer: Everything I Wish I'd Known"</p>
+      </div>
+      <span class="app-badge badge-panel">Panel</span>
+    </div>
+  </div>
+</section>
+
+<!-- BOOKING -->
+<section class="booking-section">
+  <div class="booking-bg"></div>
+  <div class="booking-text fade-up">
+    <p class="booking-eyebrow">Want Mari at your event?</p>
+    <h2 class="booking-title">Let's make something <em>wonderful</em> together</h2>
+    <p class="booking-body">I love conventions of all sizes — from cosy local meetups to large-scale events. If you're looking for a panelist who brings warmth, encouragement, and genuine enthusiasm to the room, I'd be so honoured to be considered.</p>
+    <p class="booking-body">Fill out the inquiry form and I'll get back to you within 5–7 business days. Can't wait to hear about your event! </p>
+  </div>
+  <div class="booking-form fade-up d1">
+    <div class="form-group">
+      <label class="form-label">Your name</label>
+      <input type="text" class="form-input" placeholder="Convention coordinator name">
+    </div>
+    <div class="form-group">
+      <label class="form-label">Event name & location</label>
+      <input type="text" class="form-input" placeholder="e.g. MomoCon, Atlanta GA">
+    </div>
+    <div class="form-group">
+      <label class="form-label">Event date(s)</label>
+      <input type="text" class="form-input" placeholder="e.g. June 14–16, 2026">
+    </div>
+    <div class="form-group">
+      <label class="form-label">Panel topic interest</label>
+      <select class="form-select">
+        <option value="">Select a topic...</option>
+        <option>Beginner Cosplay: You Already Have Everything You Need</option>
+        <option>Storytelling Through Costume</option>
+        <option>Building Your Cosplay Community</option>
+        <option>Convention First Timer</option>
+        <option>Progress Over Perfection</option>
+        <option>Content Creation for Cosplayers</option>
+        <option>Open to suggestions / multiple panels</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label class="form-label">Anything else?</label>
+      <textarea class="form-textarea" placeholder="Tell me about your event, audience size, or any special requests!"></textarea>
+    </div>
+    <button class="btn-primary" style="width:100%;justify-content:center">Send my inquiry </button>
+  </div>
+</section>
+
+<footer>
+  <a href="moonlitmari.html" class="footer-logo">Moonlit <span>Mari</span></a>
+  <div class="social-links">
+    <a href="https://www.instagram.com/moonlit.mari/" class="social-link" target="_blank" rel="noopener">IG</a><a href="https://www.tiktok.com/@moonlit.mari" class="social-link" target="_blank" rel="noopener">TT</a><a href="https://www.youtube.com/@MoonlitMari/" class="social-link" target="_blank" rel="noopener">YT</a><a href="#" class="social-link">P</a>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2025 Moonlit Mari. All rights reserved.</span>
+    <span>Be your fullest self · Start your journey · Find your crew</span>
+  </div>
+</footer>
+
+<script>
+const cursor=document.getElementById('cursor'),trail=document.getElementById('cursorTrail');
+let mx=0,my=0,tx=0,ty=0;
+document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;cursor.style.left=mx+'px';cursor.style.top=my+'px'});
+(function animate(){tx+=(mx-tx)*0.12;ty+=(my-ty)*0.12;trail.style.left=tx+'px';trail.style.top=ty+'px';requestAnimationFrame(animate)})();
+const obs=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target)}}),{threshold:0.1});
+document.querySelectorAll('.fade-up').forEach(el=>obs.observe(el));
+setTimeout(()=>document.querySelectorAll('.page-hero .fade-up').forEach((el,i)=>setTimeout(()=>el.classList.add('visible'),150+i*100)),50);
+</script>
+</body>
+</html>

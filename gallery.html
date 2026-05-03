@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Portfolio — Moonlit Mari</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Dancing+Script:wght@500;700&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{--lilac:#D8A7FF;--blush:#FFC8EA;--periwinkle:#A59EF6;--apricot:#FFD6A0;--peach:#FFBA85;--rose-dusk:#F9C5D1;--moonbeam:#C5DEFF;--pale-lav:#E8E0FF;--ghost:#F5F0FF;--mauve:#D4C8E8;--indigo:#3D2B6B;--deep-indigo:#2a1d4d;--cream:#FDF8FF}
+html{scroll-behavior:smooth}
+body{font-family:'Jost',sans-serif;background:var(--cream);color:var(--indigo);overflow-x:hidden;cursor:none}
+.cursor{width:12px;height:12px;background:var(--lilac);border-radius:50%;position:fixed;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);mix-blend-mode:multiply}
+.cursor-trail{width:30px;height:30px;border:1px solid var(--periwinkle);border-radius:50%;position:fixed;pointer-events:none;z-index:9998;transform:translate(-50%,-50%);transition:transform 0.25s ease;opacity:0.6}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:1.2rem 3rem;background:rgba(253,248,255,0.85);backdrop-filter:blur(12px);border-bottom:1px solid rgba(165,158,246,0.18)}
+.nav-logo{font-family:'Dancing Script',cursive;font-size:1.7rem;color:var(--indigo);text-decoration:none}
+.nav-logo span{color:var(--periwinkle)}
+.nav-links{display:flex;gap:2.2rem;list-style:none;align-items:center}
+.nav-links a{font-size:0.78rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--indigo);text-decoration:none;opacity:0.6;transition:opacity 0.2s}
+.nav-links a:hover,.nav-links a.active{opacity:1}
+.nav-cta{border:1px solid var(--periwinkle);padding:0.45rem 1.1rem;border-radius:99px;opacity:1!important;transition:background 0.2s,color 0.2s!important}
+.nav-cta:hover{background:var(--periwinkle)!important;color:white!important}
+
+/* PAGE HERO */
+.page-hero{padding:9rem 5rem 4rem;background:linear-gradient(135deg,#F5F0FF 0%,#EDE5FF 40%,#FFE8F5 100%);position:relative;overflow:hidden}
+.orb{position:absolute;border-radius:50%;filter:blur(60px);pointer-events:none;animation:floatOrb 8s ease-in-out infinite alternate}
+.orb-1{width:350px;height:350px;background:rgba(216,167,255,0.3);top:-80px;right:5%}
+.orb-2{width:200px;height:200px;background:rgba(255,200,234,0.35);bottom:-40px;left:10%;animation-delay:-3s}
+@keyframes floatOrb{from{transform:translate(0,0) scale(1)}to{transform:translate(15px,20px) scale(1.05)}}
+.page-eyebrow{font-size:0.7rem;letter-spacing:0.22em;text-transform:uppercase;color:var(--periwinkle);margin-bottom:1rem;display:flex;align-items:center;gap:0.6rem}
+.page-eyebrow::before{content:'';width:28px;height:1px;background:var(--periwinkle);display:inline-block}
+.page-title{font-family:'Cormorant Garamond',serif;font-size:clamp(3rem,5vw,4.5rem);font-weight:300;line-height:1.05;color:var(--deep-indigo);margin-bottom:1rem}
+.page-title em{font-style:italic;color:var(--periwinkle)}
+.page-sub{font-size:0.95rem;line-height:1.8;color:var(--indigo);opacity:0.65;max-width:500px}
+
+/* FILTER BAR */
+.filter-bar{background:white;padding:1.2rem 5rem;border-bottom:1px solid rgba(165,158,246,0.15);display:flex;gap:0.7rem;flex-wrap:wrap;align-items:center;position:sticky;top:72px;z-index:50}
+.filter-btn{font-size:0.72rem;letter-spacing:0.12em;text-transform:uppercase;padding:0.4rem 1.1rem;border-radius:99px;border:1px solid rgba(165,158,246,0.35);background:transparent;color:var(--indigo);cursor:none;transition:all 0.2s}
+.filter-btn:hover,.filter-btn.active{background:var(--indigo);color:white;border-color:var(--indigo)}
+
+/* MASONRY GRID */
+.gallery-section{padding:3rem 5rem 6rem}
+.masonry{columns:3;gap:1.2rem}
+.masonry-item{break-inside:avoid;margin-bottom:1.2rem;border-radius:16px;overflow:hidden;position:relative;cursor:none;background:var(--ghost)}
+.masonry-item:hover .overlay{opacity:1}
+.masonry-item:hover .item-img{transform:scale(1.04)}
+.item-img{width:100%;display:block;transition:transform 0.5s ease}
+.item-placeholder{width:100%;display:flex;align-items:center;justify-content:center;transition:transform 0.5s ease}
+.overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(42,29,77,0.85) 0%,transparent 55%);opacity:0;transition:opacity 0.35s;display:flex;flex-direction:column;justify-content:flex-end;padding:1.4rem}
+.overlay-title{font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-style:italic;color:white;margin-bottom:0.3rem}
+.overlay-tag{font-size:0.65rem;letter-spacing:0.14em;text-transform:uppercase;color:rgba(255,255,255,0.55)}
+
+/* placeholder gradient fills */
+.g1{background:linear-gradient(160deg,#D8A7FF,#A59EF6,#B8C8F0)}
+.g2{background:linear-gradient(140deg,#FFC8EA,#FFD6A0)}
+.g3{background:linear-gradient(140deg,#C5DEFF,#E8E0FF)}
+.g4{background:linear-gradient(140deg,#FFBA85,#F9C5D1)}
+.g5{background:linear-gradient(140deg,#E8E0FF,#D8A7FF)}
+.g6{background:linear-gradient(160deg,#FFD6A0,#FFC8EA)}
+.g7{background:linear-gradient(140deg,#B8C8F0,#A59EF6)}
+.g8{background:linear-gradient(140deg,#F9C5D1,#E8E0FF)}
+.g9{background:linear-gradient(160deg,#D8A7FF,#FFC8EA)}
+
+.ph-text{font-family:'Dancing Script',cursive;font-size:1rem;color:rgba(61,43,107,0.35);text-align:center;padding:1rem}
+
+/* LIGHTBOX */
+.lightbox{position:fixed;inset:0;background:rgba(42,29,77,0.92);z-index:200;display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity 0.3s;backdrop-filter:blur(8px)}
+.lightbox.open{opacity:1;pointer-events:all}
+.lightbox-inner{max-width:700px;width:90%;position:relative}
+.lightbox-img{width:100%;border-radius:16px}
+.lightbox-close{position:absolute;top:-2.5rem;right:0;background:none;border:none;color:white;font-size:1.5rem;cursor:none;opacity:0.7;transition:opacity 0.2s}
+.lightbox-close:hover{opacity:1}
+.lightbox-caption{text-align:center;margin-top:1rem;color:rgba(255,255,255,0.7);font-size:0.88rem;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1.1rem}
+
+/* FOOTER */
+footer{background:var(--deep-indigo);color:white;padding:3rem 5rem 2rem}
+.footer-bottom{display:flex;justify-content:space-between;align-items:center;font-size:0.75rem;color:rgba(255,255,255,0.25);letter-spacing:0.06em;padding-top:2rem;border-top:1px solid rgba(255,255,255,0.08)}
+.footer-logo{font-family:'Dancing Script',cursive;font-size:1.5rem;color:white;text-decoration:none;margin-bottom:0.5rem;display:inline-block}
+.footer-logo span{color:var(--lilac)}
+.social-links{display:flex;gap:0.7rem;margin-top:1rem}
+.social-link{width:34px;height:34px;border:1px solid rgba(255,255,255,0.12);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:0.75rem;color:rgba(255,255,255,0.5);text-decoration:none;transition:border-color 0.2s,color 0.2s}
+.social-link:hover{border-color:var(--lilac);color:var(--lilac)}
+
+.fade-up{opacity:0;transform:translateY(24px);transition:opacity 0.6s ease,transform 0.6s ease}
+.fade-up.visible{opacity:1;transform:translateY(0)}
+
+@media(max-width:900px){nav{padding:1rem 1.5rem}.nav-links{display:none}.page-hero,.gallery-section,.filter-bar{padding-left:1.5rem;padding-right:1.5rem}.masonry{columns:2}}
+@media(max-width:600px){.masonry{columns:1}}
+</style>
+</head>
+<body>
+<div class="cursor" id="cursor"></div>
+<div class="cursor-trail" id="cursorTrail"></div>
+
+<nav>
+  <a href="moonlitmari.html" class="nav-logo">Moonlit <span>Mari</span></a>
+  <ul class="nav-links">
+    <li><a href="gallery.html" class="active">Portfolio</a></li>
+    <li><a href="videos.html">Videos</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="panels.html">Panels</a></li>
+    <li><a href="calendar.html">Calendar</a></li>
+    <li><a href="links.html">Shop Links</a></li>
+    <li><a href="contact.html" class="nav-cta">Contact</a></li>
+  </ul>
+</nav>
+
+<section class="page-hero">
+  <div class="orb orb-1"></div>
+  <div class="orb orb-2"></div>
+  <svg style="position:absolute;top:15%;right:12%;opacity:0.15;width:60px" viewBox="0 0 60 60" fill="none"><path d="M30 2L32 28L58 30L32 32L30 58L28 32L2 30L28 28Z" fill="#3D2B6B"/></svg>
+  <svg style="position:absolute;bottom:20%;left:8%;opacity:0.12;width:40px" viewBox="0 0 40 40" fill="none"><path d="M20 2L21.5 18.5L38 20L21.5 21.5L20 38L18.5 21.5L2 20L18.5 18.5Z" fill="#3D2B6B"/></svg>
+  <p class="page-eyebrow fade-up">The builds</p>
+  <h1 class="page-title fade-up">Portfolio &amp; <em>Gallery</em></h1>
+  <p class="page-sub fade-up">Every costume is a chapter. Here's the full story — from foam and worbla to convention floors.</p>
+</section>
+
+<div class="filter-bar">
+  <button class="filter-btn active" onclick="filterGallery('all', this)">All</button>
+  <button class="filter-btn" onclick="filterGallery('armor', this)">Armor Builds</button>
+  <button class="filter-btn" onclick="filterGallery('fantasy', this)">Fantasy</button>
+  <button class="filter-btn" onclick="filterGallery('anime', this)">Anime</button>
+  <button class="filter-btn" onclick="filterGallery('game', this)">Games</button>
+  <button class="filter-btn" onclick="filterGallery('wip', this)">WIPs</button>
+</div>
+
+<section class="gallery-section">
+  <div class="masonry" id="gallery">
+
+    <div class="masonry-item fade-up" data-cat="fantasy armor">
+      <div class="item-placeholder g1" style="height:360px"><p class="ph-text">Lunar Empress<br>Full armor</p></div>
+      <div class="overlay"><p class="overlay-title">Lunar Empress</p><p class="overlay-tag">Fantasy · Armor build · 2024</p></div>
+    </div>
+
+    <div class="masonry-item fade-up" data-cat="anime">
+      <div class="item-placeholder g2" style="height:260px"><p class="ph-text">Dream Witch</p></div>
+      <div class="overlay"><p class="overlay-title">Dream Witch</p><p class="overlay-tag">Anime · 2024</p></div>
+    </div>
+
+    <div class="masonry-item fade-up" data-cat="game">
+      <div class="item-placeholder g3" style="height:300px"><p class="ph-text">Starfall Mage</p></div>
+      <div class="overlay"><p class="overlay-title">Starfall Mage</p><p class="overlay-tag">Game · 2024</p></div>
+    </div>
+
+    <div class="masonry-item fade-up" data-cat="anime fantasy">
+      <div class="item-placeholder g4" style="height:220px"><p class="ph-text">Moon Rabbit</p></div>
+      <div class="overlay"><p class="overlay-title">Moon Rabbit</p><p class="overlay-tag">Anime · 2023</p></div>
+    </div>
+
+    <div class="masonry-item fade-up" data-cat="armor game">
+      <div class="item-placeholder g5" style="height:340px"><p class="ph-text">Celestial Knight</p></div>
+      <div class="overlay"><p class="overlay-title">Celestial Knight</p><p class="overlay-tag">Game · Armor · 2023</p></div>
+    </div>
+
+    <div class="masonry-item fade-up" data-cat="wip">
+      <div class="item-placeholder g6" style="height:240px"><p class="ph-text">WIP: Void Dancer</p></div>
+      <div class="overlay"><p class="overlay-title">Void Dancer — WIP</p><p class="overlay-tag">Work in progress · 2025</p></div>
+    </div>
+
+    <div class="masonry-item fade-up" data-cat="fantasy">
+      <div class="item-placeholder g7" style="height:280px"><p class="ph-text">Stardust Faerie</p></div>
+      <div class="overlay"><p class="overlay-title">Stardust Faerie</p><p class="overlay-tag">Fantasy · 2023</p></div>
+    </div>
+
+    <div class="masonry-item fade-up" data-cat="anime">
+      <div class="item-placeholder g8" style="height:320px"><p class="ph-text">Nocturn Princess</p></div>
+      <div class="overlay"><p class="overlay-title">Nocturn Princess</p><p class="overlay-tag">Anime · 2023</p></div>
+    </div>
+
+    <div class="masonry-item fade-up" data-cat="armor">
+      <div class="item-placeholder g9" style="height:260px"><p class="ph-text">Iron Bloom</p></div>
+      <div class="overlay"><p class="overlay-title">Iron Bloom</p><p class="overlay-tag">Armor · 2022</p></div>
+    </div>
+
+    <div class="masonry-item fade-up" data-cat="game fantasy">
+      <div class="item-placeholder g1" style="height:300px"><p class="ph-text">Eclipse Ranger</p></div>
+      <div class="overlay"><p class="overlay-title">Eclipse Ranger</p><p class="overlay-tag">Game · 2022</p></div>
+    </div>
+
+    <div class="masonry-item fade-up" data-cat="wip anime">
+      <div class="item-placeholder g2" style="height:230px"><p class="ph-text">WIP: Comet Shrine</p></div>
+      <div class="overlay"><p class="overlay-title">Comet Shrine — WIP</p><p class="overlay-tag">Anime · Work in progress</p></div>
+    </div>
+
+    <div class="masonry-item fade-up" data-cat="fantasy">
+      <div class="item-placeholder g3" style="height:350px"><p class="ph-text">Twilight Sovereign</p></div>
+      <div class="overlay"><p class="overlay-title">Twilight Sovereign</p><p class="overlay-tag">Fantasy · 2022</p></div>
+    </div>
+
+  </div>
+</section>
+
+<!-- Lightbox -->
+<div class="lightbox" id="lightbox">
+  <div class="lightbox-inner">
+    <button class="lightbox-close" onclick="closeLightbox()"></button>
+    <div id="lightbox-content" style="width:100%;height:300px;border-radius:16px"></div>
+    <p class="lightbox-caption" id="lightbox-caption"></p>
+  </div>
+</div>
+
+<footer>
+  <a href="moonlitmari.html" class="footer-logo">Moonlit <span>Mari</span></a>
+  <div class="social-links">
+    <a href="https://www.instagram.com/moonlit.mari/" class="social-link" target="_blank" rel="noopener">IG</a><a href="https://www.tiktok.com/@moonlit.mari" class="social-link" target="_blank" rel="noopener">TT</a><a href="https://www.youtube.com/@MoonlitMari/" class="social-link" target="_blank" rel="noopener">YT</a><a href="#" class="social-link">P</a>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2025 Moonlit Mari. All rights reserved.</span>
+    <span>Made with care and too much tea</span>
+  </div>
+</footer>
+
+<script>
+const cursor=document.getElementById('cursor'),trail=document.getElementById('cursorTrail');
+let mx=0,my=0,tx=0,ty=0;
+document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;cursor.style.left=mx+'px';cursor.style.top=my+'px'});
+(function animate(){tx+=(mx-tx)*0.12;ty+=(my-ty)*0.12;trail.style.left=tx+'px';trail.style.top=ty+'px';requestAnimationFrame(animate)})();
+
+const obs=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target)}}),{threshold:0.1});
+document.querySelectorAll('.fade-up').forEach(el=>obs.observe(el));
+setTimeout(()=>document.querySelectorAll('.page-hero .fade-up').forEach((el,i)=>setTimeout(()=>el.classList.add('visible'),150+i*100)),50);
+
+function filterGallery(cat, btn){
+  document.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  document.querySelectorAll('.masonry-item').forEach(item=>{
+    const cats=item.dataset.cat||'';
+    item.style.display=(cat==='all'||cats.includes(cat))?'':'none';
+  });
+}
+
+document.querySelectorAll('.masonry-item').forEach(item=>{
+  item.addEventListener('click',()=>{
+    const title=item.querySelector('.overlay-title')?.textContent||'';
+    const tag=item.querySelector('.overlay-tag')?.textContent||'';
+    const bg=item.querySelector('[class*="g"]')?.style.background||item.querySelector('[class*="g"]')?.className.split(' ').find(c=>c.startsWith('g'));
+    const lb=document.getElementById('lightbox');
+    const content=document.getElementById('lightbox-content');
+    content.className='';content.style.cssText='width:100%;height:320px;border-radius:16px;display:flex;align-items:center;justify-content:center;';
+    const el=item.querySelector('.item-placeholder');
+    if(el)content.style.background=getComputedStyle(el).background;
+    document.getElementById('lightbox-caption').textContent=title+(tag?' — '+tag:'');
+    lb.classList.add('open');
+  });
+});
+function closeLightbox(){document.getElementById('lightbox').classList.remove('open')}
+document.getElementById('lightbox').addEventListener('click',e=>{if(e.target===e.currentTarget)closeLightbox()});
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeLightbox()});
+</script>
+</body>
+</html>
