@@ -1,0 +1,1071 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Moonlit Mari — Celestial Cosplay</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Dancing+Script:wght@500;700&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --lilac: #D8A7FF;
+    --blush: #FFC8EA;
+    --periwinkle: #A59EF6;
+    --apricot: #FFD6A0;
+    --peach: #FFBA85;
+    --rose-dusk: #F9C5D1;
+    --moonbeam: #C5DEFF;
+    --pale-lav: #E8E0FF;
+    --dusk-blue: #B8C8F0;
+    --ghost: #F5F0FF;
+    --mauve: #D4C8E8;
+    --indigo: #3D2B6B;
+    --deep-indigo: #2a1d4d;
+    --cream: #FDF8FF;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Jost', sans-serif;
+    background: var(--cream);
+    color: var(--indigo);
+    overflow-x: hidden;
+    cursor: none;
+  }
+
+  /* Custom cursor — crescent moon */
+  .cursor {
+    width: 28px; height: 28px;
+    position: fixed;
+    pointer-events: none;
+    z-index: 9999;
+    transform: translate(-50%, -50%);
+    transition: transform 0.1s;
+    filter: drop-shadow(0 0 5px rgba(216,167,255,0.7));
+  }
+  .cursor-trail {
+    width: 40px; height: 40px;
+    border: 1px solid rgba(165,158,246,0.3);
+    border-radius: 50%;
+    position: fixed;
+    pointer-events: none;
+    z-index: 9998;
+    transform: translate(-50%, -50%);
+    transition: transform 0.28s ease, opacity 0.3s;
+    opacity: 0.45;
+  }
+
+  /*  NAV  */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 1.2rem 3rem;
+    background: rgba(253, 248, 255, 0.75);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(165, 158, 246, 0.18);
+  }
+  .nav-logo {
+    font-family: 'Dancing Script', cursive;
+    font-size: 1.7rem;
+    color: var(--indigo);
+    text-decoration: none;
+    letter-spacing: 0.02em;
+  }
+  .nav-logo span { color: var(--periwinkle); }
+  .nav-links { display: flex; gap: 2.2rem; list-style: none; align-items: center; }
+  .nav-links a {
+    font-family: 'Jost', sans-serif;
+    font-size: 0.78rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--indigo);
+    text-decoration: none;
+    opacity: 0.7;
+    transition: opacity 0.2s;
+  }
+  .nav-links a:hover { opacity: 1; }
+  .nav-cta {
+    font-size: 0.75rem !important;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    border: 1px solid var(--periwinkle);
+    padding: 0.45rem 1.1rem;
+    border-radius: 99px;
+    opacity: 1 !important;
+    color: var(--indigo) !important;
+    transition: background 0.2s, color 0.2s !important;
+  }
+  .nav-cta:hover { background: var(--periwinkle) !important; color: white !important; }
+
+  /*  HERO  */
+  .hero {
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    position: relative;
+    overflow: visible;
+    padding-top: 5rem;
+  }
+
+  .hero-bg {
+    position: absolute; inset: 0;
+    background: linear-gradient(135deg, #F5F0FF 0%, #EDE5FF 30%, #FFE8F5 60%, #FFF0E8 100%);
+    z-index: 0;
+  }
+
+  /* floating orbs */
+  .orb {
+    position: absolute; border-radius: 50%;
+    filter: blur(60px); pointer-events: none; z-index: 0;
+    animation: floatOrb 8s ease-in-out infinite alternate;
+  }
+  .orb-1 { width: 420px; height: 420px; background: rgba(216,167,255,0.35); top: -80px; right: 10%; }
+  .orb-2 { width: 300px; height: 300px; background: rgba(255,200,234,0.4); bottom: 10%; left: 5%; animation-delay: -3s; }
+  .orb-3 { width: 250px; height: 250px; background: rgba(165,158,246,0.3); top: 40%; left: 40%; animation-delay: -5s; }
+  @keyframes floatOrb {
+    from { transform: translate(0,0) scale(1); }
+    to   { transform: translate(20px,30px) scale(1.06); }
+  }
+
+  .hero-left {
+    position: relative; z-index: 2;
+    display: flex; flex-direction: column; justify-content: center;
+    padding: 5rem 3rem 5rem 5rem;
+  }
+
+  .hero-eyebrow {
+    font-size: 0.7rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--periwinkle);
+    margin-bottom: 1.2rem;
+    display: flex; align-items: center; gap: 0.6rem;
+  }
+  .hero-eyebrow::before {
+    content: '';
+    display: inline-block;
+    width: 28px; height: 1px;
+    background: var(--periwinkle);
+  }
+
+  .hero-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(3.5rem, 6vw, 5.5rem);
+    font-weight: 300;
+    line-height: 1.05;
+    color: var(--deep-indigo);
+    margin-bottom: 1.5rem;
+  }
+  .hero-title em {
+    font-style: italic;
+    color: var(--periwinkle);
+  }
+  .hero-title .script-word {
+    font-family: 'Dancing Script', cursive;
+    font-size: 1.1em;
+    color: var(--indigo);
+  }
+
+  .hero-sub {
+    font-size: 0.95rem;
+    line-height: 1.8;
+    color: var(--indigo);
+    opacity: 0.7;
+    max-width: 380px;
+    margin-bottom: 2.5rem;
+  }
+
+  .hero-actions { display: flex; gap: 1rem; align-items: center; flex-wrap: wrap; }
+  .btn-primary {
+    font-family: 'Jost', sans-serif;
+    font-size: 0.75rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    background: var(--indigo);
+    color: white;
+    border: none;
+    padding: 0.85rem 2rem;
+    border-radius: 99px;
+    cursor: none;
+    text-decoration: none;
+    transition: background 0.2s, transform 0.2s;
+  }
+  .btn-primary:hover { background: var(--deep-indigo); transform: translateY(-2px); }
+  .btn-ghost {
+    font-family: 'Jost', sans-serif;
+    font-size: 0.75rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--indigo);
+    text-decoration: none;
+    display: flex; align-items: center; gap: 0.5rem;
+    transition: gap 0.2s;
+  }
+  .btn-ghost:hover { gap: 0.8rem; }
+  .btn-ghost::after { content: '→'; }
+
+  .hero-stats {
+    display: flex; gap: 2.5rem; margin-top: 3.5rem;
+    padding-top: 2rem;
+    border-top: 1px solid rgba(165,158,246,0.2);
+  }
+  .stat-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2rem;
+    font-weight: 300;
+    color: var(--indigo);
+    display: block;
+    line-height: 1;
+  }
+  .stat-label {
+    font-size: 0.68rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--indigo);
+    opacity: 0.5;
+    margin-top: 0.3rem;
+    display: block;
+  }
+
+  /* hero right — image mosaic placeholder */
+  .hero-right {
+    position: relative; z-index: 2;
+    display: flex; align-items: center; justify-content: center;
+    padding: 5rem 4rem 5rem 2rem;
+  }
+  .hero-photo-wrap {
+    width: 300px;
+    border-radius: 24px;
+    overflow: hidden;
+    box-shadow: 0 32px 80px rgba(61,43,107,0.18);
+    border: 1px solid rgba(165,158,246,0.2);
+    animation: floatCard 5s ease-in-out infinite alternate;
+  }
+  .hero-photo-wrap img {
+    width: 100%;
+    display: block;
+    aspect-ratio: 3/4;
+    object-fit: cover;
+    object-position: top;
+  }
+  @keyframes floatCard {
+    from { transform: translateY(0); }
+    to   { transform: translateY(-12px); }
+  }
+  .mosaic-label {
+    font-family: 'Dancing Script', cursive;
+    font-size: 1.1rem;
+    color: rgba(61,43,107,0.5);
+    text-align: center;
+  }
+  .mosaic-icon { font-size: 2.5rem; }
+
+  /* celestial deco SVG */
+  .deco-stars {
+    position: absolute; z-index: 1; pointer-events: none;
+    animation: twinkle 3s ease-in-out infinite alternate;
+  }
+  @keyframes twinkle {
+    from { opacity: 0.6; }
+    to { opacity: 1; }
+  }
+
+  /*  MARQUEE STRIP  */
+  .marquee-strip {
+    position: relative; z-index: 2;
+    background: var(--indigo);
+    padding: 0.9rem 0;
+    overflow: hidden;
+    display: flex;
+  }
+  .marquee-track {
+    display: flex; gap: 0;
+    animation: marquee 22s linear infinite;
+    white-space: nowrap;
+  }
+  .marquee-item {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1rem;
+    font-style: italic;
+    color: rgba(255,255,255,0.75);
+    padding: 0 2rem;
+    flex-shrink: 0;
+    letter-spacing: 0.04em;
+  }
+  .marquee-dot {
+    color: var(--lilac);
+    font-style: normal;
+    margin-right: 2rem;
+  }
+  @keyframes marquee {
+    from { transform: translateX(0); }
+    to   { transform: translateX(-50%); }
+  }
+
+  /*  ABOUT SECTION  */
+  .about {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+    padding: 7rem 5rem;
+    position: relative;
+    background: white;
+  }
+  .about-left { padding-right: 5rem; }
+  .section-tag {
+    font-size: 0.68rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--periwinkle);
+    margin-bottom: 1rem;
+    display: flex; align-items: center; gap: 0.6rem;
+  }
+  .section-tag::before {
+    content: '';
+    width: 20px; height: 1px;
+    background: var(--periwinkle);
+    display: inline-block;
+  }
+  .section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2.2rem, 3.5vw, 3.2rem);
+    font-weight: 300;
+    line-height: 1.15;
+    color: var(--deep-indigo);
+    margin-bottom: 1.5rem;
+  }
+  .section-title em { font-style: italic; color: var(--periwinkle); }
+  .about-body {
+    font-size: 0.95rem;
+    line-height: 1.85;
+    color: var(--indigo);
+    opacity: 0.75;
+    margin-bottom: 1.5rem;
+  }
+
+  .craft-tags {
+    display: flex; flex-wrap: wrap; gap: 0.6rem; margin-top: 2rem;
+  }
+  .craft-tag {
+    font-size: 0.72rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    border: 1px solid rgba(165,158,246,0.5);
+    color: var(--indigo);
+    padding: 0.35rem 1rem;
+    border-radius: 99px;
+    background: var(--ghost);
+  }
+
+  .about-right {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    align-content: start;
+  }
+  .about-card {
+    background: var(--ghost);
+    border-radius: 16px;
+    padding: 1.5rem;
+    border: 1px solid rgba(165,158,246,0.15);
+  }
+  .about-card:first-child {
+    grid-column: span 2;
+    background: linear-gradient(135deg, var(--pale-lav), var(--blush));
+    display: flex; align-items: center; gap: 1.5rem;
+    padding: 2rem;
+  }
+  .about-card-icon {
+    font-size: 2rem;
+    width: 56px; height: 56px;
+    display: flex; align-items: center; justify-content: center;
+    background: white;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+  .about-card-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.2rem;
+    font-weight: 400;
+    color: var(--deep-indigo);
+    margin-bottom: 0.3rem;
+  }
+  .about-card-text {
+    font-size: 0.82rem;
+    color: var(--indigo);
+    opacity: 0.7;
+    line-height: 1.6;
+  }
+
+  /*  GALLERY SECTION  */
+  .gallery {
+    padding: 6rem 5rem;
+    background: var(--cream);
+  }
+  .gallery-header {
+    display: flex; align-items: flex-end; justify-content: space-between;
+    margin-bottom: 3rem;
+  }
+  .gallery-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    grid-template-rows: 280px 280px;
+    gap: 1rem;
+  }
+  .gallery-item {
+    border-radius: 16px;
+    overflow: hidden;
+    position: relative;
+    cursor: none;
+  }
+  .gallery-item:first-child { grid-row: span 2; }
+  .gallery-img {
+    width: 100%; height: 100%;
+    display: flex; align-items: center; justify-content: center;
+    position: relative;
+    transition: transform 0.5s ease;
+  }
+  .gallery-item:hover .gallery-img { transform: scale(1.04); }
+  .gallery-overlay {
+    position: absolute; inset: 0;
+    background: linear-gradient(to top, rgba(61,43,107,0.6) 0%, transparent 60%);
+    opacity: 0;
+    transition: opacity 0.3s;
+    display: flex; align-items: flex-end; padding: 1.2rem;
+  }
+  .gallery-item:hover .gallery-overlay { opacity: 1; }
+  .gallery-overlay-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1rem;
+    font-style: italic;
+    color: white;
+    letter-spacing: 0.04em;
+  }
+
+  /* placeholder gradient fills for gallery */
+  .g1 { background: linear-gradient(160deg, #D8A7FF 0%, #A59EF6 50%, #B8C8F0 100%); }
+  .g2 { background: linear-gradient(140deg, #FFC8EA 0%, #FFD6A0 100%); }
+  .g3 { background: linear-gradient(140deg, #C5DEFF 0%, #E8E0FF 100%); }
+  .g4 { background: linear-gradient(140deg, #FFBA85 0%, #F9C5D1 100%); }
+  .g5 { background: linear-gradient(140deg, #E8E0FF 0%, #D8A7FF 100%); }
+
+  .gallery-placeholder-text {
+    font-family: 'Dancing Script', cursive;
+    font-size: 1.4rem;
+    color: rgba(61,43,107,0.35);
+  }
+
+  /*  SERVICES  */
+  .services {
+    background: var(--indigo);
+    padding: 7rem 5rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .services-bg-deco {
+    position: absolute; inset: 0; pointer-events: none;
+    background: radial-gradient(ellipse at 80% 20%, rgba(165,158,246,0.15) 0%, transparent 60%),
+                radial-gradient(ellipse at 10% 80%, rgba(255,200,234,0.1) 0%, transparent 50%);
+  }
+  .services .section-tag { color: var(--lilac); }
+  .services .section-tag::before { background: var(--lilac); }
+  .services .section-title { color: white; }
+  .services .section-title em { color: var(--lilac); }
+
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    margin-top: 3.5rem;
+  }
+  .service-card {
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 20px;
+    padding: 2.2rem;
+    transition: background 0.3s, transform 0.3s;
+    position: relative; overflow: hidden;
+  }
+  .service-card:hover {
+    background: rgba(255,255,255,0.1);
+    transform: translateY(-6px);
+  }
+  .service-card::before {
+    content: '';
+    position: absolute; top: 0; left: 0; right: 0; height: 3px;
+    border-radius: 20px 20px 0 0;
+  }
+  .service-card:nth-child(1)::before { background: linear-gradient(90deg, var(--lilac), var(--periwinkle)); }
+  .service-card:nth-child(2)::before { background: linear-gradient(90deg, var(--blush), var(--apricot)); }
+  .service-card:nth-child(3)::before { background: linear-gradient(90deg, var(--moonbeam), var(--lilac)); }
+
+  .service-icon {
+    font-size: 2rem; margin-bottom: 1.2rem;
+    width: 52px; height: 52px;
+    border-radius: 12px;
+    background: rgba(255,255,255,0.08);
+    display: flex; align-items: center; justify-content: center;
+  }
+  .service-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.4rem;
+    font-weight: 400;
+    color: white;
+    margin-bottom: 0.8rem;
+  }
+  .service-text {
+    font-size: 0.88rem;
+    line-height: 1.75;
+    color: rgba(255,255,255,0.55);
+  }
+  .service-link {
+    display: inline-flex; align-items: center; gap: 0.4rem;
+    margin-top: 1.5rem;
+    font-size: 0.72rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--lilac);
+    text-decoration: none;
+    transition: gap 0.2s;
+  }
+  .service-link:hover { gap: 0.7rem; }
+  .service-link::after { content: '→'; }
+
+  /*  BLOG PREVIEW  */
+  .blog {
+    padding: 7rem 5rem;
+    background: white;
+  }
+  .blog-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    margin-top: 3rem;
+  }
+  .blog-card {
+    border-radius: 16px;
+    overflow: hidden;
+    border: 1px solid rgba(165,158,246,0.15);
+    transition: transform 0.3s, box-shadow 0.3s;
+    cursor: none;
+    background: var(--cream);
+  }
+  .blog-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 24px 60px rgba(61,43,107,0.1);
+  }
+  .blog-img {
+    height: 180px;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .blog-body { padding: 1.4rem; }
+  .blog-cat {
+    font-size: 0.65rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--periwinkle);
+    margin-bottom: 0.6rem;
+    display: block;
+  }
+  .blog-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.2rem;
+    font-weight: 400;
+    color: var(--deep-indigo);
+    line-height: 1.3;
+    margin-bottom: 0.7rem;
+  }
+  .blog-excerpt {
+    font-size: 0.82rem;
+    line-height: 1.7;
+    color: var(--indigo);
+    opacity: 0.6;
+  }
+  .blog-meta {
+    display: flex; justify-content: space-between; align-items: center;
+    margin-top: 1.2rem;
+    padding-top: 1rem;
+    border-top: 1px solid rgba(165,158,246,0.15);
+    font-size: 0.72rem;
+    color: var(--indigo);
+    opacity: 0.5;
+    letter-spacing: 0.06em;
+  }
+
+  /*    */
+  . {
+    background: linear-gradient(135deg, var(--pale-lav) 0%, var(--blush) 60%, var(--apricot) 100%);
+    padding: 6rem 5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .-inner { position: relative; z-index: 2; max-width: 560px; }
+  .-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2rem, 3.5vw, 3rem);
+    font-weight: 300;
+    color: var(--deep-indigo);
+    line-height: 1.15;
+    margin-bottom: 1rem;
+  }
+  .-sub {
+    font-size: 0.9rem;
+    color: var(--indigo);
+    opacity: 0.7;
+    line-height: 1.7;
+    margin-bottom: 2rem;
+  }
+  .-form {
+    display: flex; gap: 0.7rem;
+    max-width: 420px; margin: 0 auto;
+  }
+  .-input {
+    flex: 1;
+    font-family: 'Jost', sans-serif;
+    font-size: 0.88rem;
+    padding: 0.85rem 1.2rem;
+    border: 1px solid rgba(165,158,246,0.4);
+    border-radius: 99px;
+    background: rgba(255,255,255,0.7);
+    color: var(--indigo);
+    outline: none;
+    backdrop-filter: blur(4px);
+  }
+  .-input::placeholder { opacity: 0.5; }
+  .-input:focus { border-color: var(--periwinkle); background: white; }
+
+  /*  FOOTER  */
+  footer {
+    background: var(--deep-indigo);
+    color: white;
+    padding: 4rem 5rem 2.5rem;
+  }
+  .footer-top {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr 1fr 1fr;
+    gap: 3rem;
+    margin-bottom: 3rem;
+    padding-bottom: 3rem;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+  }
+  .footer-brand .nav-logo { color: white; display: block; margin-bottom: 1rem; }
+  .footer-brand .nav-logo span { color: var(--lilac); }
+  .footer-tagline {
+    font-size: 0.85rem;
+    line-height: 1.7;
+    color: rgba(255,255,255,0.45);
+    margin-bottom: 1.5rem;
+  }
+  .social-links { display: flex; gap: 0.8rem; }
+  .social-link {
+    width: 36px; height: 36px;
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 0.8rem;
+    color: rgba(255,255,255,0.5);
+    text-decoration: none;
+    transition: border-color 0.2s, color 0.2s;
+  }
+  .social-link:hover { border-color: var(--lilac); color: var(--lilac); }
+  .footer-col-title {
+    font-size: 0.68rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.3);
+    margin-bottom: 1.2rem;
+  }
+  .footer-links { list-style: none; }
+  .footer-links li { margin-bottom: 0.7rem; }
+  .footer-links a {
+    font-size: 0.88rem;
+    color: rgba(255,255,255,0.55);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .footer-links a:hover { color: var(--lilac); }
+  .footer-bottom {
+    display: flex; justify-content: space-between; align-items: center;
+    font-size: 0.75rem;
+    color: rgba(255,255,255,0.25);
+    letter-spacing: 0.06em;
+  }
+
+  /*  ANIMATIONS  */
+  .fade-up {
+    opacity: 0; transform: translateY(30px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+  .fade-up.visible { opacity: 1; transform: translateY(0); }
+  .fade-up-d1 { transition-delay: 0.1s; }
+  .fade-up-d2 { transition-delay: 0.2s; }
+  .fade-up-d3 { transition-delay: 0.3s; }
+
+  /*  CELESTIAL SVG DECO  */
+  .deco-moon {
+    position: absolute;
+    pointer-events: none;
+    opacity: 0.12;
+  }
+
+  @media (max-width: 900px) {
+    nav { padding: 1rem 1.5rem; }
+    .nav-links { display: none; }
+    .hero, .about { grid-template-columns: 1fr; }
+    .hero-left { padding: 4rem 2rem 2rem; }
+    .hero-right { display: none; }
+    .gallery { padding: 4rem 1.5rem; }
+    .gallery-grid { grid-template-columns: 1fr 1fr; grid-template-rows: auto; }
+    .gallery-item:first-child { grid-row: span 1; grid-column: span 2; }
+    .services, .blog, .about, ., footer { padding: 4rem 1.5rem; }
+    .services-grid, .blog-grid { grid-template-columns: 1fr; }
+    .footer-top { grid-template-columns: 1fr 1fr; }
+    .-form { flex-direction: column; }
+  }
+</style>
+</head>
+<body>
+
+<div class="cursor" id="cursor"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" fill="#D8A7FF" stroke="#A59EF6" stroke-width="0.5"/></svg></div>
+<div class="cursor-trail" id="cursorTrail"></div>
+
+<!-- NAV -->
+<nav>
+  <a href="index.html" class="nav-logo">Moonlit <span>Mari</span></a>
+  <ul class="nav-links">
+    <li><a href="gallery.html">Portfolio</a></li>
+    <li><a href="videos.html">Videos</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="panels.html">Panels</a></li>
+    <li><a href="calendar.html">Calendar</a></li>
+    <li><a href="links.html">Shop Links</a></li>
+    <li><a href="contact.html" class="nav-cta">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="orb orb-1"></div>
+  <div class="orb orb-2"></div>
+  <div class="orb orb-3"></div>
+
+  <!-- Celestial deco -->
+  <svg class="deco-stars" style="top:15%;left:8%;width:60px" viewBox="0 0 60 60" fill="none">
+    <path d="M30 2 L32 28 L58 30 L32 32 L30 58 L28 32 L2 30 L28 28 Z" fill="#A59EF6"/>
+    <circle cx="10" cy="10" r="2" fill="#D8A7FF"/>
+    <circle cx="50" cy="50" r="1.5" fill="#D8A7FF"/>
+    <circle cx="50" cy="12" r="1" fill="#FFC8EA"/>
+  </svg>
+  <svg class="deco-stars" style="bottom:25%;right:5%;width:40px;animation-delay:-2s" viewBox="0 0 40 40" fill="none">
+    <path d="M20 2 L21.5 18.5 L38 20 L21.5 21.5 L20 38 L18.5 21.5 L2 20 L18.5 18.5 Z" fill="#D8A7FF"/>
+    <circle cx="5" cy="8" r="1.5" fill="#A59EF6"/>
+  </svg>
+  <svg class="deco-stars" style="top:60%;left:45%;width:24px;animation-delay:-4s" viewBox="0 0 24 24" fill="none">
+    <path d="M12 1 L13 11 L23 12 L13 13 L12 23 L11 13 L1 12 L11 11 Z" fill="#FFC8EA"/>
+  </svg>
+
+  <!-- Crescent moon deco — tilted so points face top-right -->
+  <svg style="position:absolute;top:12%;right:10%;opacity:0.28;width:60px;height:60px;transform:rotate(-36deg)" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M36 6C20 6 8 18 8 34C8 50 20 62 36 62C25 58 18 47 18 34C18 21 25 10 36 6Z" fill="#3D2B6B"/>
+    <circle cx="42" cy="11" r="2" fill="#A59EF6" opacity="0.6"/>
+    <circle cx="47" cy="22" r="1.2" fill="#D8A7FF" opacity="0.5"/>
+  </svg>
+
+  <div class="hero-left">
+    <p class="hero-eyebrow fade-up">Belonging · Curiosity · Wonder</p>
+    <h1 class="hero-title fade-up fade-up-d1">
+      Be your<br>
+      <span class="script-word">fullest self.</span><br>
+      <em>Start your journey.</em>
+    </h1>
+    <p class="hero-sub fade-up fade-up-d2">
+      Hey, I'm Mari — former theatre kid, con-goer, and beginner-friendly cosplayer who believes every costume is a story worth telling. You found your crew. Welcome home. 
+    </p>
+    <div class="hero-actions fade-up fade-up-d3">
+      <a href="gallery.html" class="btn-primary">See My Builds</a>
+      <a href="videos.html" class="btn-ghost">Watch & Learn</a>
+    </div>
+    <div class="hero-stats fade-up" style="transition-delay:0.4s">
+      <div>
+        <span class="stat-num">Theatre</span>
+        <span class="stat-label">Kid at heart</span>
+      </div>
+      <div>
+        <span class="stat-num">∞</span>
+        <span class="stat-label">Mistakes celebrated</span>
+      </div>
+      <div>
+        <span class="stat-num">1</span>
+        <span class="stat-label">Crew to find</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="hero-right fade-up fade-up-d2">
+    <div class="hero-photo-wrap">
+      <img src="images/leia-port.jpg" alt="Princess Leia cosplay by Moonlit Mari">
+    </div>
+  </div>
+</section>
+
+<!-- MARQUEE -->
+<div class="marquee-strip" aria-hidden="true">
+  <div class="marquee-track" id="marquee">
+    <span class="marquee-item">Be your fullest self <span class="marquee-dot"></span></span>
+    <span class="marquee-item">Beginners welcome here <span class="marquee-dot"></span></span>
+    <span class="marquee-item">Find your crew <span class="marquee-dot"></span></span>
+    <span class="marquee-item">Progress over perfection <span class="marquee-dot"></span></span>
+    <span class="marquee-item">Every stitch tells a story <span class="marquee-dot"></span></span>
+    <span class="marquee-item">Start your journey <span class="marquee-dot"></span></span>
+    <span class="marquee-item">Mistakes are part of the magic <span class="marquee-dot"></span></span>
+    <span class="marquee-item">Captain's log: we made it <span class="marquee-dot"></span></span>
+    <!-- duplicate for seamless loop -->
+    <span class="marquee-item">Be your fullest self <span class="marquee-dot"></span></span>
+    <span class="marquee-item">Beginners welcome here <span class="marquee-dot"></span></span>
+    <span class="marquee-item">Find your crew <span class="marquee-dot"></span></span>
+    <span class="marquee-item">Progress over perfection <span class="marquee-dot"></span></span>
+    <span class="marquee-item">Every stitch tells a story <span class="marquee-dot"></span></span>
+    <span class="marquee-item">Start your journey <span class="marquee-dot"></span></span>
+    <span class="marquee-item">Mistakes are part of the magic <span class="marquee-dot"></span></span>
+    <span class="marquee-item">Captain's log: we made it <span class="marquee-dot"></span></span>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="about-left">
+    <p class="section-tag fade-up">The maker behind the magic</p>
+    <h2 class="section-title fade-up fade-up-d1">A place where <em>you belong</em><br>exactly as you are</h2>
+    <p class="about-body fade-up fade-up-d2">
+      Hi! I'm Mari — former theatre kid, con-going dreamer, and beginner/intermediate cosplayer who stumbled into this craft and never looked back. I'm not a professional. I make mistakes on camera. I hot-glue my fingers together and laugh about it.
+    </p>
+    <p class="about-body fade-up fade-up-d2">
+      This space was built for anyone who's ever looked at a cosplay and thought "I could never do that." You can. You just need a starting point and a crew that roots for you. Consider this yours.
+    </p>
+    <div class="craft-tags fade-up fade-up-d3">
+      <span class="craft-tag">Theatre kid energy</span>
+      <span class="craft-tag">Foam & worbla</span>
+      <span class="craft-tag">Beginner friendly</span>
+      <span class="craft-tag">Storytelling through craft</span>
+      <span class="craft-tag">Fandom deep dives</span>
+      <span class="craft-tag">Con adventures</span>
+      <span class="craft-tag">Moon Crew </span>
+    </div>
+  </div>
+  <div class="about-right fade-up fade-up-d2">
+    <div class="about-card">
+      <div class="about-card-icon"></div>
+      <div>
+        <p class="about-card-title">The Moonlit Mari promise</p>
+        <p class="about-card-text">No gatekeeping, no perfectionism, no "you're doing it wrong." Progress is celebrated here, every single step of the way.</p>
+      </div>
+    </div>
+    <div class="about-card" style="background: linear-gradient(140deg, var(--moonbeam) 0%, var(--pale-lav) 100%);">
+      <div style="font-size:1.8rem;margin-bottom:0.8rem;"></div>
+      <p class="about-card-title">Captain Mari mode</p>
+      <p class="about-card-text" style="font-size:0.78rem;">Reflective, community-forward flight logs from the captain's chair.</p>
+    </div>
+    <div class="about-card" style="background: linear-gradient(140deg, var(--rose-dusk) 0%, var(--apricot) 100%);">
+      <div style="font-size:1.8rem;margin-bottom:0.8rem;"></div>
+      <p class="about-card-title">Shoujo main character</p>
+      <p class="about-card-text" style="font-size:0.78rem;">Heartfelt sincerity, dreamy stars, fandom nostalgia, and real-life kindness.</p>
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section class="gallery" id="gallery">
+  <div class="gallery-header">
+    <div>
+      <p class="section-tag fade-up">Recent work</p>
+      <h2 class="section-title fade-up fade-up-d1">A look at the <em>latest builds</em></h2>
+    </div>
+    <a href="#" class="btn-ghost fade-up" style="color:var(--indigo);text-decoration:none;font-size:0.75rem;letter-spacing:0.14em;text-transform:uppercase;display:flex;align-items:center;gap:0.5rem;">View all</a>
+  </div>
+  <div class="gallery-grid fade-up">
+    <div class="gallery-item">
+      <img src="images/squirrel.jpg" alt="Squirrel Girl cosplay" style="width:100%;height:100%;object-fit:cover;display:block;transition:transform 0.5s ease;">
+      <div class="gallery-overlay"><span class="gallery-overlay-text">Squirrel Girl — Full character build</span></div>
+    </div>
+    <div class="gallery-item">
+      <img src="images/belle-sq.jpg" alt="Belle cosplay" style="width:100%;height:100%;object-fit:cover;display:block;transition:transform 0.5s ease;">
+      <div class="gallery-overlay"><span class="gallery-overlay-text">Belle — Beauty and the Beast</span></div>
+    </div>
+    <div class="gallery-item">
+      <img src="images/hera-sq.jpg" alt="Hera Syndulla cosplay" style="width:100%;height:100%;object-fit:cover;display:block;transition:transform 0.5s ease;">
+      <div class="gallery-overlay"><span class="gallery-overlay-text">Hera Syndulla — Star Wars Rebels</span></div>
+    </div>
+    <div class="gallery-item">
+      <img src="images/red-dress-sq.jpg" alt="Celeste from Animal Crossing cosplay" style="width:100%;height:100%;object-fit:cover;display:block;transition:transform 0.5s ease;">
+      <div class="gallery-overlay"><span class="gallery-overlay-text">Celeste — Animal Crossing</span></div>
+    </div>
+    <div class="gallery-item">
+      <img src="images/leia-sq.jpg" alt="Princess Leia cosplay night" style="width:100%;height:100%;object-fit:cover;display:block;transition:transform 0.5s ease;">
+      <div class="gallery-overlay"><span class="gallery-overlay-text">Princess Leia — Star Wars</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="services" id="services">
+  <div class="services-bg-deco"></div>
+  <!-- Crescent deco -->
+  <svg class="deco-moon" style="right:-40px;top:20%;width:220px" viewBox="0 0 220 220" fill="none">
+    <circle cx="110" cy="110" r="100" stroke="rgba(216,167,255,0.4)" stroke-width="1"/>
+    <path d="M130 30 C70 30 30 70 30 130 C30 190 70 230 130 230 C95 220 70 178 70 130 C70 82 95 42 130 30Z" fill="rgba(216,167,255,0.15)"/>
+  </svg>
+
+  <p class="section-tag fade-up">What's waiting for you</p>
+  <h2 class="section-title fade-up fade-up-d1">Your journey <em>starts here</em></h2>
+  <div class="services-grid">
+    <div class="service-card fade-up fade-up-d1">
+      <div class="service-icon"></div>
+      <h3 class="service-title">Cosplay Tutorials & Builds</h3>
+      <p class="service-text">Progress videos, honest "I have no idea what I'm doing" moments, beginner-forward tips, and full build series — all with a storytelling lens. No gatekeeping, ever.</p>
+      <a href="videos.html" class="service-link">Watch tutorials</a>
+    </div>
+    <div class="service-card fade-up fade-up-d2">
+      <div class="service-icon"></div>
+      <h3 class="service-title">Convention Adventures</h3>
+      <p class="service-text">Con vlogs, packing guides, behind-the-scenes chaos, and wholesome community moments. Every convention is a new chapter and you're invited to come along.</p>
+      <a href="videos.html" class="service-link">See the adventures</a>
+    </div>
+    <div class="service-card fade-up fade-up-d3">
+      <div class="service-icon"></div>
+      <h3 class="service-title">The Moon Crew Community</h3>
+      <p class="service-text">Q&As, pep talks, Captain Mari Flight Logs, and a community of dreamers, learners, late bloomers, and passionate nerds who root for each other. Come say hi on socials and find your crew.</p>
+      <a href="https://www.instagram.com/moonlit.mari/" class="service-link" target="_blank" rel="noopener">Find the crew</a>
+    </div>
+  </div>
+</section>
+
+<!-- BLOG -->
+<section class="blog" id="blog">
+  <div style="display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:1rem">
+    <div>
+      <p class="section-tag fade-up">Captain's flight log</p>
+      <h2 class="section-title fade-up fade-up-d1">From the <em>Moon Crew journal</em></h2>
+    </div>
+    <a href="#" style="font-size:0.75rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--indigo);text-decoration:none;display:flex;align-items:center;gap:0.5rem;" class="fade-up btn-ghost">All posts</a>
+  </div>
+  <div class="blog-grid">
+    <div class="blog-card fade-up fade-up-d1">
+      <div class="blog-img" style="overflow:hidden"><img src="images/con-duo-sq.jpg" alt="Convention meetup" style="width:100%;height:180px;object-fit:cover;display:block;transition:transform 0.5s ease;"></div>
+      <div class="blog-body">
+        <span class="blog-cat">Cosplay journey</span>
+        <h3 class="blog-title">My First Convention: Everything That Went Wrong (And Why I Loved It)</h3>
+        <p class="blog-excerpt">A costume that nearly fell apart, a panel I was 10 minutes late to, and the strangers who became my favourite people. Chaos is kind of the point.</p>
+        <div class="blog-meta"><span>May 2025</span><span>8 min read</span></div>
+      </div>
+    </div>
+    <div class="blog-card fade-up fade-up-d2">
+      <div class="blog-img" style="overflow:hidden"><img src="images/belle-sq.jpg" alt="Belle cosplay" style="width:100%;height:180px;object-fit:cover;display:block;transition:transform 0.5s ease;"></div>
+      <div class="blog-body">
+        <span class="blog-cat">Fandom deep dive</span>
+        <h3 class="blog-title">Why This Character Means Everything to Me (And What It Taught Me About Identity)</h3>
+        <p class="blog-excerpt">Cosplay isn't just a costume. Sometimes it's a love letter to the version of yourself you're still becoming.</p>
+        <div class="blog-meta"><span>Apr 2025</span><span>6 min read</span></div>
+      </div>
+    </div>
+    <div class="blog-card fade-up fade-up-d3">
+      <div class="blog-img" style="overflow:hidden"><img src="images/red-dress-sq.jpg" alt="Celeste from Animal Crossing cosplay" style="width:100%;height:180px;object-fit:cover;display:block;transition:transform 0.5s ease;"></div>
+      <div class="blog-body">
+        <span class="blog-cat">Beginner builds</span>
+        <h3 class="blog-title">Your First Foam Build: What I Wish Someone Had Told Me</h3>
+        <p class="blog-excerpt">I learned most of this the hard way so you don't have to. Featuring: three melted surfaces, one very patient heat gun, and a surprising amount of joy.</p>
+        <div class="blog-meta"><span>Mar 2025</span><span>7 min read</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-top">
+    <div class="footer-brand">
+      <a href="#" class="nav-logo" style="font-family:'Dancing Script',cursive;font-size:1.6rem;">Moonlit <span>Mari</span></a>
+      <p class="footer-tagline">A place of belonging inspired by the best parts of our favourite stories — where anyone can be the hero of their own journey. Be your fullest self. Start your journey. Find your crew.</p>
+      <a href="mailto:stardusted.journeys@gmail.com" style="font-size:0.78rem;color:rgba(255,255,255,0.4);text-decoration:none;display:block;margin-bottom:1rem;letter-spacing:0.04em;transition:color 0.2s" onmouseover="this.style.color='#D8A7FF'" onmouseout="this.style.color='rgba(255,255,255,0.4)'">stardusted.journeys@gmail.com</a>
+      <div class="social-links">
+        <a href="https://www.instagram.com/moonlit.mari/" class="social-link" title="Instagram" target="_blank" rel="noopener"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="2" y="2" width="20" height="20" rx="5" ry="5" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="2"/><circle cx="17.5" cy="6.5" r="1.2" fill="currentColor"/></svg></a>
+        <a href="https://www.tiktok.com/@moonlit.mari" class="social-link" title="TikTok" target="_blank" rel="noopener"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.69a8.18 8.18 0 004.78 1.52V6.75a4.85 4.85 0 01-1.01-.06z"/></svg></a>
+        <a href="https://www.youtube.com/@MoonlitMari/" class="social-link" title="YouTube" target="_blank" rel="noopener"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M23.5 6.19a3.02 3.02 0 00-2.12-2.14C19.54 3.5 12 3.5 12 3.5s-7.54 0-9.38.55A3.02 3.02 0 00.5 6.19C0 8.04 0 12 0 12s0 3.96.5 5.81a3.02 3.02 0 002.12 2.14C4.46 20.5 12 20.5 12 20.5s7.54 0 9.38-.55a3.02 3.02 0 002.12-2.14C24 15.96 24 12 24 12s0-3.96-.5-5.81zM9.75 15.5v-7l6.5 3.5-6.5 3.5z"/></svg></a>
+        
+        
+      </div>
+    </div>
+    <div>
+      <p class="footer-col-title">Explore</p>
+      <ul class="footer-links">
+        <li><a href="gallery.html">Portfolio</a></li>
+        <li><a href="videos.html">Videos</a></li>
+        <li><a href="about.html">About Mari</a></li>
+        <li><a href="panels.html">Panels</a></li>
+        <li><a href="calendar.html">Calendar</a></li>
+      </ul>
+    </div>
+    <div>
+      <p class="footer-col-title">The Moon Crew</p>
+      <ul class="footer-links">
+                <li><a href="#">YouTube</a></li>
+        <li><a href="links.html">Shop Links</a></li>
+        <li><a href="#">Discord</a></li>
+      </ul>
+    </div>
+    <div>
+      <p class="footer-col-title">Say hello</p>
+      <ul class="footer-links">
+        <li><a href="contact.html">Contact Mari</a></li>
+        <li><a href="panels.html">Book a Panel</a></li>
+        <li><a href="#">Collabs</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2025 Moonlit Mari. All rights reserved.</span>
+    <span>Made with care and too much tea</span>
+  </div>
+</footer>
+
+<script>
+  // Custom cursor
+  const cursor = document.getElementById('cursor');
+  const trail = document.getElementById('cursorTrail');
+  let mx = 0, my = 0, tx = 0, ty = 0;
+  document.addEventListener('mousemove', e => {
+    mx = e.clientX; my = e.clientY;
+    cursor.style.left = mx + 'px';
+    cursor.style.top = my + 'px';
+  });
+  function animateTrail() {
+    tx += (mx - tx) * 0.12;
+    ty += (my - ty) * 0.12;
+    trail.style.left = tx + 'px';
+    trail.style.top = ty + 'px';
+    requestAnimationFrame(animateTrail);
+  }
+  animateTrail();
+
+  // Scroll reveal
+  const faders = document.querySelectorAll('.fade-up');
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if(e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } });
+  }, { threshold: 0.12 });
+  faders.forEach(f => obs.observe(f));
+
+  // Hero items visible on load
+  document.querySelectorAll('.hero .fade-up').forEach((el, i) => {
+    setTimeout(() => el.classList.add('visible'), 200 + i * 120);
+  });
+</script>
+</body>
+</html>

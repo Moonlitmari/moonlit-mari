@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About — Moonlit Mari</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Dancing+Script:wght@500;700&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{--lilac:#D8A7FF;--blush:#FFC8EA;--periwinkle:#A59EF6;--apricot:#FFD6A0;--peach:#FFBA85;--rose-dusk:#F9C5D1;--moonbeam:#C5DEFF;--pale-lav:#E8E0FF;--ghost:#F5F0FF;--mauve:#D4C8E8;--indigo:#3D2B6B;--deep-indigo:#2a1d4d;--cream:#FDF8FF}
+html{scroll-behavior:smooth}
+body{font-family:'Jost',sans-serif;background:var(--cream);color:var(--indigo);overflow-x:hidden;cursor:none}
+.cursor{width:12px;height:12px;background:var(--lilac);border-radius:50%;position:fixed;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);mix-blend-mode:multiply}
+.cursor-trail{width:30px;height:30px;border:1px solid var(--periwinkle);border-radius:50%;position:fixed;pointer-events:none;z-index:9998;transform:translate(-50%,-50%);transition:transform 0.25s ease;opacity:0.6}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:1.2rem 3rem;background:rgba(253,248,255,0.85);backdrop-filter:blur(12px);border-bottom:1px solid rgba(165,158,246,0.18)}
+.nav-logo{font-family:'Dancing Script',cursive;font-size:1.7rem;color:var(--indigo);text-decoration:none}
+.nav-logo span{color:var(--periwinkle)}
+.nav-links{display:flex;gap:2.2rem;list-style:none;align-items:center}
+.nav-links a{font-size:0.78rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--indigo);text-decoration:none;opacity:0.6;transition:opacity 0.2s}
+.nav-links a:hover,.nav-links a.active{opacity:1}
+.nav-cta{border:1px solid var(--periwinkle);padding:0.45rem 1.1rem;border-radius:99px;opacity:1!important;transition:background 0.2s,color 0.2s!important}
+.nav-cta:hover{background:var(--periwinkle)!important;color:white!important}
+.orb{position:absolute;border-radius:50%;filter:blur(60px);pointer-events:none;animation:floatOrb 8s ease-in-out infinite alternate}
+.orb-1{width:350px;height:350px;background:rgba(216,167,255,0.3);top:-80px;right:5%}
+.orb-2{width:200px;height:200px;background:rgba(255,200,234,0.35);bottom:-40px;left:10%;animation-delay:-3s}
+@keyframes floatOrb{from{transform:translate(0,0)}to{transform:translate(15px,20px)}}
+.page-eyebrow{font-size:0.7rem;letter-spacing:0.22em;text-transform:uppercase;color:var(--periwinkle);margin-bottom:1rem;display:flex;align-items:center;gap:0.6rem}
+.page-eyebrow::before{content:'';width:28px;height:1px;background:var(--periwinkle);display:inline-block}
+.page-title{font-family:'Cormorant Garamond',serif;font-size:clamp(3rem,5vw,4.5rem);font-weight:300;line-height:1.05;color:var(--deep-indigo);margin-bottom:1rem}
+.page-title em{font-style:italic;color:var(--periwinkle)}
+.section-tag{font-size:0.68rem;letter-spacing:0.22em;text-transform:uppercase;color:var(--periwinkle);margin-bottom:1rem;display:flex;align-items:center;gap:0.6rem}
+.section-tag::before{content:'';width:20px;height:1px;background:var(--periwinkle);display:inline-block}
+.section-title{font-family:'Cormorant Garamond',serif;font-size:clamp(2rem,3.5vw,3rem);font-weight:300;line-height:1.15;color:var(--deep-indigo);margin-bottom:1.5rem}
+.section-title em{font-style:italic;color:var(--periwinkle)}
+.fade-up{opacity:0;transform:translateY(24px);transition:opacity 0.6s ease,transform 0.6s ease}
+.fade-up.visible{opacity:1;transform:translateY(0)}
+.d1{transition-delay:0.1s}.d2{transition-delay:0.2s}.d3{transition-delay:0.3s}
+
+/* ABOUT HERO */
+.about-hero{padding:9rem 5rem 5rem;background:linear-gradient(135deg,#F5F0FF,#EDE5FF 40%,#FFE8F5 100%);display:grid;grid-template-columns:1fr 1fr;gap:5rem;position:relative;overflow:hidden;align-items:center}
+.about-hero-photo{position:relative}
+.photo-frame{width:100%;aspect-ratio:3/4;border-radius:24px;background:linear-gradient(160deg,var(--pale-lav),var(--blush));display:flex;align-items:center;justify-content:center;overflow:hidden;position:relative}
+.photo-deco{position:absolute;width:80px;height:80px;border:2px solid rgba(165,158,246,0.3);border-radius:50%;animation:spinSlow 12s linear infinite}
+.photo-deco:nth-child(2){width:120px;height:120px;border-color:rgba(216,167,255,0.2);animation-direction:reverse;animation-duration:18s}
+@keyframes spinSlow{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}
+.photo-badge{position:absolute;bottom:-20px;right:-20px;background:var(--indigo);color:white;border-radius:16px;padding:1rem 1.3rem;box-shadow:0 12px 40px rgba(61,43,107,0.25)}
+.badge-num{font-family:'Cormorant Garamond',serif;font-size:2.2rem;font-weight:300;display:block;line-height:1}
+.badge-label{font-size:0.65rem;letter-spacing:0.14em;text-transform:uppercase;opacity:0.6;margin-top:0.2rem;display:block}
+.about-hero-text{}
+.about-body{font-size:0.95rem;line-height:1.85;color:var(--indigo);opacity:0.72;margin-bottom:1.2rem}
+.craft-tags{display:flex;flex-wrap:wrap;gap:0.6rem;margin-top:1.5rem}
+.craft-tag{font-size:0.7rem;letter-spacing:0.1em;text-transform:uppercase;border:1px solid rgba(165,158,246,0.4);color:var(--indigo);padding:0.35rem 1rem;border-radius:99px;background:white}
+
+/* TIMELINE */
+.timeline-section{padding:6rem 5rem;background:white}
+.timeline{position:relative;margin-top:3rem}
+.timeline::before{content:'';position:absolute;left:50%;top:0;bottom:0;width:1px;background:linear-gradient(to bottom,transparent,rgba(165,158,246,0.4) 10%,rgba(165,158,246,0.4) 90%,transparent)}
+.tl-item{display:grid;grid-template-columns:1fr 60px 1fr;gap:1rem;margin-bottom:3rem;align-items:start}
+.tl-item:nth-child(even) .tl-content{grid-column:3;text-align:left}
+.tl-item:nth-child(even) .tl-empty{grid-column:1;grid-row:1}
+.tl-item:nth-child(odd) .tl-content{grid-column:1;text-align:right}
+.tl-dot{grid-column:2;width:40px;height:40px;border-radius:50%;background:var(--ghost);border:2px solid var(--periwinkle);display:flex;align-items:center;justify-content:center;font-size:1rem;flex-shrink:0;margin:0 auto;position:relative;z-index:2}
+.tl-content{background:var(--ghost);border-radius:16px;padding:1.5rem;border:1px solid rgba(165,158,246,0.15)}
+.tl-year{font-size:0.68rem;letter-spacing:0.16em;text-transform:uppercase;color:var(--periwinkle);margin-bottom:0.4rem}
+.tl-title{font-family:'Cormorant Garamond',serif;font-size:1.2rem;color:var(--deep-indigo);margin-bottom:0.5rem}
+.tl-text{font-size:0.83rem;line-height:1.7;color:var(--indigo);opacity:0.65}
+
+/* FAQ */
+.faq-section{padding:6rem 5rem;background:var(--ghost)}
+.faq-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.2rem;margin-top:3rem}
+.faq-item{background:white;border-radius:16px;padding:1.6rem;border:1px solid rgba(165,158,246,0.15);cursor:none;transition:box-shadow 0.2s}
+.faq-item:hover{box-shadow:0 8px 32px rgba(61,43,107,0.08)}
+.faq-q{font-family:'Cormorant Garamond',serif;font-size:1.1rem;color:var(--deep-indigo);margin-bottom:0.6rem}
+.faq-a{font-size:0.85rem;line-height:1.75;color:var(--indigo);opacity:0.65}
+
+/* PRESS */
+.press-section{padding:6rem 5rem;background:white}
+.press-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;margin-top:3rem}
+.press-card{background:var(--ghost);border-radius:16px;padding:1.4rem;border:1px solid rgba(165,158,246,0.12);text-align:center;transition:transform 0.2s}
+.press-card:hover{transform:translateY(-4px)}
+.press-pub{font-size:0.7rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--periwinkle);margin-bottom:0.5rem}
+.press-title{font-family:'Cormorant Garamond',serif;font-size:0.95rem;color:var(--deep-indigo);line-height:1.4}
+
+footer{background:var(--deep-indigo);color:white;padding:3rem 5rem 2rem}
+.footer-bottom{display:flex;justify-content:space-between;align-items:center;font-size:0.75rem;color:rgba(255,255,255,0.25);letter-spacing:0.06em;padding-top:2rem;border-top:1px solid rgba(255,255,255,0.08)}
+.footer-logo{font-family:'Dancing Script',cursive;font-size:1.5rem;color:white;text-decoration:none;margin-bottom:0.5rem;display:inline-block}
+.footer-logo span{color:var(--lilac)}
+.social-links{display:flex;gap:0.7rem;margin-top:1rem}
+.social-link{width:34px;height:34px;border:1px solid rgba(255,255,255,0.12);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:0.75rem;color:rgba(255,255,255,0.5);text-decoration:none;transition:border-color 0.2s,color 0.2s}
+.social-link:hover{border-color:var(--lilac);color:var(--lilac)}
+@media(max-width:900px){nav{padding:1rem 1.5rem}.nav-links{display:none}.about-hero{grid-template-columns:1fr;padding:7rem 1.5rem 3rem}.timeline::before{left:20px}.tl-item{grid-template-columns:40px 1fr}.tl-item:nth-child(odd) .tl-content,.tl-item:nth-child(even) .tl-content{grid-column:2;text-align:left}.tl-empty{display:none}.tl-dot{grid-column:1}.faq-grid,.press-grid{grid-template-columns:1fr}.timeline-section,.faq-section,.press-section{padding:4rem 1.5rem}footer{padding:2rem 1.5rem}}
+</style>
+</head>
+<body>
+<div class="cursor" id="cursor"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" fill="#D8A7FF" stroke="#A59EF6" stroke-width="0.5"/></svg></div>
+<div class="cursor-trail" id="cursorTrail"></div>
+
+<nav>
+  <a href="index.html" class="nav-logo">Moonlit <span>Mari</span></a>
+  <ul class="nav-links">
+    <li><a href="gallery.html">Portfolio</a></li>
+    <li><a href="videos.html">Videos</a></li>
+    <li><a href="about.html" class="active">About</a></li>
+    <li><a href="panels.html">Panels</a></li>
+    <li><a href="calendar.html">Calendar</a></li>
+    <li><a href="links.html">Shop Links</a></li>
+    <li><a href="contact.html" class="nav-cta">Contact</a></li>
+  </ul>
+</nav>
+
+<section class="about-hero">
+  <div class="orb orb-1"></div>
+  <div class="orb orb-2"></div>
+  <div class="about-hero-photo fade-up">
+    <div class="photo-frame" style="padding:0;overflow:hidden">
+      <img src="images/red-dress-port.jpg" alt="Mari in red cosplay dress among tulips" style="width:100%;height:100%;object-fit:cover;display:block;">
+    </div>
+    <div class="photo-badge">
+      <span class="badge-num">7+</span>
+      <span class="badge-label">Years cosplaying</span>
+    </div>
+  </div>
+  <div class="about-hero-text">
+    <p class="page-eyebrow fade-up">The maker</p>
+    <h1 class="page-title fade-up d1">Hello, I'm <em>Mari</em></h1>
+    <p class="about-body fade-up d2">I'm a self-taught cosplayer, seamstress, and chronic dreamer based in [your city]. What started as duct tape and cardboard in my childhood bedroom has grown into a full studio practice — and a floor that is perpetually covered in foam scraps.</p>
+    <p class="about-body fade-up d2">I make costumes that feel like magic — fantasy armor, flowing gowns, creature builds, wigs styled to impossible heights. Every piece is made by hand with an embarrassing amount of glitter and a very patient hot glue gun.</p>
+    <p class="about-body fade-up d2">When I'm not sewing, you'll find me at conventions, running panels on cosplay craftsmanship, or taste-testing new teas at midnight while watching the moon through my studio window.</p>
+    <div class="craft-tags fade-up d3">
+      <span class="craft-tag">Worbla & foam</span>
+      <span class="craft-tag">Corsetry</span>
+      <span class="craft-tag">Embroidery</span>
+      <span class="craft-tag">Wings & horns</span>
+      <span class="craft-tag">Pattern drafting</span>
+      <span class="craft-tag">Fantasy builds</span>
+      <span class="craft-tag">Wig styling</span>
+      <span class="craft-tag">Resin casting</span>
+    </div>
+  </div>
+</section>
+
+<!-- TIMELINE -->
+<section class="timeline-section">
+  <p class="section-tag fade-up">The origin story</p>
+  <h2 class="section-title fade-up d1">How it all <em>began</em></h2>
+  <div class="timeline">
+    <div class="tl-item fade-up">
+      <div class="tl-content">
+        <p class="tl-year">2017</p>
+        <p class="tl-title">First convention</p>
+        <p class="tl-text">Walked into my first anime convention in a store-bought costume and immediately knew I needed to make my own. Bought a glue gun that same week.</p>
+      </div>
+      <div class="tl-dot"></div>
+      <div></div>
+    </div>
+    <div class="tl-item fade-up">
+      <div></div>
+      <div class="tl-dot"></div>
+      <div class="tl-content">
+        <p class="tl-year">2018</p>
+        <p class="tl-title">First handmade build</p>
+        <p class="tl-text">Completed my first fully handmade costume — foam armor held together with prayer and contact cement. Won a beginner's craftsmanship award. Cried happy tears.</p>
+      </div>
+    </div>
+    <div class="tl-item fade-up">
+      <div class="tl-content">
+        <p class="tl-year">2020</p>
+        <p class="tl-title">Started sharing online</p>
+        <p class="tl-text">Pandemic gave me time to document my process. Posted my first tutorial. The response was overwhelming and deeply humbling.</p>
+      </div>
+      <div class="tl-dot"></div>
+      <div></div>
+    </div>
+    <div class="tl-item fade-up">
+      <div></div>
+      <div class="tl-dot"></div>
+      <div class="tl-content">
+        <p class="tl-year">2022</p>
+        <p class="tl-title">First convention panel</p>
+        <p class="tl-text">Was invited to run my first panel on beginner foam armor. Shook for the entire hour. The room was full and asked the best questions.</p>
+      </div>
+    </div>
+    <div class="tl-item fade-up">
+      <div class="tl-content">
+        <p class="tl-year">2024</p>
+        <p class="tl-title">Moonlit Mari is born</p>
+        <p class="tl-text">Launched this site, the  community, and officially became a full-time cosplay creator. The dream is very much alive under the moonlight.</p>
+      </div>
+      <div class="tl-dot"></div>
+      <div></div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq-section">
+  <p class="section-tag fade-up">You asked, I answered</p>
+  <h2 class="section-title fade-up d1">Frequently asked <em>things</em></h2>
+  <div class="faq-grid">
+    <div class="faq-item fade-up d1">
+      <p class="faq-q">Are you self-taught?</p>
+      <p class="faq-a">100%! No formal training — just YouTube rabbit holes, library books, and a lot of ruined fabric. Everything I know I learned by doing (and undoing).</p>
+    </div>
+    <div class="faq-item fade-up d2">
+      <p class="faq-q">How long does a costume take?</p>
+      <p class="faq-a">Simple builds: 2–3 weeks. Complex armor: 2–4 months. That enormous dragon build from last year? Seven months and approximately zero sleep.</p>
+    </div>
+    <div class="faq-item fade-up d1">
+      <p class="faq-q">Do you take commissions?</p>
+      <p class="faq-a">Not at this time! I make everything for myself and for the love of the craft. Maybe one day — but for now I'm just here to share the journey.</p>
+    </div>
+    <div class="faq-item fade-up d2">
+      <p class="faq-q">What's your setup like?</p>
+      <p class="faq-a">A dedicated craft room with a cutting table, two sewing machines, a heat gun station, and a shelf of reference art that I may have a problem with.</p>
+    </div>
+    <div class="faq-item fade-up d1">
+      <p class="faq-q">Can I use your tutorials commercially?</p>
+      <p class="faq-a">Personal use is always free. For commercial use of my patterns or techniques, please reach out via the contact page to discuss licensing.</p>
+    </div>
+    <div class="faq-item fade-up d2">
+      <p class="faq-q">How can I support you?</p>
+      <p class="faq-a">Subscribe on YouTube, follow along on Instagram and TikTok, or just share my content with someone who loves cosplay. That means the world to me.</p>
+    </div>
+  </div>
+</section>
+
+
+
+<footer>
+  <a href="index.html" class="footer-logo">Moonlit <span>Mari</span></a>
+  <div class="social-links">
+    <a href="https://www.instagram.com/moonlit.mari/" class="social-link" target="_blank" rel="noopener" title="Instagram"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="2" y="2" width="20" height="20" rx="5" ry="5" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="2"/><circle cx="17.5" cy="6.5" r="1.2" fill="currentColor"/></svg></a><a href="https://www.tiktok.com/@moonlit.mari" class="social-link" target="_blank" rel="noopener" title="TikTok"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.69a8.18 8.18 0 004.78 1.52V6.75a4.85 4.85 0 01-1.01-.06z"/></svg></a><a href="https://www.youtube.com/@MoonlitMari/" class="social-link" target="_blank" rel="noopener" title="YouTube"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M23.5 6.19a3.02 3.02 0 00-2.12-2.14C19.54 3.5 12 3.5 12 3.5s-7.54 0-9.38.55A3.02 3.02 0 00.5 6.19C0 8.04 0 12 0 12s0 3.96.5 5.81a3.02 3.02 0 002.12 2.14C4.46 20.5 12 20.5 12 20.5s7.54 0 9.38-.55a3.02 3.02 0 002.12-2.14C24 15.96 24 12 24 12s0-3.96-.5-5.81zM9.75 15.5v-7l6.5 3.5-6.5 3.5z"/></svg></a>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2025 Moonlit Mari. All rights reserved.</span>
+    <span>Made with care and too much tea</span>
+  </div>
+</footer>
+
+<script>
+const cursor=document.getElementById('cursor'),trail=document.getElementById('cursorTrail');
+let mx=0,my=0,tx=0,ty=0;
+document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;cursor.style.left=mx+'px';cursor.style.top=my+'px'});
+(function animate(){tx+=(mx-tx)*0.12;ty+=(my-ty)*0.12;trail.style.left=tx+'px';trail.style.top=ty+'px';requestAnimationFrame(animate)})();
+const obs=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target)}}),{threshold:0.1});
+document.querySelectorAll('.fade-up').forEach(el=>obs.observe(el));
+setTimeout(()=>document.querySelectorAll('.about-hero .fade-up').forEach((el,i)=>setTimeout(()=>el.classList.add('visible'),150+i*100)),50);
+</script>
+</body>
+</html>
