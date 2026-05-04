@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Videos — Moonlit Mari</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Dancing+Script:wght@500;700&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{--lilac:#D8A7FF;--blush:#FFC8EA;--periwinkle:#A59EF6;--apricot:#FFD6A0;--peach:#FFBA85;--rose-dusk:#F9C5D1;--moonbeam:#C5DEFF;--pale-lav:#E8E0FF;--ghost:#F5F0FF;--mauve:#D4C8E8;--indigo:#3D2B6B;--deep-indigo:#2a1d4d;--cream:#FDF8FF}
+html{scroll-behavior:smooth}
+body{font-family:'Jost',sans-serif;background:var(--cream);color:var(--indigo);overflow-x:hidden;cursor:none}
+.cursor{width:28px;height:28px;position:fixed;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);transition:transform 0.1s;filter:drop-shadow(0 0 5px rgba(216,167,255,0.7))}
+.cursor-trail{width:40px;height:40px;border:1px solid rgba(165,158,246,0.3);border-radius:50%;position:fixed;pointer-events:none;z-index:9998;transform:translate(-50%,-50%);transition:transform 0.28s ease,opacity 0.3s;opacity:0.45}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:1.2rem 3rem;background:rgba(253,248,255,0.85);backdrop-filter:blur(12px);border-bottom:1px solid rgba(165,158,246,0.18)}
+.nav-logo{font-family:'Dancing Script',cursive;font-size:1.7rem;color:var(--indigo);text-decoration:none}
+.nav-logo span{color:var(--periwinkle)}
+.nav-links{display:flex;gap:2.2rem;list-style:none;align-items:center}
+.nav-links a{font-size:0.78rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--indigo);text-decoration:none;opacity:0.6;transition:opacity 0.2s}
+.nav-links a:hover,.nav-links a.active{opacity:1}
+.nav-cta{border:1px solid var(--periwinkle);padding:0.45rem 1.1rem;border-radius:99px;opacity:1!important;transition:background 0.2s,color 0.2s!important}
+.nav-cta:hover{background:var(--periwinkle)!important;color:white!important}
+.orb{position:absolute;border-radius:50%;filter:blur(60px);pointer-events:none;animation:floatOrb 8s ease-in-out infinite alternate}
+.orb-1{width:350px;height:350px;background:rgba(216,167,255,0.3);top:-80px;right:5%}
+.orb-2{width:200px;height:200px;background:rgba(255,200,234,0.35);bottom:-40px;left:10%;animation-delay:-3s}
+@keyframes floatOrb{from{transform:translate(0,0)}to{transform:translate(15px,20px)}}
+.page-eyebrow{font-size:0.7rem;letter-spacing:0.22em;text-transform:uppercase;color:var(--periwinkle);margin-bottom:1rem;display:flex;align-items:center;gap:0.6rem}
+.page-eyebrow::before{content:'';width:28px;height:1px;background:var(--periwinkle);display:inline-block}
+.page-title{font-family:'Cormorant Garamond',serif;font-size:clamp(3rem,5vw,4.5rem);font-weight:300;line-height:1.05;color:var(--deep-indigo);margin-bottom:1rem}
+.page-title em{font-style:italic;color:var(--periwinkle)}
+.page-sub{font-size:0.95rem;line-height:1.8;color:var(--indigo);opacity:0.65;max-width:500px}
+.fade-up{opacity:0;transform:translateY(24px);transition:opacity 0.6s ease,transform 0.6s ease}
+.fade-up.visible{opacity:1;transform:translateY(0)}
+.d1{transition-delay:0.1s}.d2{transition-delay:0.2s}.d3{transition-delay:0.3s}
+.section-tag{font-size:0.68rem;letter-spacing:0.22em;text-transform:uppercase;color:var(--periwinkle);margin-bottom:1rem;display:flex;align-items:center;gap:0.6rem}
+.section-tag::before{content:'';width:20px;height:1px;background:var(--periwinkle);display:inline-block}
+.section-title{font-family:'Cormorant Garamond',serif;font-size:clamp(2rem,3.5vw,3rem);font-weight:300;line-height:1.15;color:var(--deep-indigo);margin-bottom:1.5rem}
+.section-title em{font-style:italic;color:var(--periwinkle)}
+
+/* PAGE HERO */
+.page-hero{padding:9rem 5rem 5rem;background:linear-gradient(135deg,#F5F0FF,#EDE5FF 40%,#FFE8F5 100%);position:relative;overflow:hidden}
+
+/* FEATURED VIDEO */
+.featured-section{padding:4rem 5rem 3rem;background:var(--deep-indigo);position:relative;overflow:hidden}
+.featured-bg{position:absolute;inset:0;background:radial-gradient(ellipse at 70% 30%,rgba(165,158,246,0.15),transparent 60%),radial-gradient(ellipse at 20% 80%,rgba(255,200,234,0.08),transparent 50%)}
+.featured-inner{display:grid;grid-template-columns:3fr 2fr;gap:3rem;align-items:center;position:relative;z-index:2}
+.video-frame{border-radius:20px;overflow:hidden;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);aspect-ratio:16/9;display:flex;align-items:center;justify-content:center;position:relative;cursor:none}
+.video-frame:hover .play-btn{transform:scale(1.1)}
+.play-btn{width:72px;height:72px;border-radius:50%;background:rgba(255,255,255,0.15);backdrop-filter:blur(8px);display:flex;align-items:center;justify-content:center;transition:transform 0.2s;border:2px solid rgba(255,255,255,0.3)}
+.play-icon{width:0;height:0;border-top:12px solid transparent;border-bottom:12px solid transparent;border-left:20px solid white;margin-left:4px}
+.featured-thumb-bg{position:absolute;inset:0;background:linear-gradient(135deg,#3D2B6B,#A59EF6)}
+.featured-label{font-size:0.65rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--lilac);margin-bottom:0.8rem;display:flex;align-items:center;gap:0.5rem}
+.featured-label::before{content:'';width:16px;height:1px;background:var(--lilac);display:inline-block}
+.featured-title{font-family:'Cormorant Garamond',serif;font-size:1.8rem;font-weight:300;color:white;margin-bottom:1rem;line-height:1.2}
+.featured-title em{font-style:italic;color:var(--lilac)}
+.featured-desc{font-size:0.88rem;line-height:1.75;color:rgba(255,255,255,0.55);margin-bottom:1.5rem}
+.featured-meta{display:flex;gap:1.5rem}
+.meta-item{font-size:0.72rem;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.35)}
+.meta-item strong{color:rgba(255,255,255,0.7);font-weight:400;display:block;font-size:0.9rem;letter-spacing:0}
+
+/* FILTER + GRID */
+.videos-section{padding:4rem 5rem 6rem;background:white}
+.filter-bar{display:flex;gap:0.7rem;flex-wrap:wrap;margin-bottom:2.5rem}
+.filter-btn{font-size:0.72rem;letter-spacing:0.12em;text-transform:uppercase;padding:0.4rem 1.1rem;border-radius:99px;border:1px solid rgba(165,158,246,0.35);background:transparent;color:var(--indigo);cursor:none;transition:all 0.2s}
+.filter-btn:hover,.filter-btn.active{background:var(--indigo);color:white;border-color:var(--indigo)}
+.videos-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
+.video-card{border-radius:16px;overflow:hidden;background:var(--ghost);border:1px solid rgba(165,158,246,0.12);cursor:none;transition:transform 0.3s,box-shadow 0.3s}
+.video-card:hover{transform:translateY(-6px);box-shadow:0 20px 50px rgba(61,43,107,0.1)}
+.video-card:hover .vc-play{opacity:1}
+.vc-thumb{aspect-ratio:16/9;position:relative;display:flex;align-items:center;justify-content:center}
+.vc-play{position:absolute;inset:0;background:rgba(61,43,107,0.4);display:flex;align-items:center;justify-content:center;opacity:0;transition:opacity 0.2s;backdrop-filter:blur(2px)}
+.vc-play-icon{width:0;height:0;border-top:9px solid transparent;border-bottom:9px solid transparent;border-left:16px solid white;margin-left:3px}
+.vc-body{padding:1.2rem}
+.vc-cat{font-size:0.65rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--periwinkle);margin-bottom:0.4rem;display:block}
+.vc-title{font-family:'Cormorant Garamond',serif;font-size:1.1rem;color:var(--deep-indigo);margin-bottom:0.5rem;line-height:1.3}
+.vc-meta{font-size:0.75rem;color:var(--indigo);opacity:0.45;display:flex;justify-content:space-between}
+
+/* YOUTUBE SECTION */
+.yt-section{background:var(--indigo);padding:5rem;display:flex;align-items:center;justify-content:center;text-align:center}
+.yt-inner{max-width:500px}
+.yt-title{font-family:'Cormorant Garamond',serif;font-size:2.5rem;font-weight:300;color:white;margin-bottom:1rem}
+.yt-title em{font-style:italic;color:var(--lilac)}
+.yt-sub{font-size:0.9rem;color:rgba(255,255,255,0.5);line-height:1.7;margin-bottom:2rem}
+.btn-yt{display:inline-flex;align-items:center;gap:0.6rem;background:white;color:var(--indigo);font-size:0.78rem;letter-spacing:0.12em;text-transform:uppercase;padding:0.9rem 2rem;border-radius:99px;text-decoration:none;font-family:'Jost',sans-serif;transition:transform 0.2s}
+.btn-yt:hover{transform:translateY(-2px)}
+
+footer{background:var(--deep-indigo);color:white;padding:3rem 5rem 2rem}
+.footer-bottom{display:flex;justify-content:space-between;align-items:center;font-size:0.75rem;color:rgba(255,255,255,0.25);letter-spacing:0.06em;padding-top:2rem;border-top:1px solid rgba(255,255,255,0.08)}
+.footer-logo{font-family:'Dancing Script',cursive;font-size:1.5rem;color:white;text-decoration:none;margin-bottom:0.5rem;display:inline-block}
+.footer-logo span{color:var(--lilac)}
+.social-links{display:flex;gap:0.7rem;margin-top:1rem}
+.social-link{width:34px;height:34px;border:1px solid rgba(255,255,255,0.12);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:0.75rem;color:rgba(255,255,255,0.5);text-decoration:none;transition:border-color 0.2s,color 0.2s}
+.social-link:hover{border-color:var(--lilac);color:var(--lilac)}
+@media(max-width:900px){nav{padding:1rem 1.5rem}.nav-links{display:none}.page-hero,.videos-section,.featured-section,.yt-section{padding-left:1.5rem;padding-right:1.5rem}.featured-inner{grid-template-columns:1fr}.videos-grid{grid-template-columns:1fr 1fr}footer{padding:2rem 1.5rem}}
+@media(max-width:600px){.videos-grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="cursor" id="cursor"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" fill="#D8A7FF" stroke="#A59EF6" stroke-width="0.5"/></svg></div>
+<div class="cursor-trail" id="cursorTrail"></div>
+
+<nav>
+  <a href="index.html" class="nav-logo">Moonlit <span>Mari</span></a>
+  <ul class="nav-links">
+    <li><a href="gallery.html">Portfolio</a></li>
+    <li><a href="videos.html" class="active">Videos</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="panels.html">Panels</a></li>
+    <li><a href="calendar.html">Calendar</a></li>
+    <li><a href="links.html">Shop Links</a></li>
+    <li><a href="contact.html" class="nav-cta">Contact</a></li>
+  </ul>
+</nav>
+
+<section class="page-hero">
+  <div class="orb orb-1"></div>
+  <div class="orb orb-2"></div>
+  <p class="page-eyebrow fade-up">Watch & learn</p>
+  <h1 class="page-title fade-up">Tutorials &amp; <em>Videos</em></h1>
+  <p class="page-sub fade-up">Step-by-step build videos, WIP vlogs, convention diaries, and cosplay deep-dives — all free on YouTube.</p>
+</section>
+
+<!-- FEATURED -->
+<section class="featured-section">
+  <div class="featured-bg"></div>
+  <div class="featured-inner">
+    <a href="https://www.youtube.com/@MoonlitMari/" target="_blank" rel="noopener" style="display:block;text-decoration:none"><div class="video-frame fade-up">
+      <img src="images/hera.jpg" alt="Hera Syndulla cosplay" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;opacity:0.5;">
+      <div class="play-btn"><div class="play-icon"></div></div>
+      <p style="position:absolute;bottom:1rem;left:1rem;font-family:'Dancing Script',cursive;font-size:1rem;color:rgba(255,255,255,0.4)">your featured video</p>
+    </div></a>
+    <div class="fade-up d1">
+      <p class="featured-label">Latest release</p>
+      <h2 class="featured-title">Building <em>Lunar Empress</em> from scratch — Full build series</h2>
+      <p class="featured-desc">Six-part series covering the entire Lunar Empress armor build from initial sketches to convention debut. Foam work, worbla, paint, and a lot of problem-solving.</p>
+      <div class="featured-meta">
+        <div class="meta-item"><strong>6 parts</strong>Runtime</div>
+        <div class="meta-item"><strong>Intermediate</strong>Skill level</div>
+        <div class="meta-item"><strong>Free</strong>Access</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- VIDEO GRID -->
+<section class="videos-section">
+  <div class="filter-bar">
+    <button class="filter-btn active" onclick="filterVids('all',this)">All</button>
+    <button class="filter-btn" onclick="filterVids('tutorial',this)">Tutorials</button>
+    <button class="filter-btn" onclick="filterVids('wip',this)">WIP vlogs</button>
+    <button class="filter-btn" onclick="filterVids('con',this)">Convention</button>
+    <button class="filter-btn" onclick="filterVids('tips',this)">Tips & Tricks</button>
+  </div>
+  <div class="videos-grid" id="vgrid">
+
+    <div class="video-card fade-up d1" data-cat="tutorial">
+      <div class="vc-thumb" style="position:relative;overflow:hidden">
+        <img src="images/squirrel-sq.jpg" alt="Squirrel Girl build thumbnail" style="width:100%;height:100%;object-fit:cover;display:block;">
+        <div class="vc-play" style="opacity:0;transition:opacity 0.2s"><div style="width:0;height:0;border-top:9px solid transparent;border-bottom:9px solid transparent;border-left:16px solid white;margin-left:3px"></div></div>
+      </div>
+      <div class="vc-body">
+        <span class="vc-cat">Tutorial</span>
+        <p class="vc-title">Beginner Foam Armor — Everything You Need to Know</p>
+        <div class="vc-meta"><span>45 min</span><span>Free</span></div>
+      </div>
+    </div>
+
+    <div class="video-card fade-up d2" data-cat="wip">
+      <div class="vc-thumb" style="position:relative;overflow:hidden">
+        <img src="images/red-dress-sq.jpg" alt="Studio vlog thumbnail" style="width:100%;height:100%;object-fit:cover;display:block;">
+        <div class="vc-play" style="opacity:0;transition:opacity 0.2s"><div style="width:0;height:0;border-top:9px solid transparent;border-bottom:9px solid transparent;border-left:16px solid white;margin-left:3px"></div></div>
+      </div>
+      <div class="vc-body">
+        <span class="vc-cat">WIP Vlog</span>
+        <p class="vc-title">Studio Vlog: Starting the Void Dancer Build</p>
+        <div class="vc-meta"><span>22 min</span><span>Free</span></div>
+      </div>
+    </div>
+
+    <div class="video-card fade-up d3" data-cat="tips">
+      <div class="vc-thumb" style="background:linear-gradient(135deg,#C5DEFF,#E8E0FF)">
+        <div class="vc-play"><div style="width:0;height:0;border-top:9px solid transparent;border-bottom:9px solid transparent;border-left:16px solid white;margin-left:3px"></div></div>
+        <p style="font-family:'Dancing Script',cursive;font-size:1rem;color:rgba(255,255,255,0.4)">video thumbnail</p>
+      </div>
+      <div class="vc-body">
+        <span class="vc-cat">Tips & Tricks</span>
+        <p class="vc-title">5 Heat Gun Techniques That Changed My Life</p>
+        <div class="vc-meta"><span>18 min</span><span>Free</span></div>
+      </div>
+    </div>
+
+    <div class="video-card fade-up d1" data-cat="con">
+      <div class="vc-thumb" style="position:relative;overflow:hidden">
+        <img src="images/con-duo-sq.jpg" alt="Convention vlog thumbnail" style="width:100%;height:100%;object-fit:cover;display:block;">
+        <div class="vc-play" style="opacity:0;transition:opacity 0.2s"><div style="width:0;height:0;border-top:9px solid transparent;border-bottom:9px solid transparent;border-left:16px solid white;margin-left:3px"></div></div>
+      </div>
+      <div class="vc-body">
+        <span class="vc-cat">Convention</span>
+        <p class="vc-title">Anime Expo 2024 — Full Convention Vlog</p>
+        <div class="vc-meta"><span>35 min</span><span>Free</span></div>
+      </div>
+    </div>
+
+    <div class="video-card fade-up d2" data-cat=" tutorial">
+      <div class="vc-thumb" style="background:linear-gradient(135deg,#3D2B6B,#A59EF6);position:relative">
+        <div class="vc-play"><div style="width:0;height:0;border-top:9px solid transparent;border-bottom:9px solid transparent;border-left:16px solid white;margin-left:3px"></div></div>
+        <div style="position:absolute;top:0.7rem;right:0.7rem;background:var(--lilac);color:var(--deep-indigo);font-size:0.6rem;letter-spacing:0.1em;padding:0.25rem 0.6rem;border-radius:99px;text-transform:uppercase;font-weight:500"></div>
+        <p style="font-family:'Dancing Script',cursive;font-size:1rem;color:rgba(255,255,255,0.4)">video thumbnail</p>
+      </div>
+      <div class="vc-body">
+        <span class="vc-cat"> exclusive</span>
+        <p class="vc-title">Full Pattern Walk-Through: Lunar Empress Breastplate</p>
+        <div class="vc-meta"><span>52 min</span><span>Patrons only</span></div>
+      </div>
+    </div>
+
+    <div class="video-card fade-up d3" data-cat="tips">
+      <div class="vc-thumb" style="background:linear-gradient(135deg,#E8E0FF,#D8A7FF)">
+        <div class="vc-play"><div style="width:0;height:0;border-top:9px solid transparent;border-bottom:9px solid transparent;border-left:16px solid white;margin-left:3px"></div></div>
+        <p style="font-family:'Dancing Script',cursive;font-size:1rem;color:rgba(255,255,255,0.4)">video thumbnail</p>
+      </div>
+      <div class="vc-body">
+        <span class="vc-cat">Tips & Tricks</span>
+        <p class="vc-title">How I Style Wigs Without Losing My Mind</p>
+        <div class="vc-meta"><span>28 min</span><span>Free</span></div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- YOUTUBE CTA -->
+<section class="yt-section">
+  <div class="yt-inner fade-up">
+    <p style="font-size:2.5rem;margin-bottom:0.5rem"></p>
+    <h2 class="yt-title">More on <em>YouTube</em></h2>
+    <p class="yt-sub"> — full build series, convention vlogs, tips for every skill level, and the occasional chaotic behind-the-scenes.</p>
+    <a href="https://www.youtube.com/@MoonlitMari/" class="btn-yt" target="_blank" rel="noopener">Subscribe on YouTube</a>
+  </div>
+</section>
+
+<footer>
+  <a href="index.html" class="footer-logo">Moonlit <span>Mari</span></a>
+  <div class="social-links">
+    <a href="https://www.instagram.com/moonlit.mari/" class="social-link" target="_blank" rel="noopener" title="Instagram"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="2" y="2" width="20" height="20" rx="5" ry="5" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="2"/><circle cx="17.5" cy="6.5" r="1.2" fill="currentColor"/></svg></a><a href="https://www.tiktok.com/@moonlit.mari" class="social-link" target="_blank" rel="noopener" title="TikTok"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.69a8.18 8.18 0 004.78 1.52V6.75a4.85 4.85 0 01-1.01-.06z"/></svg></a><a href="https://www.youtube.com/@MoonlitMari/" class="social-link" target="_blank" rel="noopener" title="YouTube"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M23.5 6.19a3.02 3.02 0 00-2.12-2.14C19.54 3.5 12 3.5 12 3.5s-7.54 0-9.38.55A3.02 3.02 0 00.5 6.19C0 8.04 0 12 0 12s0 3.96.5 5.81a3.02 3.02 0 002.12 2.14C4.46 20.5 12 20.5 12 20.5s7.54 0 9.38-.55a3.02 3.02 0 002.12-2.14C24 15.96 24 12 24 12s0-3.96-.5-5.81zM9.75 15.5v-7l6.5 3.5-6.5 3.5z"/></svg></a>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2025 Moonlit Mari. All rights reserved.</span>
+    <span>Made with care and too much tea</span>
+  </div>
+</footer>
+
+<script>
+const cursor=document.getElementById('cursor'),trail=document.getElementById('cursorTrail');
+let mx=0,my=0,tx=0,ty=0;
+document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;cursor.style.left=mx+'px';cursor.style.top=my+'px'});
+(function animate(){tx+=(mx-tx)*0.12;ty+=(my-ty)*0.12;trail.style.left=tx+'px';trail.style.top=ty+'px';requestAnimationFrame(animate)})();
+const obs=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target)}}),{threshold:0.1});
+document.querySelectorAll('.fade-up').forEach(el=>obs.observe(el));
+setTimeout(()=>document.querySelectorAll('.page-hero .fade-up, .featured-section .fade-up').forEach((el,i)=>setTimeout(()=>el.classList.add('visible'),150+i*100)),50);
+function filterVids(cat,btn){
+  document.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active'));btn.classList.add('active');
+  document.querySelectorAll('.video-card').forEach(c=>{const cats=c.dataset.cat||'';c.style.display=(cat==='all'||cats.includes(cat))?'':'none'});
+}
+</script>
+</body>
+</html>
