@@ -265,69 +265,52 @@ function bindItems() {
 }
 bindItems();
 
-// — Instagram feed —
-// Replace the token below with your long-lived Instagram access token.
-// Refresh it every ~50 days by visiting:
-// https://graph.instagram.com/refresh_access_token?grant_type=ig_refresh_token&access_token=YOUR_TOKEN
-const IG_TOKEN = 'YOUR_IG_TOKEN_HERE';
-
+// — Instagram feed via Behold —
 function esc(s) { return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
 
-function igCategory(caption) {
-  if (!caption) return '';
-  const t = caption.toLowerCase();
+function igCategory(hashtags) {
+  const tags = (hashtags || []).map(t => t.toLowerCase());
   const cats = [];
-  if (/\#armor|#armorcosplay/.test(t))   cats.push('armor');
-  if (/\#fantasy|#fantasycosplay/.test(t)) cats.push('fantasy');
-  if (/\#anime|#animecosplay/.test(t))   cats.push('anime');
-  if (/\#game|#gaming|#videogame/.test(t)) cats.push('game');
-  if (/\#wip|#workinprogress/.test(t))   cats.push('wip');
+  if (tags.some(t => /armor/.test(t)))                       cats.push('armor');
+  if (tags.some(t => /fantasy|renfaire|faerie/.test(t)))     cats.push('fantasy');
+  if (tags.some(t => /anime/.test(t)))                       cats.push('anime');
+  if (tags.some(t => /game|gaming|marvel|starwars/.test(t))) cats.push('game');
+  if (tags.some(t => /wip|workinprogress/.test(t)))          cats.push('wip');
   return cats.join(' ');
 }
 
-function igTitle(caption) {
-  if (!caption) return '';
-  const line = caption.split('\n')[0].replace(/#\w+/g, '').replace(/\s+/g, ' ').trim();
+function igTitle(post) {
+  const text = post.prunedCaption || post.caption || '';
+  const line = text.split('\n')[0].replace(/\s+/g, ' ').trim();
   return line.length > 60 ? line.slice(0, 60) + '…' : line;
+}
+
+function igSrc(post) {
+  // Behold's own CDN — stable, no CORS issues, works for images and video thumbnails
+  return post.sizes?.large?.mediaUrl || post.sizes?.medium?.mediaUrl || post.thumbnailUrl || '';
 }
 
 async function loadInstagram() {
   const grid = document.getElementById('gallery');
   grid.innerHTML = '<p style="column-span:all;text-align:center;padding:3rem;opacity:0.5;font-family:\'Cormorant Garamond\',serif;font-style:italic">Loading from Instagram…</p>';
   try {
-    const res  = await fetch(`https://graph.instagram.com/me/media?fields=id,caption,media_type,media_url,thumbnail_url,permalink,timestamp&limit=24&access_token=${IG_TOKEN}`);
+    const res  = await fetch('https://feeds.behold.so/px3w5fz4qGF0YE9v4Yek');
     if (!res.ok) throw new Error(res.status);
     const data = await res.json();
-    if (data.error) throw new Error(data.error.message);
-
-    let posts = data.data || [];
-
-    // For carousel albums, swap in the first child image URL
-    posts = await Promise.all(posts.map(async p => {
-      if (p.media_type !== 'CAROUSEL_ALBUM') return p;
-      try {
-        const cr = await fetch(`https://graph.instagram.com/${p.id}/children?fields=id,media_type,media_url&access_token=${IG_TOKEN}`);
-        const cd = await cr.json();
-        const first = (cd.data || []).find(c => c.media_type === 'IMAGE');
-        return first ? { ...p, media_url: first.media_url } : p;
-      } catch { return p; }
-    }));
-
-    posts = posts.filter(p => p.media_url || p.thumbnail_url);
+    const posts = (data.posts || data || []).filter(p => igSrc(p));
 
     if (!posts.length) {
-      grid.innerHTML = '<p style="text-align:center;padding:3rem;opacity:0.5">No posts yet — check back soon!</p>';
+      grid.innerHTML = '<p style="column-span:all;text-align:center;padding:3rem;opacity:0.5">No posts yet — check back soon!</p>';
       return;
     }
 
     const delays = ['', 'd1', 'd2'];
     grid.innerHTML = posts.map((p, i) => {
-      const cat   = igCategory(p.caption);
-      const title = igTitle(p.caption);
+      const cat   = igCategory(p.hashtags);
+      const title = igTitle(p);
       const date  = new Date(p.timestamp).toLocaleString('en-US', { month: 'short', year: 'numeric' });
-      const src   = p.media_url || p.thumbnail_url;
       return `<div class="masonry-item fade-up ${delays[i % 3]}" data-cat="${esc(cat)}" data-permalink="${esc(p.permalink)}">
-        <img src="${esc(src)}" alt="${esc(title || 'Cosplay by Moonlit Mari')}" class="item-img" loading="lazy">
+        <img src="${esc(igSrc(p))}" alt="${esc(title || 'Cosplay by Moonlit Mari')}" class="item-img" loading="lazy">
         <div class="overlay">
           <p class="overlay-title">${esc(title || 'View on Instagram')}</p>
           <p class="overlay-tag">${esc(date)}</p>
@@ -338,11 +321,11 @@ async function loadInstagram() {
     bindItems();
   } catch(e) {
     console.error('Instagram error:', e);
-    grid.innerHTML = '<p style="text-align:center;padding:3rem;opacity:0.5">Couldn\'t load Instagram posts. Check the token or try refreshing!</p>';
+    grid.innerHTML = '<p style="column-span:all;text-align:center;padding:3rem;opacity:0.5">Couldn\'t load Instagram posts. Try refreshing!</p>';
   }
 }
 
-if (IG_TOKEN !== 'YOUR_IG_TOKEN_HERE') loadInstagram();
+loadInstagram();
 </script>
 </body>
 </html>
