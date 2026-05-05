@@ -120,6 +120,7 @@ footer{background:var(--deep-indigo);color:white;padding:3rem 5rem 2rem}
   <button class="filter-btn" onclick="filterGallery('starwars', this)">Star Wars</button>
   <button class="filter-btn" onclick="filterGallery('marvel', this)">Marvel</button>
   <button class="filter-btn" onclick="filterGallery('fantasy', this)">Fantasy</button>
+  <button class="filter-btn" onclick="filterGallery('anime', this)">Anime</button>
   <button class="filter-btn" onclick="filterGallery('con', this)">Convention</button>
   <button class="filter-btn" onclick="filterGallery('wip', this)">WIPs</button>
 </div>
@@ -273,7 +274,8 @@ function igCategory(hashtags) {
   const cats = [];
   if (tags.some(t => /starwars|leiaorgana|herasyndulla|rebelalliance|ghostcrew|mandalorian/.test(t))) cats.push('starwars');
   if (tags.some(t => /marvel|blackcat|squirrelgirl|spiderman|avengers|marvelrivals/.test(t)))         cats.push('marvel');
-  if (tags.some(t => /fantasy|renfaire|renfairegarb|faerie|disney|belle/.test(t)))                   cats.push('fantasy');
+  if (tags.some(t => /fantasy|renfaire|renfairegarb|faerie|lordoftherings|lotr|tolkien|disney|disneycosplay|princess|princesscosplay|belle|fairytale|fairytalecosplay|cottagecore|medievalcosplay/.test(t))) cats.push('fantasy');
+  if (tags.some(t => /anime|animecosplay|sailormoon|saylormoon|apothecarydiaries|apothecary|maomao|shoujo|shojo|manga|fullmetalalchemist|fma|edwardelric|gyaru|gal|galcosplay|animecon|jrpg|animegirl|weeaboo|otaku|animefan|cosplayanime/.test(t))) cats.push('anime');
   if (tags.some(t => /convention|conventioncosplay|conquest|momocon|dragoncon|animewknd|fanime/.test(t))) cats.push('con');
   if (tags.some(t => /wip|workinprogress/.test(t)))                                                  cats.push('wip');
   return cats.join(' ');
