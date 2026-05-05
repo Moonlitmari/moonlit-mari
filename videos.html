@@ -123,21 +123,14 @@ footer{background:var(--deep-indigo);color:white;padding:3rem 5rem 2rem}
 <!-- FEATURED -->
 <section class="featured-section">
   <div class="featured-bg"></div>
-  <div class="featured-inner">
-    <a href="https://www.youtube.com/@MoonlitMari/" target="_blank" rel="noopener" style="display:block;text-decoration:none"><div class="video-frame fade-up">
-      <img src="images/hera.jpg" alt="Hera Syndulla cosplay" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;opacity:0.5;">
-      <div class="play-btn"><div class="play-icon"></div></div>
-      <p style="position:absolute;bottom:1rem;left:1rem;font-family:'Dancing Script',cursive;font-size:1rem;color:rgba(255,255,255,0.4)">your featured video</p>
-    </div></a>
-    <div class="fade-up d1">
+  <div class="featured-inner" id="featured-inner">
+    <div class="video-frame" style="background:rgba(255,255,255,0.04)">
+      <div class="play-btn" style="opacity:0.2"><div class="play-icon"></div></div>
+    </div>
+    <div>
       <p class="featured-label">Latest release</p>
-      <h2 class="featured-title">Building <em>Lunar Empress</em> from scratch — Full build series</h2>
-      <p class="featured-desc">Six-part series covering the entire Lunar Empress armor build from initial sketches to convention debut. Foam work, worbla, paint, and a lot of problem-solving.</p>
-      <div class="featured-meta">
-        <div class="meta-item"><strong>6 parts</strong>Runtime</div>
-        <div class="meta-item"><strong>Intermediate</strong>Skill level</div>
-        <div class="meta-item"><strong>Free</strong>Access</div>
-      </div>
+      <h2 class="featured-title" style="opacity:0.3;font-style:italic">Loading latest video…</h2>
+      <p class="featured-desc" style="opacity:0.3">Fetching from YouTube…</p>
     </div>
   </div>
 </section>
@@ -152,80 +145,7 @@ footer{background:var(--deep-indigo);color:white;padding:3rem 5rem 2rem}
     <button class="filter-btn" onclick="filterVids('tips',this)">Tips & Tricks</button>
   </div>
   <div class="videos-grid" id="vgrid">
-
-    <div class="video-card fade-up d1" data-cat="tutorial">
-      <div class="vc-thumb" style="position:relative;overflow:hidden">
-        <img src="images/squirrel-sq.jpg" alt="Squirrel Girl build thumbnail" style="width:100%;height:100%;object-fit:cover;display:block;">
-        <div class="vc-play" style="opacity:0;transition:opacity 0.2s"><div style="width:0;height:0;border-top:9px solid transparent;border-bottom:9px solid transparent;border-left:16px solid white;margin-left:3px"></div></div>
-      </div>
-      <div class="vc-body">
-        <span class="vc-cat">Tutorial</span>
-        <p class="vc-title">Beginner Foam Armor — Everything You Need to Know</p>
-        <div class="vc-meta"><span>45 min</span><span>Free</span></div>
-      </div>
-    </div>
-
-    <div class="video-card fade-up d2" data-cat="wip">
-      <div class="vc-thumb" style="position:relative;overflow:hidden">
-        <img src="images/red-dress-sq.jpg" alt="Studio vlog thumbnail" style="width:100%;height:100%;object-fit:cover;display:block;">
-        <div class="vc-play" style="opacity:0;transition:opacity 0.2s"><div style="width:0;height:0;border-top:9px solid transparent;border-bottom:9px solid transparent;border-left:16px solid white;margin-left:3px"></div></div>
-      </div>
-      <div class="vc-body">
-        <span class="vc-cat">WIP Vlog</span>
-        <p class="vc-title">Studio Vlog: Starting the Void Dancer Build</p>
-        <div class="vc-meta"><span>22 min</span><span>Free</span></div>
-      </div>
-    </div>
-
-    <div class="video-card fade-up d3" data-cat="tips">
-      <div class="vc-thumb" style="background:linear-gradient(135deg,#C5DEFF,#E8E0FF)">
-        <div class="vc-play"><div style="width:0;height:0;border-top:9px solid transparent;border-bottom:9px solid transparent;border-left:16px solid white;margin-left:3px"></div></div>
-        <p style="font-family:'Dancing Script',cursive;font-size:1rem;color:rgba(255,255,255,0.4)">video thumbnail</p>
-      </div>
-      <div class="vc-body">
-        <span class="vc-cat">Tips & Tricks</span>
-        <p class="vc-title">5 Heat Gun Techniques That Changed My Life</p>
-        <div class="vc-meta"><span>18 min</span><span>Free</span></div>
-      </div>
-    </div>
-
-    <div class="video-card fade-up d1" data-cat="con">
-      <div class="vc-thumb" style="position:relative;overflow:hidden">
-        <img src="images/con-duo-sq.jpg" alt="Convention vlog thumbnail" style="width:100%;height:100%;object-fit:cover;display:block;">
-        <div class="vc-play" style="opacity:0;transition:opacity 0.2s"><div style="width:0;height:0;border-top:9px solid transparent;border-bottom:9px solid transparent;border-left:16px solid white;margin-left:3px"></div></div>
-      </div>
-      <div class="vc-body">
-        <span class="vc-cat">Convention</span>
-        <p class="vc-title">Anime Expo 2024 — Full Convention Vlog</p>
-        <div class="vc-meta"><span>35 min</span><span>Free</span></div>
-      </div>
-    </div>
-
-    <div class="video-card fade-up d2" data-cat=" tutorial">
-      <div class="vc-thumb" style="background:linear-gradient(135deg,#3D2B6B,#A59EF6);position:relative">
-        <div class="vc-play"><div style="width:0;height:0;border-top:9px solid transparent;border-bottom:9px solid transparent;border-left:16px solid white;margin-left:3px"></div></div>
-        <div style="position:absolute;top:0.7rem;right:0.7rem;background:var(--lilac);color:var(--deep-indigo);font-size:0.6rem;letter-spacing:0.1em;padding:0.25rem 0.6rem;border-radius:99px;text-transform:uppercase;font-weight:500"></div>
-        <p style="font-family:'Dancing Script',cursive;font-size:1rem;color:rgba(255,255,255,0.4)">video thumbnail</p>
-      </div>
-      <div class="vc-body">
-        <span class="vc-cat"> exclusive</span>
-        <p class="vc-title">Full Pattern Walk-Through: Lunar Empress Breastplate</p>
-        <div class="vc-meta"><span>52 min</span><span>Patrons only</span></div>
-      </div>
-    </div>
-
-    <div class="video-card fade-up d3" data-cat="tips">
-      <div class="vc-thumb" style="background:linear-gradient(135deg,#E8E0FF,#D8A7FF)">
-        <div class="vc-play"><div style="width:0;height:0;border-top:9px solid transparent;border-bottom:9px solid transparent;border-left:16px solid white;margin-left:3px"></div></div>
-        <p style="font-family:'Dancing Script',cursive;font-size:1rem;color:rgba(255,255,255,0.4)">video thumbnail</p>
-      </div>
-      <div class="vc-body">
-        <span class="vc-cat">Tips & Tricks</span>
-        <p class="vc-title">How I Style Wigs Without Losing My Mind</p>
-        <div class="vc-meta"><span>28 min</span><span>Free</span></div>
-      </div>
-    </div>
-
+    <p style="grid-column:span 3;text-align:center;padding:3rem 0;opacity:0.5;font-family:'Cormorant Garamond',serif;font-style:italic">Loading videos…</p>
   </div>
 </section>
 
@@ -251,17 +171,146 @@ footer{background:var(--deep-indigo);color:white;padding:3rem 5rem 2rem}
 </footer>
 
 <script>
-const cursor=document.getElementById('cursor'),trail=document.getElementById('cursorTrail');
-let mx=0,my=0,tx=0,ty=0;
-document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;cursor.style.left=mx+'px';cursor.style.top=my+'px'});
-(function animate(){tx+=(mx-tx)*0.12;ty+=(my-ty)*0.12;trail.style.left=tx+'px';trail.style.top=ty+'px';requestAnimationFrame(animate)})();
-const obs=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target)}}),{threshold:0.1});
-document.querySelectorAll('.fade-up').forEach(el=>obs.observe(el));
-setTimeout(()=>document.querySelectorAll('.page-hero .fade-up, .featured-section .fade-up').forEach((el,i)=>setTimeout(()=>el.classList.add('visible'),150+i*100)),50);
-function filterVids(cat,btn){
-  document.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active'));btn.classList.add('active');
-  document.querySelectorAll('.video-card').forEach(c=>{const cats=c.dataset.cat||'';c.style.display=(cat==='all'||cats.includes(cat))?'':'none'});
+const cursor = document.getElementById('cursor'), trail = document.getElementById('cursorTrail');
+let mx = 0, my = 0, tx = 0, ty = 0;
+document.addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; cursor.style.left = mx + 'px'; cursor.style.top = my + 'px'; });
+(function animate() { tx += (mx - tx) * 0.12; ty += (my - ty) * 0.12; trail.style.left = tx + 'px'; trail.style.top = ty + 'px'; requestAnimationFrame(animate); })();
+
+const obs = new IntersectionObserver(entries => entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } }), { threshold: 0.1 });
+document.querySelectorAll('.fade-up').forEach(el => obs.observe(el));
+setTimeout(() => document.querySelectorAll('.page-hero .fade-up').forEach((el, i) => setTimeout(() => el.classList.add('visible'), 150 + i * 100)), 50);
+
+function filterVids(cat, btn) {
+  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  document.querySelectorAll('.video-card').forEach(c => {
+    c.style.display = (cat === 'all' || (c.dataset.cat || '') === cat) ? '' : 'none';
+  });
 }
+
+const YT_KEY    = 'AIzaSyAe1KOUEGU_QUktRsZPPw1V8NLhEu4TwYE';
+const YT_HANDLE = 'MoonlitMari';
+
+function esc(s) { return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
+
+function formatDuration(iso) {
+  const m = iso.match(/PT(?:(\d+)H)?(?:(\d+)M)?(?:(\d+)S)?/);
+  if (!m) return '';
+  const h = parseInt(m[1]||0), min = parseInt(m[2]||0), sec = parseInt(m[3]||0);
+  return h ? `${h}:${String(min).padStart(2,'0')}:${String(sec).padStart(2,'0')}` : `${min}:${String(sec).padStart(2,'0')}`;
+}
+
+function formatDate(iso) { return new Date(iso).toLocaleString('en-US', { month: 'short', year: 'numeric' }); }
+
+function getCategory(title, desc) {
+  const t = (title + ' ' + desc).toLowerCase();
+  if (/tutorial|how.?to|beginner|step.by.step|guide/.test(t)) return 'tutorial';
+  if (/vlog|wip|progress|studio|process|making/.test(t))      return 'wip';
+  if (/con|convention|expo|dragoncon|momocon|fanime/.test(t)) return 'con';
+  if (/tips?|tricks?|hacks?|technique/.test(t))               return 'tips';
+  return 'general';
+}
+
+const CAT_LABELS = { tutorial: 'Tutorial', wip: 'WIP Vlog', con: 'Convention', tips: 'Tips & Tricks', general: 'Video' };
+
+function durBadge(dur) {
+  return dur ? `<span style="position:absolute;bottom:0.5rem;right:0.5rem;background:rgba(0,0,0,0.8);color:white;font-size:0.7rem;padding:0.2rem 0.45rem;border-radius:3px;font-family:'Jost',sans-serif">${esc(dur)}</span>` : '';
+}
+
+async function loadVideos() {
+  try {
+    const chanRes  = await fetch(`https://www.googleapis.com/youtube/v3/channels?part=contentDetails&forHandle=${YT_HANDLE}&key=${YT_KEY}`);
+    if (!chanRes.ok) throw new Error(chanRes.status);
+    const chanData  = await chanRes.json();
+    const uploadsId = chanData.items?.[0]?.contentDetails?.relatedPlaylists?.uploads;
+    if (!uploadsId) throw new Error('Channel not found');
+
+    const plRes  = await fetch(`https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&playlistId=${uploadsId}&maxResults=13&key=${YT_KEY}`);
+    const plData  = await plRes.json();
+    const items   = (plData.items || []).filter(i => i.snippet.title !== 'Private video' && i.snippet.title !== 'Deleted video');
+    if (!items.length) { showEmpty(); return; }
+
+    const ids    = items.map(i => i.snippet.resourceId.videoId).join(',');
+    const vdRes  = await fetch(`https://www.googleapis.com/youtube/v3/videos?part=contentDetails&id=${ids}&key=${YT_KEY}`);
+    const vdData  = await vdRes.json();
+    const durs    = {};
+    (vdData.items || []).forEach(v => { durs[v.id] = formatDuration(v.contentDetails.duration); });
+
+    const [featured, ...rest] = items;
+    renderFeatured(featured, durs[featured.snippet.resourceId.videoId]);
+    renderGrid(rest, durs);
+  } catch(e) {
+    console.error('YouTube load error:', e);
+    document.getElementById('featured-inner').innerHTML = '<p style="grid-column:span 2;text-align:center;color:rgba(255,255,255,0.4);padding:3rem 0">Couldn\'t load video. Try refreshing!</p>';
+    document.getElementById('vgrid').innerHTML           = '<p style="grid-column:span 3;text-align:center;padding:3rem 0;opacity:0.5">Couldn\'t load videos. Try refreshing!</p>';
+  }
+}
+
+function renderFeatured(item, dur) {
+  const s     = item.snippet;
+  const vid   = s.resourceId.videoId;
+  const thumb = s.thumbnails.maxres?.url || s.thumbnails.high?.url || s.thumbnails.medium?.url || '';
+  const cat   = getCategory(s.title, s.description);
+  const desc  = s.description.length > 220 ? s.description.slice(0, 220) + '…' : s.description;
+  document.getElementById('featured-inner').innerHTML = `
+    <a href="https://www.youtube.com/watch?v=${esc(vid)}" target="_blank" rel="noopener" style="display:block;text-decoration:none">
+      <div class="video-frame">
+        ${thumb ? `<img src="${esc(thumb)}" alt="${esc(s.title)}" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;opacity:0.85;">` : ''}
+        <div class="play-btn"><div class="play-icon"></div></div>
+        ${durBadge(dur)}
+      </div>
+    </a>
+    <div>
+      <p class="featured-label">${CAT_LABELS[cat]}</p>
+      <h2 class="featured-title">${esc(s.title)}</h2>
+      <p class="featured-desc">${esc(desc)}</p>
+      <div class="featured-meta">
+        <div class="meta-item"><strong>${esc(formatDate(s.publishedAt))}</strong>Published</div>
+        ${dur ? `<div class="meta-item"><strong>${esc(dur)}</strong>Runtime</div>` : ''}
+        <div class="meta-item"><strong>Free</strong>Access</div>
+      </div>
+    </div>`;
+}
+
+function renderGrid(items, durs) {
+  const grid = document.getElementById('vgrid');
+  if (!items.length) {
+    grid.innerHTML = '<p style="grid-column:span 3;text-align:center;padding:3rem 0;opacity:0.5">More videos coming soon!</p>';
+    return;
+  }
+  const delays = ['d1','d2','d3'];
+  grid.innerHTML = items.map((item, i) => {
+    const s     = item.snippet;
+    const vid   = s.resourceId.videoId;
+    const thumb = s.thumbnails.high?.url || s.thumbnails.medium?.url || '';
+    const cat   = getCategory(s.title, s.description);
+    const dur   = durs[vid] || '';
+    return `<div class="video-card fade-up ${delays[i%3]}" data-cat="${cat}">
+      <a href="https://www.youtube.com/watch?v=${esc(vid)}" target="_blank" rel="noopener" style="display:block;text-decoration:none">
+        <div class="vc-thumb" style="overflow:hidden">
+          ${thumb ? `<img src="${esc(thumb)}" alt="${esc(s.title)}" style="width:100%;height:100%;object-fit:cover;display:block;">` : ''}
+          <div class="vc-play"><div class="vc-play-icon"></div></div>
+          ${durBadge(dur)}
+        </div>
+      </a>
+      <div class="vc-body">
+        <span class="vc-cat">${CAT_LABELS[cat]}</span>
+        <a href="https://www.youtube.com/watch?v=${esc(vid)}" target="_blank" rel="noopener" style="text-decoration:none;color:inherit">
+          <p class="vc-title">${esc(s.title)}</p>
+        </a>
+        <div class="vc-meta"><span>${esc(formatDate(s.publishedAt))}</span><span>Free</span></div>
+      </div>
+    </div>`;
+  }).join('');
+  grid.querySelectorAll('.fade-up').forEach(el => obs.observe(el));
+}
+
+function showEmpty() {
+  document.getElementById('featured-inner').innerHTML = '<p style="grid-column:span 2;text-align:center;color:rgba(255,255,255,0.4);padding:3rem 0;font-family:\'Cormorant Garamond\',serif;font-style:italic">No videos yet — check back soon!</p>';
+  document.getElementById('vgrid').innerHTML           = '<p style="grid-column:span 3;text-align:center;padding:3rem 0;opacity:0.5">Videos coming soon!</p>';
+}
+
+loadVideos();
 </script>
 </body>
 </html>
