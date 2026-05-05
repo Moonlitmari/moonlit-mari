@@ -142,98 +142,7 @@ footer{background:var(--deep-indigo);color:white;padding:3rem 5rem 2rem}
   <p class="section-tag fade-up">Coming up</p>
   <h2 class="section-title fade-up d1">Upcoming <em>adventures</em></h2>
   <div class="events-grid">
-
-    <div class="event-card featured fade-up d1">
-      <div class="event-featured-badge">Featured</div>
-      <div class="event-date">
-        <div class="event-month">Jun</div>
-        <div class="event-day">14</div>
-        <div class="event-year">2025</div>
-      </div>
-      <div class="event-info">
-        <span class="event-type type-con">Convention</span>
-        <p class="event-name">MomoCon 2025</p>
-        <p class="event-location"> Atlanta, GA — Georgia World Congress Center</p>
-        <p class="event-desc">Running two panels this year! "Beginner Cosplay" on Saturday and a special collab panel Sunday morning. Come find me at the cosplay meetup Friday evening too!</p>
-        <a href="#" class="event-link">Event details</a>
-      </div>
-    </div>
-
-    <div class="event-card fade-up d2">
-      <div class="event-date">
-        <div class="event-month">Jul</div>
-        <div class="event-day">4</div>
-        <div class="event-year">2025</div>
-      </div>
-      <div class="event-info">
-        <span class="event-type type-online">Online</span>
-        <p class="event-name">Moon Crew Summer Stream</p>
-        <p class="event-location"> YouTube Live + Twitch</p>
-        <p class="event-desc">Annual summer hangout! Q&A, WIP reveal, costume try-ons, and a very chaotic just-chatting session with the whole crew.</p>
-        <a href="#" class="event-link">Set a reminder</a>
-      </div>
-    </div>
-
-    <div class="event-card fade-up d1">
-      <div class="event-date">
-        <div class="event-month">Aug</div>
-        <div class="event-day">29</div>
-        <div class="event-year">2025</div>
-      </div>
-      <div class="event-info">
-        <span class="event-type type-con">Convention</span>
-        <p class="event-name">DragonCon 2025</p>
-        <p class="event-location"> Atlanta, GA — Marriott Marquis</p>
-        <p class="event-desc">Back for the chaos! Attending as a guest cosplayer and hopefully surviving the parade. Saturday meetup TBA — check socials closer to the date!</p>
-        <a href="#" class="event-link">Event details</a>
-      </div>
-    </div>
-
-    <div class="event-card fade-up d2">
-      <div class="event-date">
-        <div class="event-month">Sep</div>
-        <div class="event-day">20</div>
-        <div class="event-year">2025</div>
-      </div>
-      <div class="event-info">
-        <span class="event-type type-panel">Panel</span>
-        <p class="event-name">Anime Weekend Atlanta</p>
-        <p class="event-location"> Atlanta, GA — Cobb Galleria</p>
-        <p class="event-desc">"Progress Over Perfection: The Cosplay Mindset" — a pep talk panel for anyone who's ever felt not good enough. Bring tissues, just in case (I might cry too).</p>
-        <a href="#" class="event-link">Event details</a>
-      </div>
-    </div>
-
-    <div class="event-card fade-up d1">
-      <div class="event-date">
-        <div class="event-month">Oct</div>
-        <div class="event-day">11</div>
-        <div class="event-year">2025</div>
-      </div>
-      <div class="event-info">
-        <span class="event-type type-collab">Collab</span>
-        <p class="event-name">Moon Crew Photoshoot Day</p>
-        <p class="event-location"> Location TBA — Southeast US</p>
-        <p class="event-desc">A collaborative shoot with fellow Moon Crew members and creator friends! Details dropping on Instagram and YouTube first.</p>
-        <a href="https://www.instagram.com/moonlit.mari/" class="event-link" target="_blank" rel="noopener">Follow for updates</a>
-      </div>
-    </div>
-
-    <div class="event-card fade-up d2">
-      <div class="event-date">
-        <div class="event-month">Nov</div>
-        <div class="event-day">8</div>
-        <div class="event-year">2025</div>
-      </div>
-      <div class="event-info">
-        <span class="event-type type-online">Online</span>
-        <p class="event-name">Holiday Cosplay Build-Along</p>
-        <p class="event-location"> YouTube Live — 3-part series</p>
-        <p class="event-desc">A cosy beginner-friendly build series leading into con season. We'll all be making the same beginner-friendly project together. Supply list coming soon!</p>
-        <a href="#" class="event-link">Join the waitlist</a>
-      </div>
-    </div>
-
+    <p style="grid-column:span 2;text-align:center;padding:3rem 0;opacity:0.5;font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-style:italic">Loading upcoming events…</p>
   </div>
 </section>
 
@@ -261,15 +170,83 @@ footer{background:var(--deep-indigo);color:white;padding:3rem 5rem 2rem}
 </footer>
 
 <script>
-const cursor=document.getElementById('cursor'),trail=document.getElementById('cursorTrail');
-let mx=0,my=0,tx=0,ty=0;
-document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;cursor.style.left=mx+'px';cursor.style.top=my+'px'});
-(function animate(){tx+=(mx-tx)*0.12;ty+=(my-ty)*0.12;trail.style.left=tx+'px';trail.style.top=ty+'px';requestAnimationFrame(animate)})();
-const obs=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target)}}),{threshold:0.1});
-document.querySelectorAll('.fade-up').forEach(el=>obs.observe(el));
-setTimeout(()=>document.querySelectorAll('.page-hero .fade-up').forEach((el,i)=>setTimeout(()=>el.classList.add('visible'),150+i*100)),50);
+const cursor = document.getElementById('cursor'), trail = document.getElementById('cursorTrail');
+let mx = 0, my = 0, tx = 0, ty = 0;
+document.addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; cursor.style.left = mx + 'px'; cursor.style.top = my + 'px'; });
+(function animate() { tx += (mx - tx) * 0.12; ty += (my - ty) * 0.12; trail.style.left = tx + 'px'; trail.style.top = ty + 'px'; requestAnimationFrame(animate); })();
 
+const obs = new IntersectionObserver(entries => entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } }), { threshold: 0.1 });
+document.querySelectorAll('.fade-up').forEach(el => obs.observe(el));
+setTimeout(() => document.querySelectorAll('.page-hero .fade-up').forEach((el, i) => setTimeout(() => el.classList.add('visible'), 150 + i * 100)), 50);
 
+const GCAL_KEY = 'AIzaSyAe1KOUEGU_QUktRsZPPw1V8NLhEu4TwYE';
+const GCAL_ID  = 'stardusted.journeys@gmail.com';
+
+function esc(s) {
+  return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
+
+function getType(event) {
+  const text = ((event.summary || '') + ' ' + (event.description || '')).toLowerCase();
+  const m = text.match(/\[type:\s*(con|panel|online|collab)\]/);
+  if (m) return m[1];
+  if (/panel|appearance|speaking/.test(text)) return 'panel';
+  if (/online|stream|live|youtube|twitch/.test(text)) return 'online';
+  if (/collab|photoshoot/.test(text)) return 'collab';
+  return 'con';
+}
+
+function renderCard(event, idx) {
+  const dt  = event.start.dateTime ? new Date(event.start.dateTime) : new Date(event.start.date + 'T12:00:00');
+  const mon = dt.toLocaleString('en-US', { month: 'short' });
+  const day = dt.getDate(), yr = dt.getFullYear();
+  const type    = getType(event);
+  const labels  = { con: 'Convention', panel: 'Panel / Appearance', online: 'Online Event', collab: 'Collab / Special' };
+  const cls     = { con: 'type-con', panel: 'type-panel', online: 'type-online', collab: 'type-collab' };
+  const featured = idx === 0;
+  const rawDesc  = (event.description || '').replace(/<[^>]+>/g, '').replace(/\[type:[^\]]+\]/gi, '').trim();
+  const urlMatch = rawDesc.match(/https?:\/\/\S+/);
+  const link     = urlMatch ? urlMatch[0] : (event.htmlLink || '#');
+  const descText = rawDesc.replace(/https?:\/\/\S+/g, '').trim();
+  const excerpt  = descText.length > 220 ? descText.slice(0, 220) + '…' : descText;
+  const loc      = event.location || '';
+  return `<div class="event-card${featured ? ' featured' : ''} fade-up d${idx % 2 + 1}">
+      ${featured ? '<div class="event-featured-badge">Next Up</div>' : ''}
+      <div class="event-date">
+        <div class="event-month">${esc(mon)}</div>
+        <div class="event-day">${day}</div>
+        <div class="event-year">${yr}</div>
+      </div>
+      <div class="event-info">
+        <span class="event-type ${cls[type]}">${labels[type]}</span>
+        <p class="event-name">${esc(event.summary || 'Untitled Event')}</p>
+        ${loc ? `<p class="event-location">${esc(loc)}</p>` : ''}
+        ${excerpt ? `<p class="event-desc">${esc(excerpt)}</p>` : ''}
+        <a href="${esc(link)}" class="event-link" target="_blank" rel="noopener">Event details</a>
+      </div>
+    </div>`;
+}
+
+async function loadEvents() {
+  const grid = document.querySelector('.events-grid');
+  const now  = new Date().toISOString();
+  const url  = `https://www.googleapis.com/calendar/v3/calendars/${encodeURIComponent(GCAL_ID)}/events?key=${GCAL_KEY}&timeMin=${encodeURIComponent(now)}&maxResults=12&singleEvents=true&orderBy=startTime`;
+  try {
+    const res = await fetch(url);
+    if (!res.ok) throw new Error(res.status);
+    const data = await res.json();
+    if (!data.items?.length) {
+      grid.innerHTML = '<p style="grid-column:span 2;text-align:center;padding:3rem 0;opacity:0.5">No upcoming events right now — check back soon!</p>';
+      return;
+    }
+    grid.innerHTML = data.items.map(renderCard).join('');
+    grid.querySelectorAll('.fade-up').forEach(el => obs.observe(el));
+  } catch {
+    grid.innerHTML = '<p style="grid-column:span 2;text-align:center;padding:3rem 0;opacity:0.5">Couldn\'t load events. Try refreshing!</p>';
+  }
+}
+
+loadEvents();
 </script>
 </body>
 </html>
