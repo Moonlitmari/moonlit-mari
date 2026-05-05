@@ -640,6 +640,47 @@
   .-input::placeholder { opacity: 0.5; }
   .-input:focus { border-color: var(--periwinkle); background: white; }
 
+  /* MOON CREW TEASER */
+  .crew-teaser {
+    padding: 7rem 5rem;
+    background: linear-gradient(135deg, #EDE5FF 0%, #F5F0FF 50%, #FFE8F5 100%);
+    position: relative;
+    overflow: hidden;
+  }
+  .crew-teaser-inner {
+    display: grid;
+    grid-template-columns: 1fr 1.6fr;
+    gap: 5rem;
+    align-items: center;
+    position: relative;
+    z-index: 2;
+  }
+  .crew-teaser-body {
+    font-size: 0.95rem;
+    line-height: 1.8;
+    color: var(--indigo);
+    opacity: 0.72;
+    margin-bottom: 0.5rem;
+  }
+  .crew-preview {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.9rem;
+  }
+  .crew-preview-item {
+    border-radius: 14px;
+    overflow: hidden;
+    aspect-ratio: 1;
+    background: var(--pale-lav);
+  }
+  .crew-preview-item img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.45s ease;
+  }
+  .crew-preview-item:hover img { transform: scale(1.07); }
+
   /*  FOOTER  */
   footer {
     background: var(--deep-indigo);
@@ -989,6 +1030,27 @@
 
 
 
+<!-- MOON CREW TEASER -->
+<section class="crew-teaser">
+  <div class="orb" style="width:300px;height:300px;background:rgba(197,222,255,0.3);top:-60px;right:8%;animation-duration:9s"></div>
+  <div class="orb" style="width:180px;height:180px;background:rgba(216,167,255,0.25);bottom:-40px;left:5%;animation-delay:-4s"></div>
+  <svg style="position:absolute;top:12%;right:22%;opacity:0.12;width:50px;pointer-events:none" viewBox="0 0 60 60" fill="none"><path d="M30 2L32 28L58 30L32 32L30 58L28 32L2 30L28 28Z" fill="#3D2B6B"/></svg>
+  <svg style="position:absolute;bottom:18%;left:38%;opacity:0.1;width:32px;pointer-events:none" viewBox="0 0 40 40" fill="none"><path d="M20 2L21.5 18.5L38 20L21.5 21.5L20 38L18.5 21.5L2 20L18.5 18.5Z" fill="#3D2B6B"/></svg>
+  <div class="crew-teaser-inner">
+    <div>
+      <p class="section-tag fade-up">The crew</p>
+      <h2 class="section-title fade-up fade-up-d1">Amongst <em>The Stars</em></h2>
+      <p class="crew-teaser-body fade-up fade-up-d2">A constellation of stardusted creators — friends, collaborators, and fellow dreamers sharing the art of cosplay under <span style="color:var(--periwinkle);font-style:italic">#stardustedcosplay</span>. Come see what the crew has been making.</p>
+      <a href="amongst-the-stars.html" class="btn-primary fade-up fade-up-d3" style="display:inline-block;margin-top:2rem;">Meet the Moon Crew</a>
+    </div>
+    <div class="crew-preview fade-up fade-up-d2" id="crew-preview-grid">
+      <div class="crew-preview-item" style="background:linear-gradient(140deg,#D8A7FF,#A59EF6)"></div>
+      <div class="crew-preview-item" style="background:linear-gradient(140deg,#C5DEFF,#E8E0FF)"></div>
+      <div class="crew-preview-item" style="background:linear-gradient(140deg,#FFC8EA,#FFD6A0)"></div>
+    </div>
+  </div>
+</section>
+
 <!-- FOOTER -->
 <footer>
   <div class="footer-top">
@@ -1017,7 +1079,8 @@
     <div>
       <p class="footer-col-title">The Moon Crew</p>
       <ul class="footer-links">
-                <li><a href="#">YouTube</a></li>
+        <li><a href="amongst-the-stars.html">Amongst The Stars</a></li>
+        <li><a href="#">YouTube</a></li>
         <li><a href="links.html">Shop Links</a></li>
         <li><a href="#">Discord</a></li>
       </ul>
@@ -1067,6 +1130,24 @@
   document.querySelectorAll('.hero .fade-up').forEach((el, i) => {
     setTimeout(() => el.classList.add('visible'), 200 + i * 120);
   });
+
+  // Moon Crew preview — first 3 posts from Behold feed
+  (async function loadCrewPreview() {
+    try {
+      const res  = await fetch('https://feeds.behold.so/TDLMpTN1rOvc0tP41H7c');
+      if (!res.ok) return;
+      const data = await res.json();
+      const posts = (data.posts || data || [])
+        .filter(p => p.sizes?.large?.mediaUrl || p.sizes?.medium?.mediaUrl || p.thumbnailUrl)
+        .slice(0, 3);
+      if (!posts.length) return;
+      const grid = document.getElementById('crew-preview-grid');
+      grid.innerHTML = posts.map(p => {
+        const src = p.sizes?.large?.mediaUrl || p.sizes?.medium?.mediaUrl || p.thumbnailUrl;
+        return `<a href="amongst-the-stars.html" class="crew-preview-item"><img src="${src}" alt="Moon Crew cosplay" loading="lazy"></a>`;
+      }).join('');
+    } catch(e) { /* silently keep gradient placeholders */ }
+  })();
 </script>
 </body>
 </html>
