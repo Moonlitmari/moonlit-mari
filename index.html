@@ -35,28 +35,26 @@
     cursor: none;
   }
 
-  /* Custom cursor */
+  /* Custom cursor — crescent moon */
   .cursor {
-    width: 12px; height: 12px;
-    background: var(--lilac);
-    border-radius: 50%;
+    width: 28px; height: 28px;
     position: fixed;
     pointer-events: none;
     z-index: 9999;
     transform: translate(-50%, -50%);
-    transition: transform 0.1s, background 0.3s, width 0.2s, height 0.2s;
-    mix-blend-mode: multiply;
+    transition: transform 0.1s;
+    filter: drop-shadow(0 0 5px rgba(216,167,255,0.7));
   }
   .cursor-trail {
-    width: 30px; height: 30px;
-    border: 1px solid var(--periwinkle);
+    width: 40px; height: 40px;
+    border: 1px solid rgba(165,158,246,0.3);
     border-radius: 50%;
     position: fixed;
     pointer-events: none;
     z-index: 9998;
     transform: translate(-50%, -50%);
-    transition: transform 0.25s ease, opacity 0.3s;
-    opacity: 0.6;
+    transition: transform 0.28s ease, opacity 0.3s;
+    opacity: 0.45;
   }
 
   /*  NAV  */
@@ -107,7 +105,7 @@
     display: grid;
     grid-template-columns: 1fr 1fr;
     position: relative;
-    overflow: hidden;
+    overflow: visible;
     padding-top: 5rem;
   }
 
@@ -235,44 +233,22 @@
   .hero-right {
     position: relative; z-index: 2;
     display: flex; align-items: center; justify-content: center;
-    padding: 5rem 3rem 5rem 1rem;
+    padding: 5rem 4rem 5rem 2rem;
   }
-  .hero-mosaic {
-    position: relative;
-    width: 380px; height: 480px;
-  }
-  .mosaic-card {
-    position: absolute;
-    border-radius: 16px;
+  .hero-photo-wrap {
+    width: 300px;
+    border-radius: 24px;
     overflow: hidden;
-    box-shadow: 0 20px 60px rgba(61,43,107,0.12);
+    box-shadow: 0 32px 80px rgba(61,43,107,0.18);
+    border: 1px solid rgba(165,158,246,0.2);
+    animation: floatCard 5s ease-in-out infinite alternate;
   }
-  .mosaic-card-main {
-    width: 260px; height: 340px;
-    top: 0; left: 60px;
-    background: linear-gradient(160deg, var(--pale-lav) 0%, var(--blush) 100%);
-    display: flex; align-items: center; justify-content: center;
-  }
-  .mosaic-card-sm1 {
-    width: 140px; height: 160px;
-    bottom: 0; left: 0;
-    background: linear-gradient(140deg, var(--moonbeam) 0%, var(--periwinkle) 100%);
-    display: flex; align-items: center; justify-content: center;
-  }
-  .mosaic-card-sm2 {
-    width: 120px; height: 140px;
-    top: 50px; right: 0;
-    background: linear-gradient(140deg, var(--apricot) 0%, var(--rose-dusk) 100%);
-    display: flex; align-items: center; justify-content: center;
-  }
-  .mosaic-card-float {
-    width: 90px; height: 90px;
-    bottom: 40px; right: 20px;
-    background: var(--cream);
-    border: 1px solid rgba(165,158,246,0.3);
-    display: flex; align-items: center; justify-content: center;
-    border-radius: 12px;
-    animation: floatCard 4s ease-in-out infinite alternate;
+  .hero-photo-wrap img {
+    width: 100%;
+    display: block;
+    aspect-ratio: 3/4;
+    object-fit: cover;
+    object-position: top;
   }
   @keyframes floatCard {
     from { transform: translateY(0); }
@@ -618,8 +594,8 @@
     letter-spacing: 0.06em;
   }
 
-  /*  NEWSLETTER  */
-  .newsletter {
+  /*    */
+  . {
     background: linear-gradient(135deg, var(--pale-lav) 0%, var(--blush) 60%, var(--apricot) 100%);
     padding: 6rem 5rem;
     display: flex;
@@ -629,8 +605,8 @@
     position: relative;
     overflow: hidden;
   }
-  .newsletter-inner { position: relative; z-index: 2; max-width: 560px; }
-  .newsletter-title {
+  .-inner { position: relative; z-index: 2; max-width: 560px; }
+  .-title {
     font-family: 'Cormorant Garamond', serif;
     font-size: clamp(2rem, 3.5vw, 3rem);
     font-weight: 300;
@@ -638,18 +614,18 @@
     line-height: 1.15;
     margin-bottom: 1rem;
   }
-  .newsletter-sub {
+  .-sub {
     font-size: 0.9rem;
     color: var(--indigo);
     opacity: 0.7;
     line-height: 1.7;
     margin-bottom: 2rem;
   }
-  .newsletter-form {
+  .-form {
     display: flex; gap: 0.7rem;
     max-width: 420px; margin: 0 auto;
   }
-  .newsletter-input {
+  .-input {
     flex: 1;
     font-family: 'Jost', sans-serif;
     font-size: 0.88rem;
@@ -661,8 +637,49 @@
     outline: none;
     backdrop-filter: blur(4px);
   }
-  .newsletter-input::placeholder { opacity: 0.5; }
-  .newsletter-input:focus { border-color: var(--periwinkle); background: white; }
+  .-input::placeholder { opacity: 0.5; }
+  .-input:focus { border-color: var(--periwinkle); background: white; }
+
+  /* MOON CREW TEASER */
+  .crew-teaser {
+    padding: 7rem 5rem;
+    background: linear-gradient(135deg, #EDE5FF 0%, #F5F0FF 50%, #FFE8F5 100%);
+    position: relative;
+    overflow: hidden;
+  }
+  .crew-teaser-inner {
+    display: grid;
+    grid-template-columns: 1fr 1.6fr;
+    gap: 5rem;
+    align-items: center;
+    position: relative;
+    z-index: 2;
+  }
+  .crew-teaser-body {
+    font-size: 0.95rem;
+    line-height: 1.8;
+    color: var(--indigo);
+    opacity: 0.72;
+    margin-bottom: 0.5rem;
+  }
+  .crew-preview {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.9rem;
+  }
+  .crew-preview-item {
+    border-radius: 14px;
+    overflow: hidden;
+    aspect-ratio: 1;
+    background: var(--pale-lav);
+  }
+  .crew-preview-item img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.45s ease;
+  }
+  .crew-preview-item:hover img { transform: scale(1.07); }
 
   /*  FOOTER  */
   footer {
@@ -747,16 +764,16 @@
     .gallery { padding: 4rem 1.5rem; }
     .gallery-grid { grid-template-columns: 1fr 1fr; grid-template-rows: auto; }
     .gallery-item:first-child { grid-row: span 1; grid-column: span 2; }
-    .services, .blog, .about, .newsletter, footer { padding: 4rem 1.5rem; }
+    .services, .blog, .about, ., footer { padding: 4rem 1.5rem; }
     .services-grid, .blog-grid { grid-template-columns: 1fr; }
     .footer-top { grid-template-columns: 1fr 1fr; }
-    .newsletter-form { flex-direction: column; }
+    .-form { flex-direction: column; }
   }
 </style>
 </head>
 <body>
 
-<div class="cursor" id="cursor"></div>
+<div class="cursor" id="cursor"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" fill="#D8A7FF" stroke="#A59EF6" stroke-width="0.5"/></svg></div>
 <div class="cursor-trail" id="cursorTrail"></div>
 
 <!-- NAV -->
@@ -769,6 +786,7 @@
     <li><a href="panels.html">Panels</a></li>
     <li><a href="calendar.html">Calendar</a></li>
     <li><a href="links.html">Shop Links</a></li>
+    <li><a href="amongst-the-stars.html">Moon Crew</a></li>
     <li><a href="contact.html" class="nav-cta">Contact</a></li>
   </ul>
 </nav>
@@ -795,9 +813,11 @@
     <path d="M12 1 L13 11 L23 12 L13 13 L12 23 L11 13 L1 12 L11 11 Z" fill="#FFC8EA"/>
   </svg>
 
-  <!-- Crescent moon top right -->
-  <svg style="position:absolute;top:6%;right:3%;opacity:0.18;width:80px" viewBox="0 0 80 80" fill="none">
-    <path d="M55 15 C35 15 20 30 20 50 C20 70 35 85 55 85 C40 80 30 66 30 50 C30 34 40 20 55 15Z" fill="#3D2B6B"/>
+  <!-- Crescent moon deco — tilted so points face top-right -->
+  <svg style="position:absolute;top:12%;right:10%;opacity:0.28;width:60px;height:60px;transform:rotate(-36deg)" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M36 6C20 6 8 18 8 34C8 50 20 62 36 62C25 58 18 47 18 34C18 21 25 10 36 6Z" fill="#3D2B6B"/>
+    <circle cx="42" cy="11" r="2" fill="#A59EF6" opacity="0.6"/>
+    <circle cx="47" cy="22" r="1.2" fill="#D8A7FF" opacity="0.5"/>
   </svg>
 
   <div class="hero-left">
@@ -831,44 +851,8 @@
   </div>
 
   <div class="hero-right fade-up fade-up-d2">
-    <div class="hero-mosaic">
-      <div class="mosaic-card mosaic-card-main">
-        <div style="text-align:center;">
-          <!-- Needle & thread deco -->
-          <svg width="80" height="110" viewBox="0 0 80 110" fill="none" style="opacity:0.4">
-            <ellipse cx="40" cy="25" rx="18" ry="18" stroke="#3D2B6B" stroke-width="1.5"/>
-            <ellipse cx="40" cy="25" rx="10" ry="10" stroke="#3D2B6B" stroke-width="1"/>
-            <line x1="40" y1="43" x2="40" y2="95" stroke="#3D2B6B" stroke-width="1.5"/>
-            <ellipse cx="40" cy="97" rx="4" ry="3" stroke="#3D2B6B" stroke-width="1.2"/>
-            <path d="M36 94 Q40 105 44 94" stroke="#3D2B6B" stroke-width="1"/>
-            <path d="M10 60 Q30 30 50 80 Q60 100 75 50" stroke="#A59EF6" stroke-width="1.5" fill="none" stroke-dasharray="3 3"/>
-          </svg>
-          <p class="mosaic-label" style="margin-top:0.5rem;">your cosplay<br>photo here</p>
-        </div>
-      </div>
-      <div class="mosaic-card mosaic-card-sm1">
-        <!-- Crescent moon -->
-        <svg width="48" height="48" viewBox="0 0 48 48" fill="none" style="opacity:0.5">
-          <path d="M32 8 C18 8 8 18 8 32 C8 46 18 56 32 56 C22 52 16 43 16 32 C16 21 22 12 32 8Z" fill="#3D2B6B"/>
-          <circle cx="36" cy="14" r="2" fill="#D8A7FF"/>
-          <circle cx="42" cy="22" r="1" fill="#D8A7FF"/>
-        </svg>
-      </div>
-      <div class="mosaic-card mosaic-card-sm2">
-        <!-- Stars -->
-        <svg width="48" height="48" viewBox="0 0 48 48" fill="none" style="opacity:0.45">
-          <path d="M24 4 L26 22 L44 24 L26 26 L24 44 L22 26 L4 24 L22 22 Z" fill="#3D2B6B"/>
-          <circle cx="8" cy="8" r="2" fill="#7a5acc"/>
-          <circle cx="40" cy="40" r="1.5" fill="#7a5acc"/>
-          <circle cx="40" cy="10" r="1" fill="#7a5acc"/>
-        </svg>
-      </div>
-      <div class="mosaic-card mosaic-card-float">
-        <div style="text-align:center;">
-          <div style="font-size:1.5rem;"></div>
-          <p style="font-family:'Dancing Script',cursive;font-size:0.75rem;color:var(--indigo);margin-top:4px;">Moonlit Mari</p>
-        </div>
-      </div>
+    <div class="hero-photo-wrap">
+      <img src="images/leia-port.jpg" alt="Princess Leia cosplay by Moonlit Mari">
     </div>
   </div>
 </section>
@@ -902,19 +886,19 @@
     <p class="section-tag fade-up">The maker behind the magic</p>
     <h2 class="section-title fade-up fade-up-d1">A place where <em>you belong</em><br>exactly as you are</h2>
     <p class="about-body fade-up fade-up-d2">
-      Hi! I'm Mari — former theatre kid, con-going dreamer, and beginner/intermediate cosplayer who stumbled into this craft and never looked back. I'm not a professional. I make mistakes on camera. I hot-glue my fingers together and laugh about it.
+      Hi! I'm Mari — former theatre kid, con-going dreamer, and beginner/intermediate cosplayer who stumbled into this craft and never looked back. I'm not a professional. I make mistakes on camera and off. I hot-glue my fingers, prick myself with the needles, and always seem to be reaching toward a seam ripper more than once during every project.
     </p>
     <p class="about-body fade-up fade-up-d2">
-      This space was built for anyone who's ever looked at a cosplay and thought "I could never do that." You can. You just need a starting point and a crew that roots for you. Consider this yours.
+      I want this space to be for anyone who's ever looked at a cosplay and thought "I could never do that." Quit lying to yourself, because you totally can. You just need a starting point and a crew that roots for you. Consider yourself a part of the crew, stardust! We are here to cheer you on every step of the journey.
     </p>
     <div class="craft-tags fade-up fade-up-d3">
       <span class="craft-tag">Theatre kid energy</span>
-      <span class="craft-tag">Foam & worbla</span>
       <span class="craft-tag">Beginner friendly</span>
       <span class="craft-tag">Storytelling through craft</span>
-      <span class="craft-tag">Fandom deep dives</span>
+      <span class="craft-tag">Community builder</span>
+      <span class="craft-tag">Inclusive space</span>
       <span class="craft-tag">Con adventures</span>
-      <span class="craft-tag">Moon Crew </span>
+      <span class="craft-tag">Moon Crew</span>
     </div>
   </div>
   <div class="about-right fade-up fade-up-d2">
@@ -949,34 +933,24 @@
   </div>
   <div class="gallery-grid fade-up">
     <div class="gallery-item">
-      <div class="gallery-img g1">
-        <p class="gallery-placeholder-text">Featured<br>cosplay</p>
-      </div>
-      <div class="gallery-overlay"><span class="gallery-overlay-text">Lunar Empress — Full armor build</span></div>
+      <img src="images/squirrel.jpg" alt="Squirrel Girl cosplay" style="width:100%;height:100%;object-fit:cover;display:block;transition:transform 0.5s ease;">
+      <div class="gallery-overlay"><span class="gallery-overlay-text">Squirrel Girl — Full character build</span></div>
     </div>
     <div class="gallery-item">
-      <div class="gallery-img g2">
-        <p class="gallery-placeholder-text">Build 2</p>
-      </div>
-      <div class="gallery-overlay"><span class="gallery-overlay-text">Dream Witch</span></div>
+      <img src="images/belle-sq.jpg" alt="Belle cosplay" style="width:100%;height:100%;object-fit:cover;display:block;transition:transform 0.5s ease;">
+      <div class="gallery-overlay"><span class="gallery-overlay-text">Belle — Beauty and the Beast</span></div>
     </div>
     <div class="gallery-item">
-      <div class="gallery-img g3">
-        <p class="gallery-placeholder-text">Build 3</p>
-      </div>
-      <div class="gallery-overlay"><span class="gallery-overlay-text">Starfall Mage</span></div>
+      <img src="images/hera-sq.jpg" alt="Hera Syndulla cosplay" style="width:100%;height:100%;object-fit:cover;display:block;transition:transform 0.5s ease;">
+      <div class="gallery-overlay"><span class="gallery-overlay-text">Hera Syndulla — Star Wars Rebels</span></div>
     </div>
     <div class="gallery-item">
-      <div class="gallery-img g4">
-        <p class="gallery-placeholder-text">Build 4</p>
-      </div>
-      <div class="gallery-overlay"><span class="gallery-overlay-text">Moon Rabbit</span></div>
+      <img src="images/red-dress-sq.jpg" alt="Celeste from Animal Crossing cosplay" style="width:100%;height:100%;object-fit:cover;display:block;transition:transform 0.5s ease;">
+      <div class="gallery-overlay"><span class="gallery-overlay-text">Celeste — Animal Crossing</span></div>
     </div>
     <div class="gallery-item">
-      <div class="gallery-img g5">
-        <p class="gallery-placeholder-text">Build 5</p>
-      </div>
-      <div class="gallery-overlay"><span class="gallery-overlay-text">Celestial Knight</span></div>
+      <img src="images/leia-sq.jpg" alt="Princess Leia cosplay night" style="width:100%;height:100%;object-fit:cover;display:block;transition:transform 0.5s ease;">
+      <div class="gallery-overlay"><span class="gallery-overlay-text">Princess Leia — Star Wars</span></div>
     </div>
   </div>
 </section>
@@ -1007,9 +981,9 @@
     </div>
     <div class="service-card fade-up fade-up-d3">
       <div class="service-icon"></div>
-      <h3 class="service-title">The Moon Crew</h3>
-      <p class="service-text">Q&As, pep talks, Captain Mari Flight Logs, and a community of dreamers, learners, late bloomers, and passionate nerds who root for each other. Come find your crew.</p>
-      <a href="#" class="service-link">Join the crew</a>
+      <h3 class="service-title">The Moon Crew Community</h3>
+      <p class="service-text">Q&As, pep talks, Captain Mari Flight Logs, and a community of dreamers, learners, late bloomers, and passionate nerds who root for each other. Come say hi on socials and find your crew.</p>
+      <a href="https://www.instagram.com/moonlit.mari/" class="service-link" target="_blank" rel="noopener">Find the crew</a>
     </div>
   </div>
 </section>
@@ -1025,7 +999,7 @@
   </div>
   <div class="blog-grid">
     <div class="blog-card fade-up fade-up-d1">
-      <div class="blog-img g1"><p class="gallery-placeholder-text" style="font-size:1rem;">Post image</p></div>
+      <div class="blog-img" style="overflow:hidden"><img src="images/con-duo-sq.jpg" alt="Convention meetup" style="width:100%;height:180px;object-fit:cover;display:block;transition:transform 0.5s ease;"></div>
       <div class="blog-body">
         <span class="blog-cat">Cosplay journey</span>
         <h3 class="blog-title">My First Convention: Everything That Went Wrong (And Why I Loved It)</h3>
@@ -1034,7 +1008,7 @@
       </div>
     </div>
     <div class="blog-card fade-up fade-up-d2">
-      <div class="blog-img g2"><p class="gallery-placeholder-text" style="font-size:1rem;">Post image</p></div>
+      <div class="blog-img" style="overflow:hidden"><img src="images/belle-sq.jpg" alt="Belle cosplay" style="width:100%;height:180px;object-fit:cover;display:block;transition:transform 0.5s ease;"></div>
       <div class="blog-body">
         <span class="blog-cat">Fandom deep dive</span>
         <h3 class="blog-title">Why This Character Means Everything to Me (And What It Taught Me About Identity)</h3>
@@ -1043,7 +1017,7 @@
       </div>
     </div>
     <div class="blog-card fade-up fade-up-d3">
-      <div class="blog-img g3"><p class="gallery-placeholder-text" style="font-size:1rem;">Post image</p></div>
+      <div class="blog-img" style="overflow:hidden"><img src="images/red-dress-sq.jpg" alt="Celeste from Animal Crossing cosplay" style="width:100%;height:180px;object-fit:cover;display:block;transition:transform 0.5s ease;"></div>
       <div class="blog-body">
         <span class="blog-cat">Beginner builds</span>
         <h3 class="blog-title">Your First Foam Build: What I Wish Someone Had Told Me</h3>
@@ -1054,22 +1028,25 @@
   </div>
 </section>
 
-<!-- NEWSLETTER -->
-<section class="newsletter">
-  <!-- deco stars -->
-  <svg style="position:absolute;top:15%;left:5%;width:50px;opacity:0.3" viewBox="0 0 50 50" fill="none">
-    <path d="M25 3 L27 23 L47 25 L27 27 L25 47 L23 27 L3 25 L23 23 Z" fill="#3D2B6B"/>
-  </svg>
-  <svg style="position:absolute;bottom:20%;right:8%;width:30px;opacity:0.25" viewBox="0 0 30 30" fill="none">
-    <path d="M15 2 L16 14 L28 15 L16 16 L15 28 L14 16 L2 15 L14 14 Z" fill="#3D2B6B"/>
-  </svg>
-  <div class="newsletter-inner fade-up">
-    <p style="font-size:0.68rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--periwinkle);margin-bottom:0.8rem;">Join the Moon Crew</p>
-    <h2 class="newsletter-title">Find your crew. <em style="color:var(--periwinkle)">Start your journey.</em></h2>
-    <p class="newsletter-sub">Build updates, con diaries, pep talks, fandom feelings, and the occasional Captain's Flight Log — delivered straight to you. No spam. Just a friend in your inbox who really loves cosplay.</p>
-    <div class="newsletter-form">
-      <input type="email" class="newsletter-input" placeholder="your@email.com">
-      <button class="btn-primary" style="white-space:nowrap;flex-shrink:0;">I'm in! </button>
+
+
+<!-- MOON CREW TEASER -->
+<section class="crew-teaser">
+  <div class="orb" style="width:300px;height:300px;background:rgba(197,222,255,0.3);top:-60px;right:8%;animation-duration:9s"></div>
+  <div class="orb" style="width:180px;height:180px;background:rgba(216,167,255,0.25);bottom:-40px;left:5%;animation-delay:-4s"></div>
+  <svg style="position:absolute;top:12%;right:22%;opacity:0.12;width:50px;pointer-events:none" viewBox="0 0 60 60" fill="none"><path d="M30 2L32 28L58 30L32 32L30 58L28 32L2 30L28 28Z" fill="#3D2B6B"/></svg>
+  <svg style="position:absolute;bottom:18%;left:38%;opacity:0.1;width:32px;pointer-events:none" viewBox="0 0 40 40" fill="none"><path d="M20 2L21.5 18.5L38 20L21.5 21.5L20 38L18.5 21.5L2 20L18.5 18.5Z" fill="#3D2B6B"/></svg>
+  <div class="crew-teaser-inner">
+    <div>
+      <p class="section-tag fade-up">The crew</p>
+      <h2 class="section-title fade-up fade-up-d1">Amongst <em>The Stars</em></h2>
+      <p class="crew-teaser-body fade-up fade-up-d2">A constellation of stardusted creators — friends, collaborators, and fellow dreamers sharing the art of cosplay under <span style="color:var(--periwinkle);font-style:italic">#stardustedcosplay</span>. Come see what the crew has been making.</p>
+      <a href="amongst-the-stars.html" class="btn-primary fade-up fade-up-d3" style="display:inline-block;margin-top:2rem;">Meet the Moon Crew</a>
+    </div>
+    <div class="crew-preview fade-up fade-up-d2" id="crew-preview-grid">
+      <div class="crew-preview-item" style="background:linear-gradient(140deg,#D8A7FF,#A59EF6)"></div>
+      <div class="crew-preview-item" style="background:linear-gradient(140deg,#C5DEFF,#E8E0FF)"></div>
+      <div class="crew-preview-item" style="background:linear-gradient(140deg,#FFC8EA,#FFD6A0)"></div>
     </div>
   </div>
 </section>
@@ -1082,11 +1059,11 @@
       <p class="footer-tagline">A place of belonging inspired by the best parts of our favourite stories — where anyone can be the hero of their own journey. Be your fullest self. Start your journey. Find your crew.</p>
       <a href="mailto:stardusted.journeys@gmail.com" style="font-size:0.78rem;color:rgba(255,255,255,0.4);text-decoration:none;display:block;margin-bottom:1rem;letter-spacing:0.04em;transition:color 0.2s" onmouseover="this.style.color='#D8A7FF'" onmouseout="this.style.color='rgba(255,255,255,0.4)'">stardusted.journeys@gmail.com</a>
       <div class="social-links">
-        <a href="https://www.instagram.com/moonlit.mari/" class="social-link" title="Instagram" target="_blank" rel="noopener">IG</a>
-        <a href="https://www.tiktok.com/@moonlit.mari" class="social-link" title="TikTok" target="_blank" rel="noopener">TT</a>
-        <a href="https://www.youtube.com/@MoonlitMari/" class="social-link" title="YouTube" target="_blank" rel="noopener">YT</a>
-        <a href="#" class="social-link" title="Patreon">P</a>
-        <a href="#" class="social-link" title="Pinterest">Pi</a>
+        <a href="https://www.instagram.com/moonlit.mari/" class="social-link" title="Instagram" target="_blank" rel="noopener"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="2" y="2" width="20" height="20" rx="5" ry="5" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="2"/><circle cx="17.5" cy="6.5" r="1.2" fill="currentColor"/></svg></a>
+        <a href="https://www.tiktok.com/@moonlit.mari" class="social-link" title="TikTok" target="_blank" rel="noopener"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.69a8.18 8.18 0 004.78 1.52V6.75a4.85 4.85 0 01-1.01-.06z"/></svg></a>
+        <a href="https://www.youtube.com/@MoonlitMari/" class="social-link" title="YouTube" target="_blank" rel="noopener"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M23.5 6.19a3.02 3.02 0 00-2.12-2.14C19.54 3.5 12 3.5 12 3.5s-7.54 0-9.38.55A3.02 3.02 0 00.5 6.19C0 8.04 0 12 0 12s0 3.96.5 5.81a3.02 3.02 0 002.12 2.14C4.46 20.5 12 20.5 12 20.5s7.54 0 9.38-.55a3.02 3.02 0 002.12-2.14C24 15.96 24 12 24 12s0-3.96-.5-5.81zM9.75 15.5v-7l6.5 3.5-6.5 3.5z"/></svg></a>
+        
+        
       </div>
     </div>
     <div>
@@ -1102,9 +1079,8 @@
     <div>
       <p class="footer-col-title">The Moon Crew</p>
       <ul class="footer-links">
-        <li><a href="#">Patreon</a></li>
+        <li><a href="amongst-the-stars.html">Amongst The Stars</a></li>
         <li><a href="#">YouTube</a></li>
-        <li><a href="#">Newsletter</a></li>
         <li><a href="links.html">Shop Links</a></li>
         <li><a href="#">Discord</a></li>
       </ul>
@@ -1115,7 +1091,6 @@
         <li><a href="contact.html">Contact Mari</a></li>
         <li><a href="panels.html">Book a Panel</a></li>
         <li><a href="#">Collabs</a></li>
-        <li><a href="#">Press Kit</a></li>
       </ul>
     </div>
   </div>
@@ -1155,6 +1130,24 @@
   document.querySelectorAll('.hero .fade-up').forEach((el, i) => {
     setTimeout(() => el.classList.add('visible'), 200 + i * 120);
   });
+
+  // Moon Crew preview — first 3 posts from Behold feed
+  (async function loadCrewPreview() {
+    try {
+      const res  = await fetch('https://feeds.behold.so/TDLMpTN1rOvc0tP41H7c');
+      if (!res.ok) return;
+      const data = await res.json();
+      const posts = (data.posts || data || [])
+        .filter(p => p.sizes?.large?.mediaUrl || p.sizes?.medium?.mediaUrl || p.thumbnailUrl)
+        .slice(0, 3);
+      if (!posts.length) return;
+      const grid = document.getElementById('crew-preview-grid');
+      grid.innerHTML = posts.map(p => {
+        const src = p.sizes?.large?.mediaUrl || p.sizes?.medium?.mediaUrl || p.thumbnailUrl;
+        return `<a href="amongst-the-stars.html" class="crew-preview-item"><img src="${src}" alt="Moon Crew cosplay" loading="lazy"></a>`;
+      }).join('');
+    } catch(e) { /* silently keep gradient placeholders */ }
+  })();
 </script>
 </body>
 </html>
