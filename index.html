@@ -408,53 +408,42 @@
     display: flex; align-items: flex-end; justify-content: space-between;
     margin-bottom: 3rem;
   }
-  .gallery-grid {
+  .ig-feed-grid {
     display: grid;
-    grid-template-columns: 2fr 1fr 1fr;
-    grid-template-rows: 280px 280px;
+    grid-template-columns: repeat(3, 1fr);
     gap: 1rem;
   }
-  .gallery-item {
+  .ig-item {
+    display: block;
     border-radius: 16px;
     overflow: hidden;
+    aspect-ratio: 1;
     position: relative;
+    background: var(--pale-lav);
+    text-decoration: none;
     cursor: none;
   }
-  .gallery-item:first-child { grid-row: span 2; }
-  .gallery-img {
+  .ig-item img {
     width: 100%; height: 100%;
-    display: flex; align-items: center; justify-content: center;
-    position: relative;
+    object-fit: cover;
+    display: block;
     transition: transform 0.5s ease;
   }
-  .gallery-item:hover .gallery-img { transform: scale(1.04); }
-  .gallery-overlay {
+  .ig-item:hover img { transform: scale(1.05); }
+  .ig-overlay {
     position: absolute; inset: 0;
-    background: linear-gradient(to top, rgba(61,43,107,0.6) 0%, transparent 60%);
+    background: linear-gradient(to top, rgba(61,43,107,0.65) 0%, transparent 55%);
     opacity: 0;
     transition: opacity 0.3s;
     display: flex; align-items: flex-end; padding: 1.2rem;
   }
-  .gallery-item:hover .gallery-overlay { opacity: 1; }
-  .gallery-overlay-text {
+  .ig-item:hover .ig-overlay { opacity: 1; }
+  .ig-caption {
     font-family: 'Cormorant Garamond', serif;
-    font-size: 1rem;
+    font-size: 0.92rem;
     font-style: italic;
     color: white;
-    letter-spacing: 0.04em;
-  }
-
-  /* placeholder gradient fills for gallery */
-  .g1 { background: linear-gradient(160deg, #D8A7FF 0%, #A59EF6 50%, #B8C8F0 100%); }
-  .g2 { background: linear-gradient(140deg, #FFC8EA 0%, #FFD6A0 100%); }
-  .g3 { background: linear-gradient(140deg, #C5DEFF 0%, #E8E0FF 100%); }
-  .g4 { background: linear-gradient(140deg, #FFBA85 0%, #F9C5D1 100%); }
-  .g5 { background: linear-gradient(140deg, #E8E0FF 0%, #D8A7FF 100%); }
-
-  .gallery-placeholder-text {
-    font-family: 'Dancing Script', cursive;
-    font-size: 1.4rem;
-    color: rgba(61,43,107,0.35);
+    line-height: 1.4;
   }
 
   /*  SERVICES  */
@@ -533,143 +522,6 @@
   .service-link:hover { gap: 0.7rem; }
   .service-link::after { content: '→'; }
 
-  /*  BLOG PREVIEW  */
-  .blog {
-    padding: 7rem 5rem;
-    background: white;
-  }
-  .blog-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 2rem;
-    margin-top: 3rem;
-  }
-  .blog-card {
-    border-radius: 16px;
-    overflow: hidden;
-    border: 1px solid rgba(165,158,246,0.15);
-    transition: transform 0.3s, box-shadow 0.3s;
-    cursor: none;
-    background: var(--cream);
-  }
-  .blog-card:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 24px 60px rgba(61,43,107,0.1);
-  }
-  .blog-img {
-    height: 180px;
-    display: flex; align-items: center; justify-content: center;
-  }
-  .blog-body { padding: 1.4rem; }
-  .blog-cat {
-    font-size: 0.65rem;
-    letter-spacing: 0.16em;
-    text-transform: uppercase;
-    color: var(--periwinkle);
-    margin-bottom: 0.6rem;
-    display: block;
-  }
-  .blog-title {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 1.2rem;
-    font-weight: 400;
-    color: var(--deep-indigo);
-    line-height: 1.3;
-    margin-bottom: 0.7rem;
-  }
-  .blog-excerpt {
-    font-size: 0.82rem;
-    line-height: 1.7;
-    color: var(--indigo);
-    opacity: 0.6;
-  }
-  .blog-meta {
-    display: flex; justify-content: space-between; align-items: center;
-    margin-top: 1.2rem;
-    padding-top: 1rem;
-    border-top: 1px solid rgba(165,158,246,0.15);
-    font-size: 0.72rem;
-    color: var(--indigo);
-    opacity: 0.5;
-    letter-spacing: 0.06em;
-  }
-
-  /*    */
-  . {
-    background: linear-gradient(135deg, var(--pale-lav) 0%, var(--blush) 60%, var(--apricot) 100%);
-    padding: 6rem 5rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    position: relative;
-    overflow: hidden;
-  }
-  .-inner { position: relative; z-index: 2; max-width: 560px; }
-  .-title {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(2rem, 3.5vw, 3rem);
-    font-weight: 300;
-    color: var(--deep-indigo);
-    line-height: 1.15;
-    margin-bottom: 1rem;
-  }
-  .-sub {
-    font-size: 0.9rem;
-    color: var(--indigo);
-    opacity: 0.7;
-    line-height: 1.7;
-    margin-bottom: 2rem;
-  }
-  .-form {
-    display: flex; gap: 0.7rem;
-    max-width: 420px; margin: 0 auto;
-  }
-  .-input {
-    flex: 1;
-    font-family: 'Jost', sans-serif;
-    font-size: 0.88rem;
-    padding: 0.85rem 1.2rem;
-    border: 1px solid rgba(165,158,246,0.4);
-    border-radius: 99px;
-    background: rgba(255,255,255,0.7);
-    color: var(--indigo);
-    outline: none;
-    backdrop-filter: blur(4px);
-  }
-  .-input::placeholder { opacity: 0.5; }
-  .-input:focus { border-color: var(--periwinkle); background: white; }
-
-  /* STARDUST PICKS TEASER */
-  .picks-teaser {
-    padding: 7rem 5rem;
-    background: linear-gradient(135deg, #FFF0E8 0%, #FDF8FF 55%, #EDE5FF 100%);
-    position: relative;
-    overflow: hidden;
-    text-align: center;
-  }
-  .picks-teaser-inner { position: relative; z-index: 2; max-width: 680px; margin: 0 auto; }
-  .picks-teaser-body {
-    font-size: 0.95rem;
-    line-height: 1.8;
-    color: var(--indigo);
-    opacity: 0.68;
-    margin-bottom: 2rem;
-  }
-  .picks-chips { display: flex; flex-wrap: wrap; gap: 0.7rem; justify-content: center; margin-bottom: 2.5rem; }
-  .picks-chip {
-    font-size: 0.72rem;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    padding: 0.45rem 1.2rem;
-    border-radius: 99px;
-    border: 1px solid rgba(165,158,246,0.4);
-    background: rgba(255,255,255,0.7);
-    color: var(--indigo);
-    text-decoration: none;
-    transition: background 0.2s, border-color 0.2s;
-  }
-  .picks-chip:hover { background: var(--indigo); color: white; border-color: var(--indigo); }
 
   /* MOON CREW TEASER */
   .crew-teaser {
@@ -793,12 +645,10 @@
     .hero-left { padding: 4rem 2rem 2rem; }
     .hero-right { display: none; }
     .gallery { padding: 4rem 1.5rem; }
-    .gallery-grid { grid-template-columns: 1fr 1fr; grid-template-rows: auto; }
-    .gallery-item:first-child { grid-row: span 1; grid-column: span 2; }
-    .services, .blog, .about, ., footer { padding: 4rem 1.5rem; }
-    .services-grid, .blog-grid { grid-template-columns: 1fr; }
+    .ig-feed-grid { grid-template-columns: 1fr 1fr; }
+    .services, .about, footer { padding: 4rem 1.5rem; }
+    .services-grid { grid-template-columns: 1fr; }
     .footer-top { grid-template-columns: 1fr 1fr; }
-    .-form { flex-direction: column; }
   }
 </style>
 </head>
@@ -813,12 +663,11 @@
   <ul class="nav-links">
     <li><a href="gallery.html">Portfolio</a></li>
     <li><a href="videos.html">Videos</a></li>
-    <li><a href="stardust-picks.html">About</a></li>
+    <li><a href="#about">About</a></li>
     <li><a href="panels.html">Panels</a></li>
     <li><a href="calendar.html">Calendar</a></li>
     <li><a href="links.html">Shop Links</a></li>
     <li><a href="amongst-the-stars.html">Moon Crew</a></li>
-    <li><a href="stardust-picks.html">Stardust Picks</a></li>
     <li><a href="contact.html" class="nav-cta">Contact</a></li>
   </ul>
 </nav>
@@ -961,29 +810,15 @@
       <p class="section-tag fade-up">Recent work</p>
       <h2 class="section-title fade-up fade-up-d1">A look at the <em>latest builds</em></h2>
     </div>
-    <a href="#" class="btn-ghost fade-up" style="color:var(--indigo);text-decoration:none;font-size:0.75rem;letter-spacing:0.14em;text-transform:uppercase;display:flex;align-items:center;gap:0.5rem;">View all</a>
+    <a href="gallery.html" class="btn-ghost fade-up" style="color:var(--indigo);text-decoration:none;font-size:0.75rem;letter-spacing:0.14em;text-transform:uppercase;display:flex;align-items:center;gap:0.5rem;">View all</a>
   </div>
-  <div class="gallery-grid fade-up">
-    <div class="gallery-item">
-      <img src="images/squirrel.jpg" alt="Squirrel Girl cosplay" style="width:100%;height:100%;object-fit:cover;display:block;transition:transform 0.5s ease;">
-      <div class="gallery-overlay"><span class="gallery-overlay-text">Squirrel Girl — Full character build</span></div>
-    </div>
-    <div class="gallery-item">
-      <img src="images/belle-sq.jpg" alt="Belle cosplay" style="width:100%;height:100%;object-fit:cover;display:block;transition:transform 0.5s ease;">
-      <div class="gallery-overlay"><span class="gallery-overlay-text">Belle — Beauty and the Beast</span></div>
-    </div>
-    <div class="gallery-item">
-      <img src="images/hera-sq.jpg" alt="Hera Syndulla cosplay" style="width:100%;height:100%;object-fit:cover;display:block;transition:transform 0.5s ease;">
-      <div class="gallery-overlay"><span class="gallery-overlay-text">Hera Syndulla — Star Wars Rebels</span></div>
-    </div>
-    <div class="gallery-item">
-      <img src="images/red-dress-sq.jpg" alt="Celeste from Animal Crossing cosplay" style="width:100%;height:100%;object-fit:cover;display:block;transition:transform 0.5s ease;">
-      <div class="gallery-overlay"><span class="gallery-overlay-text">Celeste — Animal Crossing</span></div>
-    </div>
-    <div class="gallery-item">
-      <img src="images/leia-sq.jpg" alt="Princess Leia cosplay night" style="width:100%;height:100%;object-fit:cover;display:block;transition:transform 0.5s ease;">
-      <div class="gallery-overlay"><span class="gallery-overlay-text">Princess Leia — Star Wars</span></div>
-    </div>
+  <div class="ig-feed-grid fade-up" id="ig-preview-grid">
+    <div class="ig-item" style="background:linear-gradient(140deg,#D8A7FF,#A59EF6)"></div>
+    <div class="ig-item" style="background:linear-gradient(140deg,#FFC8EA,#FFD6A0)"></div>
+    <div class="ig-item" style="background:linear-gradient(140deg,#C5DEFF,#E8E0FF)"></div>
+    <div class="ig-item" style="background:linear-gradient(140deg,#FFBA85,#F9C5D1)"></div>
+    <div class="ig-item" style="background:linear-gradient(140deg,#E8E0FF,#D8A7FF)"></div>
+    <div class="ig-item" style="background:linear-gradient(140deg,#FFC8EA,#C5DEFF)"></div>
   </div>
 </section>
 
@@ -1020,68 +855,9 @@
   </div>
 </section>
 
-<!-- BLOG -->
-<section class="blog" id="blog">
-  <div style="display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:1rem">
-    <div>
-      <p class="section-tag fade-up">Captain's flight log</p>
-      <h2 class="section-title fade-up fade-up-d1">From the <em>Moon Crew journal</em></h2>
-    </div>
-    <a href="#" style="font-size:0.75rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--indigo);text-decoration:none;display:flex;align-items:center;gap:0.5rem;" class="fade-up btn-ghost">All posts</a>
-  </div>
-  <div class="blog-grid">
-    <div class="blog-card fade-up fade-up-d1">
-      <div class="blog-img" style="overflow:hidden"><img src="images/con-duo-sq.jpg" alt="Convention meetup" style="width:100%;height:180px;object-fit:cover;display:block;transition:transform 0.5s ease;"></div>
-      <div class="blog-body">
-        <span class="blog-cat">Cosplay journey</span>
-        <h3 class="blog-title">My First Convention: Everything That Went Wrong (And Why I Loved It)</h3>
-        <p class="blog-excerpt">A costume that nearly fell apart, a panel I was 10 minutes late to, and the strangers who became my favourite people. Chaos is kind of the point.</p>
-        <div class="blog-meta"><span>May 2025</span><span>8 min read</span></div>
-      </div>
-    </div>
-    <div class="blog-card fade-up fade-up-d2">
-      <div class="blog-img" style="overflow:hidden"><img src="images/belle-sq.jpg" alt="Belle cosplay" style="width:100%;height:180px;object-fit:cover;display:block;transition:transform 0.5s ease;"></div>
-      <div class="blog-body">
-        <span class="blog-cat">Fandom deep dive</span>
-        <h3 class="blog-title">Why This Character Means Everything to Me (And What It Taught Me About Identity)</h3>
-        <p class="blog-excerpt">Cosplay isn't just a costume. Sometimes it's a love letter to the version of yourself you're still becoming.</p>
-        <div class="blog-meta"><span>Apr 2025</span><span>6 min read</span></div>
-      </div>
-    </div>
-    <div class="blog-card fade-up fade-up-d3">
-      <div class="blog-img" style="overflow:hidden"><img src="images/red-dress-sq.jpg" alt="Celeste from Animal Crossing cosplay" style="width:100%;height:180px;object-fit:cover;display:block;transition:transform 0.5s ease;"></div>
-      <div class="blog-body">
-        <span class="blog-cat">Beginner builds</span>
-        <h3 class="blog-title">Your First Foam Build: What I Wish Someone Had Told Me</h3>
-        <p class="blog-excerpt">I learned most of this the hard way so you don't have to. Featuring: three melted surfaces, one very patient heat gun, and a surprising amount of joy.</p>
-        <div class="blog-meta"><span>Mar 2025</span><span>7 min read</span></div>
-      </div>
-    </div>
-  </div>
-</section>
 
 
 
-<!-- STARDUST PICKS TEASER -->
-<section class="picks-teaser">
-  <div class="orb" style="width:260px;height:260px;background:rgba(255,186,133,0.2);top:-50px;left:5%;animation-duration:10s"></div>
-  <div class="orb" style="width:200px;height:200px;background:rgba(216,167,255,0.2);bottom:-30px;right:8%;animation-delay:-5s"></div>
-  <svg style="position:absolute;top:14%;left:20%;opacity:0.1;width:44px;pointer-events:none" viewBox="0 0 60 60" fill="none"><path d="M30 2L32 28L58 30L32 32L30 58L28 32L2 30L28 28Z" fill="#3D2B6B"/></svg>
-  <svg style="position:absolute;bottom:16%;right:22%;opacity:0.09;width:28px;pointer-events:none" viewBox="0 0 40 40" fill="none"><path d="M20 2L21.5 18.5L38 20L21.5 21.5L20 38L18.5 21.5L2 20L18.5 18.5Z" fill="#3D2B6B"/></svg>
-  <div class="picks-teaser-inner">
-    <p class="section-tag fade-up" style="justify-content:center">Get to know Mari</p>
-    <h2 class="section-title fade-up fade-up-d1" style="text-align:center">Stardust <em>Picks</em></h2>
-    <p class="picks-teaser-body fade-up fade-up-d2">My watchlist, cosplan wishlist, the games I play at 2am, and the things that make me me. No agenda, no algorithm — just a girl who loves too many things and wants to share all of them.</p>
-    <div class="picks-chips fade-up fade-up-d2">
-      <a href="stardust-picks.html" class="picks-chip">Anime &amp; Manga</a>
-      <a href="stardust-picks.html" class="picks-chip">Movies &amp; TV</a>
-      <a href="stardust-picks.html" class="picks-chip">Games</a>
-      <a href="stardust-picks.html" class="picks-chip">Cosplan Wishlist</a>
-      <a href="stardust-picks.html" class="picks-chip">About Me</a>
-    </div>
-    <a href="stardust-picks.html" class="btn-primary fade-up fade-up-d3" style="display:inline-block">See all my picks</a>
-  </div>
-</section>
 
 <!-- MOON CREW TEASER -->
 <section class="crew-teaser">
@@ -1124,7 +900,7 @@
       <ul class="footer-links">
         <li><a href="gallery.html">Portfolio</a></li>
         <li><a href="videos.html">Videos</a></li>
-        <li><a href="stardust-picks.html">About Mari</a></li>
+        <li><a href="index.html#about">About Mari</a></li>
         <li><a href="panels.html">Panels</a></li>
         <li><a href="calendar.html">Calendar</a></li>
       </ul>
@@ -1183,6 +959,29 @@
   document.querySelectorAll('.hero .fade-up').forEach((el, i) => {
     setTimeout(() => el.classList.add('visible'), 200 + i * 120);
   });
+
+  // Instagram feed preview — 6 most recent posts
+  (async function loadIgPreview() {
+    try {
+      const res = await fetch('https://feeds.behold.so/px3w5fz4qGF0YE9v4Yek');
+      if (!res.ok) return;
+      const data = await res.json();
+      const posts = (data.posts || data || [])
+        .filter(p => p.sizes?.large?.mediaUrl || p.sizes?.medium?.mediaUrl || p.thumbnailUrl)
+        .slice(0, 6);
+      if (!posts.length) return;
+      const grid = document.getElementById('ig-preview-grid');
+      grid.innerHTML = posts.map(p => {
+        const src = p.sizes?.large?.mediaUrl || p.sizes?.medium?.mediaUrl || p.thumbnailUrl;
+        const caption = (p.prunedCaption || '').replace(/</g, '&lt;');
+        const short = caption.length > 72 ? caption.slice(0, 72) + '…' : caption;
+        return `<a href="${p.permalink || 'https://www.instagram.com/moonlit.mari/'}" target="_blank" rel="noopener" class="ig-item">
+          <img src="${src}" alt="Moonlit Mari cosplay" loading="lazy">
+          <div class="ig-overlay"><span class="ig-caption">${short}</span></div>
+        </a>`;
+      }).join('');
+    } catch(e) { /* silently keep gradient placeholders */ }
+  })();
 
   // Moon Crew preview — first 3 posts from Behold feed
   (async function loadCrewPreview() {
