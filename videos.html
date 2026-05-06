@@ -140,10 +140,9 @@ footer{background:var(--deep-indigo);color:white;padding:3rem 5rem 2rem}
 <section class="videos-section">
   <div class="filter-bar">
     <button class="filter-btn active" onclick="filterVids('all',this)">All</button>
-    <button class="filter-btn" onclick="filterVids('tutorial',this)">Tutorials</button>
-    <button class="filter-btn" onclick="filterVids('wip',this)">WIP vlogs</button>
-    <button class="filter-btn" onclick="filterVids('con',this)">Convention</button>
-    <button class="filter-btn" onclick="filterVids('tips',this)">Tips & Tricks</button>
+    <button class="filter-btn" onclick="filterVids('con-vlog',this)">CON Vlogs</button>
+    <button class="filter-btn" onclick="filterVids('adventure',this)">Cosplay Adventures</button>
+    <button class="filter-btn" onclick="filterVids('build',this)">Cosplay Builds</button>
   </div>
   <div class="videos-grid" id="vgrid">
     <p style="grid-column:span 3;text-align:center;padding:3rem 0;opacity:0.5;font-family:'Cormorant Garamond',serif;font-style:italic">Loading videos…</p>
@@ -205,14 +204,13 @@ function formatDate(iso) { return new Date(iso).toLocaleString('en-US', { month:
 
 function getCategory(title, desc) {
   const t = (title + ' ' + desc).toLowerCase();
-  if (/tutorial|how.?to|beginner|step.by.step|guide/.test(t)) return 'tutorial';
-  if (/vlog|wip|progress|studio|process|making/.test(t))      return 'wip';
-  if (/con|convention|expo|dragoncon|momocon|fanime/.test(t)) return 'con';
-  if (/tips?|tricks?|hacks?|technique/.test(t))               return 'tips';
-  return 'general';
+  if (/con vlog|con diary|convention vlog|vlog|con day|day at|con with|dragoncon|momocon|fanime|awacon|awa|megacon|katsucon/.test(t)) return 'con-vlog';
+  if (/adventure|photoshoot|shoot|behind the scenes|bts|wearing|tried|debut|first time|outfit|transformation/.test(t))              return 'adventure';
+  if (/build|tutorial|how.?to|wip|progress|making|construction|sewing|foam|pattern|beginner|step.by.step|guide|craft/.test(t))      return 'build';
+  return 'adventure';
 }
 
-const CAT_LABELS = { tutorial: 'Tutorial', wip: 'WIP Vlog', con: 'Convention', tips: 'Tips & Tricks', general: 'Video' };
+const CAT_LABELS = { 'con-vlog': 'CON Vlog', adventure: 'Cosplay Adventure', build: 'Cosplay Build' };
 
 function durBadge(dur) {
   return dur ? `<span style="position:absolute;bottom:0.5rem;right:0.5rem;background:rgba(0,0,0,0.8);color:white;font-size:0.7rem;padding:0.2rem 0.45rem;border-radius:3px;font-family:'Jost',sans-serif">${esc(dur)}</span>` : '';
