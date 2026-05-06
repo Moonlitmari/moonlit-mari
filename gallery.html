@@ -84,6 +84,9 @@ footer{background:var(--deep-indigo);color:white;padding:3rem 5rem 2rem}
 .fade-up{opacity:0;transform:translateY(24px);transition:opacity 0.6s ease,transform 0.6s ease}
 .fade-up.visible{opacity:1;transform:translateY(0)}
 
+/* Remove bottom border/line from the Celeste image */
+img[alt*="celeste"],.celeste-image,.cosplay-image{border-bottom:none;outline:none;box-shadow:none;display:block}
+
 @media(max-width:900px){nav{padding:1rem 1.5rem}.nav-links{display:none}.page-hero,.gallery-section,.filter-bar{padding-left:1.5rem;padding-right:1.5rem}.masonry{columns:2}}
 @media(max-width:600px){.masonry{columns:1}}
 </style>
@@ -101,7 +104,7 @@ footer{background:var(--deep-indigo);color:white;padding:3rem 5rem 2rem}
     <li><a href="calendar.html">Calendar</a></li>
     <li><a href="links.html">Shop Links</a></li>
     <li><a href="amongst-the-stars.html">Moon Crew</a></li>
-    <li><a href="stardust-picks.html">About</a></li>
+    <li><a href="about.html">About</a></li>
     <li><a href="contact.html" class="nav-cta">Contact</a></li>
   </ul>
 </nav>
