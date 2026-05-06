@@ -204,9 +204,9 @@ function formatDate(iso) { return new Date(iso).toLocaleString('en-US', { month:
 
 function getCategory(title, desc) {
   const t = (title + ' ' + desc).toLowerCase();
-  if (/con vlog|con diary|convention vlog|vlog|con day|day at|con with|dragoncon|momocon|fanime|awacon|awa|megacon|katsucon/.test(t)) return 'con-vlog';
-  if (/adventure|photoshoot|shoot|behind the scenes|bts|wearing|tried|debut|first time|outfit|transformation/.test(t))              return 'adventure';
-  if (/build|tutorial|how.?to|wip|progress|making|construction|sewing|foam|pattern|beginner|step.by.step|guide|craft/.test(t))      return 'build';
+  if (/con vlog|con diary|convention vlog|con day|day at the con|con with|dragoncon|momocon|fanime|awacon|awa|megacon|katsucon/.test(t)) return 'con-vlog';
+  if (/shop|shopping|haul|where to|joann|fabric|ollies|fall fling|store|supplies/.test(t))                                            return 'adventure';
+  if (/build|tutorial|how.?to|wip|progress|making|construction|sewing|foam|pattern|beginner|step.by.step|guide|craft|technique/.test(t)) return 'build';
   return 'adventure';
 }
 
