@@ -523,6 +523,37 @@
   .service-link::after { content: '→'; }
 
 
+  /* STARDUST PICKS TEASER */
+  .picks-teaser {
+    padding: 7rem 5rem;
+    background: linear-gradient(135deg, #FFF0E8 0%, #FDF8FF 55%, #EDE5FF 100%);
+    position: relative;
+    overflow: hidden;
+    text-align: center;
+  }
+  .picks-teaser-inner { position: relative; z-index: 2; max-width: 680px; margin: 0 auto; }
+  .picks-teaser-body {
+    font-size: 0.95rem;
+    line-height: 1.8;
+    color: var(--indigo);
+    opacity: 0.68;
+    margin-bottom: 2rem;
+  }
+  .picks-chips { display: flex; flex-wrap: wrap; gap: 0.7rem; justify-content: center; margin-bottom: 2.5rem; }
+  .picks-chip {
+    font-size: 0.72rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 0.45rem 1.2rem;
+    border-radius: 99px;
+    border: 1px solid rgba(165,158,246,0.4);
+    background: rgba(255,255,255,0.7);
+    color: var(--indigo);
+    text-decoration: none;
+    transition: background 0.2s, border-color 0.2s;
+  }
+  .picks-chip:hover { background: var(--indigo); color: white; border-color: var(--indigo); }
+
   /* MOON CREW TEASER */
   .crew-teaser {
     padding: 7rem 5rem;
@@ -663,11 +694,12 @@
   <ul class="nav-links">
     <li><a href="gallery.html">Portfolio</a></li>
     <li><a href="videos.html">Videos</a></li>
-    <li><a href="#about">About</a></li>
+    <li><a href="stardust-picks.html">About</a></li>
     <li><a href="panels.html">Panels</a></li>
     <li><a href="calendar.html">Calendar</a></li>
     <li><a href="links.html">Shop Links</a></li>
     <li><a href="amongst-the-stars.html">Moon Crew</a></li>
+    <li><a href="stardust-picks.html">Stardust Picks</a></li>
     <li><a href="contact.html" class="nav-cta">Contact</a></li>
   </ul>
 </nav>
@@ -859,6 +891,27 @@
 
 
 
+<!-- STARDUST PICKS TEASER -->
+<section class="picks-teaser">
+  <div class="orb" style="width:260px;height:260px;background:rgba(255,186,133,0.2);top:-50px;left:5%;animation-duration:10s"></div>
+  <div class="orb" style="width:200px;height:200px;background:rgba(216,167,255,0.2);bottom:-30px;right:8%;animation-delay:-5s"></div>
+  <svg style="position:absolute;top:14%;left:20%;opacity:0.1;width:44px;pointer-events:none" viewBox="0 0 60 60" fill="none"><path d="M30 2L32 28L58 30L32 32L30 58L28 32L2 30L28 28Z" fill="#3D2B6B"/></svg>
+  <svg style="position:absolute;bottom:16%;right:22%;opacity:0.09;width:28px;pointer-events:none" viewBox="0 0 40 40" fill="none"><path d="M20 2L21.5 18.5L38 20L21.5 21.5L20 38L18.5 21.5L2 20L18.5 18.5Z" fill="#3D2B6B"/></svg>
+  <div class="picks-teaser-inner">
+    <p class="section-tag fade-up" style="justify-content:center">Get to know Mari</p>
+    <h2 class="section-title fade-up fade-up-d1" style="text-align:center">Stardust <em>Picks</em></h2>
+    <p class="picks-teaser-body fade-up fade-up-d2">My watchlist, cosplan wishlist, the games I play at 2am, and the things that make me me. No agenda, no algorithm — just a girl who loves too many things and wants to share all of them.</p>
+    <div class="picks-chips fade-up fade-up-d2">
+      <a href="stardust-picks.html" class="picks-chip">Anime &amp; Manga</a>
+      <a href="stardust-picks.html" class="picks-chip">Movies &amp; TV</a>
+      <a href="stardust-picks.html" class="picks-chip">Games</a>
+      <a href="stardust-picks.html" class="picks-chip">Cosplan Wishlist</a>
+      <a href="stardust-picks.html" class="picks-chip">About Me</a>
+    </div>
+    <a href="stardust-picks.html" class="btn-primary fade-up fade-up-d3" style="display:inline-block">See all my picks</a>
+  </div>
+</section>
+
 <!-- MOON CREW TEASER -->
 <section class="crew-teaser">
   <div class="orb" style="width:300px;height:300px;background:rgba(197,222,255,0.3);top:-60px;right:8%;animation-duration:9s"></div>
@@ -900,7 +953,7 @@
       <ul class="footer-links">
         <li><a href="gallery.html">Portfolio</a></li>
         <li><a href="videos.html">Videos</a></li>
-        <li><a href="index.html#about">About Mari</a></li>
+        <li><a href="stardust-picks.html">About Mari</a></li>
         <li><a href="panels.html">Panels</a></li>
         <li><a href="calendar.html">Calendar</a></li>
       </ul>

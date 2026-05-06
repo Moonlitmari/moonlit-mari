@@ -2,10 +2,508 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta http-equiv="refresh" content="0; url=index.html">
-<title>Redirecting — Moonlit Mari</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About & Stardust Picks — Moonlit Mari</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Dancing+Script:wght@500;700&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{--lilac:#D8A7FF;--blush:#FFC8EA;--periwinkle:#A59EF6;--apricot:#FFD6A0;--peach:#FFBA85;--rose-dusk:#F9C5D1;--moonbeam:#C5DEFF;--pale-lav:#E8E0FF;--ghost:#F5F0FF;--indigo:#3D2B6B;--deep-indigo:#2a1d4d;--cream:#FDF8FF}
+html{scroll-behavior:smooth}
+body{font-family:'Jost',sans-serif;background:var(--cream);color:var(--indigo);overflow-x:hidden;cursor:none}
+.cursor{width:28px;height:28px;position:fixed;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);transition:transform 0.1s;filter:drop-shadow(0 0 5px rgba(216,167,255,0.7))}
+.cursor-trail{width:40px;height:40px;border:1px solid rgba(165,158,246,0.3);border-radius:50%;position:fixed;pointer-events:none;z-index:9998;transform:translate(-50%,-50%);transition:transform 0.28s ease,opacity 0.3s;opacity:0.45}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:1.2rem 3rem;background:rgba(253,248,255,0.85);backdrop-filter:blur(12px);border-bottom:1px solid rgba(165,158,246,0.18)}
+.nav-logo{font-family:'Dancing Script',cursive;font-size:1.7rem;color:var(--indigo);text-decoration:none}
+.nav-logo span{color:var(--periwinkle)}
+.nav-links{display:flex;gap:1.8rem;list-style:none;align-items:center}
+.nav-links a{font-size:0.72rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--indigo);text-decoration:none;opacity:0.6;transition:opacity 0.2s}
+.nav-links a:hover,.nav-links a.active{opacity:1}
+.nav-cta{border:1px solid var(--periwinkle);padding:0.45rem 1.1rem;border-radius:99px;opacity:1!important;transition:background 0.2s,color 0.2s!important}
+.nav-cta:hover{background:var(--periwinkle)!important;color:white!important}
+.orb{position:absolute;border-radius:50%;filter:blur(60px);pointer-events:none;animation:floatOrb 8s ease-in-out infinite alternate}
+.orb-1{width:350px;height:350px;background:rgba(216,167,255,0.3);top:-80px;right:5%}
+.orb-2{width:200px;height:200px;background:rgba(255,200,234,0.35);bottom:-40px;left:10%;animation-delay:-3s}
+@keyframes floatOrb{from{transform:translate(0,0)}to{transform:translate(15px,20px)}}
+.page-hero{padding:9rem 5rem 5rem;background:linear-gradient(135deg,#F5F0FF,#EDE5FF 40%,#FFE8F5 100%);position:relative;overflow:visible}
+.page-eyebrow{font-size:0.7rem;letter-spacing:0.22em;text-transform:uppercase;color:var(--periwinkle);margin-bottom:1rem;display:flex;align-items:center;gap:0.6rem}
+.page-eyebrow::before{content:'';width:28px;height:1px;background:var(--periwinkle);display:inline-block}
+.page-title{font-family:'Cormorant Garamond',serif;font-size:clamp(3rem,5vw,4.5rem);font-weight:300;line-height:1.05;color:var(--deep-indigo);margin-bottom:1rem}
+.page-title em{font-style:italic;color:var(--periwinkle)}
+.page-sub{font-size:0.95rem;line-height:1.8;color:var(--indigo);opacity:0.65;max-width:580px}
+
+/* TABS */
+.tab-nav{background:white;border-bottom:1px solid rgba(165,158,246,0.15);padding:0 5rem;display:flex;position:sticky;top:72px;z-index:50;overflow-x:auto}
+.tab-btn{font-size:0.7rem;letter-spacing:0.12em;text-transform:uppercase;padding:1.1rem 1.4rem;border:none;background:transparent;color:var(--indigo);opacity:0.45;cursor:none;transition:all 0.2s;border-bottom:2px solid transparent;white-space:nowrap;font-family:'Jost',sans-serif}
+.tab-btn:hover{opacity:0.8}
+.tab-btn.active{opacity:1;border-bottom-color:var(--periwinkle)}
+.picks-section{padding:5rem;display:none}
+.picks-section.active{display:block}
+.section-intro{max-width:640px;margin-bottom:3rem}
+.section-tag{font-size:0.65rem;letter-spacing:0.22em;text-transform:uppercase;color:var(--periwinkle);margin-bottom:0.8rem;display:flex;align-items:center;gap:0.6rem}
+.section-tag::before{content:'';width:20px;height:1px;background:var(--periwinkle);display:inline-block}
+.section-title{font-family:'Cormorant Garamond',serif;font-size:clamp(1.8rem,3vw,2.6rem);font-weight:300;color:var(--deep-indigo);margin-bottom:1rem}
+.section-title em{font-style:italic;color:var(--periwinkle)}
+.section-intro p{font-size:0.9rem;line-height:1.85;color:var(--indigo);opacity:0.68}
+
+/* ABOUT MARI TAB */
+.about-split{display:grid;grid-template-columns:320px 1fr;gap:4rem;align-items:start;margin-bottom:4rem}
+.about-photo-wrap{border-radius:24px;overflow:hidden;box-shadow:0 24px 60px rgba(61,43,107,0.14);position:relative}
+.about-photo-wrap img{width:100%;display:block;aspect-ratio:3/4;object-fit:cover;object-position:top}
+.about-photo-badge{position:absolute;bottom:-12px;right:-12px;background:var(--indigo);color:white;border-radius:14px;padding:0.9rem 1.2rem;box-shadow:0 8px 28px rgba(61,43,107,0.25)}
+.badge-num{font-family:'Cormorant Garamond',serif;font-size:2rem;font-weight:300;display:block;line-height:1}
+.badge-label{font-size:0.6rem;letter-spacing:0.14em;text-transform:uppercase;opacity:0.6;margin-top:0.2rem;display:block}
+.about-bio-title{font-family:'Cormorant Garamond',serif;font-size:clamp(2rem,3vw,2.8rem);font-weight:300;color:var(--deep-indigo);margin-bottom:1.2rem;line-height:1.1}
+.about-bio-title em{font-style:italic;color:var(--periwinkle)}
+.about-body{font-size:0.92rem;line-height:1.85;color:var(--indigo);opacity:0.72;margin-bottom:1rem}
+.craft-tags{display:flex;flex-wrap:wrap;gap:0.5rem;margin-top:1.2rem}
+.craft-tag{font-size:0.68rem;letter-spacing:0.1em;text-transform:uppercase;border:1px solid rgba(165,158,246,0.4);color:var(--indigo);padding:0.3rem 0.9rem;border-radius:99px;background:white}
+
+/* PERSONAL CARDS (About tab) */
+.about-cards-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1.2rem;margin-bottom:3.5rem}
+.about-card{border-radius:20px;padding:2rem;border:1px solid rgba(165,158,246,0.15)}
+.about-card:nth-child(1){background:linear-gradient(135deg,#FFF0E8,#FFDDD0)}
+.about-card:nth-child(2){background:linear-gradient(135deg,#F0F8FF,#DFF0FF)}
+.about-card:nth-child(3){background:linear-gradient(135deg,#F5F0FF,#EDE5FF)}
+.about-card:nth-child(4){background:linear-gradient(135deg,#FFF5F0,#FFE8EA)}
+.about-card-title{font-family:'Cormorant Garamond',serif;font-size:1.2rem;color:var(--deep-indigo);margin-bottom:0.8rem}
+.about-card-title em{font-style:italic;color:var(--periwinkle)}
+.about-card p{font-size:0.88rem;line-height:1.8;color:var(--indigo);opacity:0.72}
+.color-chips{display:flex;flex-wrap:wrap;gap:0.6rem;margin-top:1rem}
+.chip{width:32px;height:32px;border-radius:50%;border:2px solid white;box-shadow:0 2px 8px rgba(0,0,0,0.1)}
+
+/* TIMELINE */
+.timeline-wrap{margin-bottom:3.5rem}
+.timeline-head{margin-bottom:2rem}
+.timeline{position:relative;margin-top:1.5rem}
+.timeline::before{content:'';position:absolute;left:50%;top:0;bottom:0;width:1px;background:linear-gradient(to bottom,transparent,rgba(165,158,246,0.4) 10%,rgba(165,158,246,0.4) 90%,transparent)}
+.tl-item{display:grid;grid-template-columns:1fr 60px 1fr;gap:1rem;margin-bottom:2.5rem;align-items:start}
+.tl-item:nth-child(odd) .tl-content{grid-column:1;text-align:right}
+.tl-item:nth-child(even) .tl-content{grid-column:3;text-align:left}
+.tl-dot{grid-column:2;width:40px;height:40px;border-radius:50%;background:var(--ghost);border:2px solid var(--periwinkle);display:flex;align-items:center;justify-content:center;font-size:1rem;flex-shrink:0;margin:0 auto;position:relative;z-index:2}
+.tl-content{border-radius:16px;padding:1.4rem;border:1px solid rgba(165,158,246,0.18)}
+.tl-item:nth-child(1) .tl-content{background:linear-gradient(135deg,#F5F0FF,#EDE5FF)}
+.tl-item:nth-child(2) .tl-content{background:linear-gradient(135deg,#FFF0F5,#FFE4EE)}
+.tl-item:nth-child(3) .tl-content{background:linear-gradient(135deg,#F0F8FF,#E4F4FF)}
+.tl-item:nth-child(4) .tl-content{background:linear-gradient(135deg,#FFF8F0,#FFF0E0)}
+.tl-item:nth-child(5) .tl-content{background:linear-gradient(135deg,#F0FFF8,#E0FFF0)}
+.tl-year{font-size:0.65rem;letter-spacing:0.16em;text-transform:uppercase;color:var(--periwinkle);margin-bottom:0.35rem}
+.tl-title{font-family:'Cormorant Garamond',serif;font-size:1.15rem;color:var(--deep-indigo);margin-bottom:0.4rem}
+.tl-text{font-size:0.82rem;line-height:1.7;color:var(--indigo);opacity:0.65}
+
+/* FAQ */
+.faq-wrap{margin-bottom:2rem}
+.faq-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-top:1.5rem}
+.faq-item{border-radius:16px;padding:1.6rem;border:1px solid rgba(165,158,246,0.18);transition:box-shadow 0.2s}
+.faq-item:hover{box-shadow:0 8px 28px rgba(61,43,107,0.08)}
+.faq-item:nth-child(6n+1){background:linear-gradient(135deg,#F5F0FF,#EDE5FF)}
+.faq-item:nth-child(6n+2){background:linear-gradient(135deg,#FFF0F5,#FFE8F0)}
+.faq-item:nth-child(6n+3){background:linear-gradient(135deg,#F0F8FF,#E4EEFF)}
+.faq-item:nth-child(6n+4){background:linear-gradient(135deg,#FFF8F0,#FFF0E0)}
+.faq-item:nth-child(6n+5){background:linear-gradient(135deg,#FFF0F8,#FFE4EE)}
+.faq-item:nth-child(6n+6){background:linear-gradient(135deg,#F0FFF8,#E4FFF0)}
+.faq-q{font-family:'Cormorant Garamond',serif;font-size:1.1rem;color:var(--deep-indigo);margin-bottom:0.6rem}
+.faq-a{font-size:0.85rem;line-height:1.75;color:var(--indigo);opacity:0.7}
+
+/* LIST GRID CARDS (Anime, Movies, Games) — colorful */
+.list-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-bottom:3rem}
+.list-item{border-radius:14px;padding:1.3rem 1.5rem;border:1px solid transparent;transition:transform 0.2s,box-shadow 0.2s}
+.list-item:hover{transform:translateY(-3px);box-shadow:0 10px 28px rgba(61,43,107,0.1)}
+.list-item:nth-child(7n+1){background:linear-gradient(135deg,#F0EBFF,#E4DAFF);border-color:rgba(165,158,246,0.25)}
+.list-item:nth-child(7n+2){background:linear-gradient(135deg,#FFF0F5,#FFE0EC);border-color:rgba(255,200,234,0.3)}
+.list-item:nth-child(7n+3){background:linear-gradient(135deg,#EBF4FF,#D9ECFF);border-color:rgba(197,222,255,0.3)}
+.list-item:nth-child(7n+4){background:linear-gradient(135deg,#FFF8EC,#FFEFD4);border-color:rgba(255,214,160,0.3)}
+.list-item:nth-child(7n+5){background:linear-gradient(135deg,#FFF0F0,#FFE4E4);border-color:rgba(249,197,209,0.3)}
+.list-item:nth-child(7n+6){background:linear-gradient(135deg,#ECFFF8,#D9FFF0);border-color:rgba(165,230,200,0.3)}
+.list-item:nth-child(7n+7){background:linear-gradient(135deg,#FFFAEC,#FFF4D4);border-color:rgba(255,230,160,0.3)}
+.list-item-cat{font-size:0.58rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--periwinkle);margin-bottom:0.3rem;display:block}
+.list-item-name{font-family:'Cormorant Garamond',serif;font-size:1.1rem;color:var(--deep-indigo);line-height:1.3;margin-bottom:0.3rem}
+.list-item-note{font-size:0.78rem;line-height:1.6;color:var(--indigo);opacity:0.62}
+
+/* PADME SPOTLIGHT */
+.padme-spotlight{grid-column:span 3;background:linear-gradient(135deg,var(--deep-indigo) 0%,#4a1580 50%,#2a1d4d 100%);border-radius:20px;padding:2rem 2.5rem;display:grid;grid-template-columns:auto 1fr;gap:2rem;align-items:center;border:1px solid rgba(216,167,255,0.2);position:relative;overflow:hidden}
+
+/* COSPLAN */
+.cosplan-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1rem;margin-bottom:3rem}
+.cosplan-item{border-radius:16px;padding:1.4rem 1.6rem;border:1px solid transparent;display:grid;grid-template-columns:52px 1fr;gap:1.2rem;align-items:center;transition:transform 0.2s,box-shadow 0.2s}
+.cosplan-item:hover{transform:translateY(-3px);box-shadow:0 10px 28px rgba(61,43,107,0.1)}
+.cosplan-item:nth-child(6n+1){background:linear-gradient(135deg,#F0EBFF,#E4DAFF);border-color:rgba(165,158,246,0.25)}
+.cosplan-item:nth-child(6n+2){background:linear-gradient(135deg,#FFF0F5,#FFE0EC);border-color:rgba(255,200,234,0.25)}
+.cosplan-item:nth-child(6n+3){background:linear-gradient(135deg,#EBF4FF,#D9ECFF);border-color:rgba(197,222,255,0.25)}
+.cosplan-item:nth-child(6n+4){background:linear-gradient(135deg,#FFF8EC,#FFEFD4);border-color:rgba(255,214,160,0.25)}
+.cosplan-item:nth-child(6n+5){background:linear-gradient(135deg,#FFF0F0,#FFE4E4);border-color:rgba(249,197,209,0.25)}
+.cosplan-item:nth-child(6n+6){background:linear-gradient(135deg,#ECFFF8,#D9FFF0);border-color:rgba(165,230,200,0.25)}
+.cosplan-num{font-family:'Cormorant Garamond',serif;font-size:2.2rem;font-weight:300;color:var(--lilac);line-height:1;text-align:center}
+.cosplan-status{font-size:0.58rem;letter-spacing:0.12em;text-transform:uppercase;padding:0.2rem 0.6rem;border-radius:99px;display:inline-block;margin-bottom:0.35rem}
+.status-dream{background:var(--pale-lav);color:var(--indigo)}
+.status-planning{background:var(--moonbeam);color:var(--deep-indigo)}
+.status-active{background:linear-gradient(90deg,var(--lilac),var(--periwinkle));color:white}
+.cosplan-name{font-family:'Cormorant Garamond',serif;font-size:1.1rem;color:var(--deep-indigo);margin-bottom:0.15rem}
+.cosplan-from{font-size:0.75rem;color:var(--indigo);opacity:0.5}
+
+/* SUGGESTIONS */
+.comment-section{background:var(--indigo);padding:5rem;position:relative;overflow:hidden}
+.comment-bg{position:absolute;inset:0;background:radial-gradient(ellipse at 80% 20%,rgba(165,158,246,0.15),transparent 60%)}
+.comment-inner{position:relative;z-index:2;max-width:680px;margin:0 auto;text-align:center}
+.comment-eyebrow{font-size:0.68rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--lilac);margin-bottom:1rem;display:flex;align-items:center;justify-content:center;gap:0.5rem}
+.comment-eyebrow::before,.comment-eyebrow::after{content:'';width:20px;height:1px;background:var(--lilac);display:inline-block}
+.comment-title{font-family:'Cormorant Garamond',serif;font-size:clamp(1.8rem,3vw,2.8rem);font-weight:300;color:white;margin-bottom:1rem;line-height:1.2}
+.comment-title em{font-style:italic;color:var(--lilac)}
+.comment-sub{font-size:0.9rem;color:rgba(255,255,255,0.5);line-height:1.75;margin-bottom:2.5rem}
+.c-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1rem}
+.c-input,.c-textarea{width:100%;background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.12);border-radius:12px;padding:0.85rem 1.1rem;color:white;font-family:'Jost',sans-serif;font-size:0.88rem;outline:none;transition:border-color 0.2s;margin-bottom:1rem}
+.c-input::placeholder,.c-textarea::placeholder{color:rgba(255,255,255,0.3)}
+.c-input:focus,.c-textarea:focus{border-color:var(--lilac)}
+.c-textarea{min-height:120px;resize:vertical}
+.c-type-label{font-size:0.65rem;letter-spacing:0.12em;text-transform:uppercase;color:rgba(255,255,255,0.4);margin-bottom:0.6rem;display:block;text-align:left}
+.c-types{display:flex;flex-wrap:wrap;gap:0.5rem;margin-bottom:1rem;justify-content:flex-start}
+.c-type{font-size:0.7rem;letter-spacing:0.08em;padding:0.35rem 0.9rem;border-radius:99px;border:1px solid rgba(255,255,255,0.15);background:transparent;color:rgba(255,255,255,0.5);cursor:none;transition:all 0.2s;font-family:'Jost',sans-serif}
+.c-type:hover,.c-type.selected{background:rgba(216,167,255,0.2);border-color:var(--lilac);color:white}
+.c-submit{width:100%;background:var(--lilac);color:var(--deep-indigo);border:none;padding:0.95rem;border-radius:99px;font-family:'Jost',sans-serif;font-size:0.8rem;letter-spacing:0.14em;text-transform:uppercase;cursor:none;transition:background 0.2s,transform 0.2s}
+.c-submit:hover{background:white;transform:translateY(-2px)}
+.c-success{display:none;padding:2rem;background:rgba(255,255,255,0.06);border-radius:16px;border:1px solid rgba(255,255,255,0.1)}
+.c-success-title{font-family:'Cormorant Garamond',serif;font-size:1.6rem;color:white;margin-bottom:0.5rem}
+.c-success-text{font-size:0.88rem;color:rgba(255,255,255,0.55);line-height:1.7}
+
+footer{background:var(--deep-indigo);color:white;padding:3rem 5rem 2rem}
+.footer-bottom{display:flex;justify-content:space-between;align-items:center;font-size:0.75rem;color:rgba(255,255,255,0.25);padding-top:2rem;border-top:1px solid rgba(255,255,255,0.08)}
+.footer-logo{font-family:'Dancing Script',cursive;font-size:1.5rem;color:white;text-decoration:none;margin-bottom:0.5rem;display:inline-block}
+.footer-logo span{color:var(--lilac)}
+.social-links{display:flex;gap:0.7rem;margin-top:1rem}
+.social-link{width:38px;height:38px;border:1px solid rgba(255,255,255,0.12);border-radius:50%;display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,0.5);text-decoration:none;transition:border-color 0.2s,color 0.2s}
+.social-link:hover{border-color:var(--lilac);color:var(--lilac)}
+
+.fade-up{opacity:0;transform:translateY(24px);transition:opacity 0.6s ease,transform 0.6s ease}
+.fade-up.visible{opacity:1;transform:translateY(0)}
+.d1{transition-delay:0.1s}.d2{transition-delay:0.2s}.d3{transition-delay:0.3s}
+
+@media(max-width:900px){nav{padding:1rem 1.5rem}.nav-links{display:none}.page-hero,.picks-section,.comment-section{padding-left:1.5rem;padding-right:1.5rem}.tab-nav{padding:0 1rem}.list-grid{grid-template-columns:1fr 1fr}.cosplan-grid,.faq-grid,.about-cards-grid{grid-template-columns:1fr}.c-row{grid-template-columns:1fr}.about-split{grid-template-columns:1fr}.timeline::before{left:20px}.tl-item{grid-template-columns:40px 1fr}.tl-item:nth-child(odd) .tl-content,.tl-item:nth-child(even) .tl-content{grid-column:2;text-align:left}.tl-dot{grid-column:1}.padme-spotlight{grid-column:span 2}footer{padding:2rem 1.5rem}}
+@media(max-width:550px){.list-grid{grid-template-columns:1fr}.padme-spotlight{grid-column:span 1;grid-template-columns:1fr}}
+</style>
 </head>
 <body>
-<p>Redirecting to <a href="index.html">Moonlit Mari</a>…</p>
+<div class="cursor" id="cursor"><svg viewBox="0 0 24 24" fill="none"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" fill="#D8A7FF" stroke="#A59EF6" stroke-width="0.5"/></svg></div>
+<div class="cursor-trail" id="cursorTrail"></div>
+<nav>
+  <a href="index.html" class="nav-logo">Moonlit <span>Mari</span></a>
+  <ul class="nav-links">
+    <li><a href="gallery.html">Portfolio</a></li>
+    <li><a href="videos.html">Videos</a></li>
+    <li><a href="stardust-picks.html">About</a></li>
+    <li><a href="panels.html">Panels</a></li>
+    <li><a href="calendar.html">Calendar</a></li>
+    <li><a href="links.html">Shop Links</a></li>
+    <li><a href="amongst-the-stars.html">Moon Crew</a></li>
+    <li><a href="stardust-picks.html" class="active">Stardust Picks</a></li>
+    <li><a href="contact.html" class="nav-cta">Contact</a></li>
+  </ul>
+</nav>
+
+<section class="page-hero">
+  <div class="orb orb-1"></div>
+  <div class="orb orb-2"></div>
+  <p class="page-eyebrow fade-up">Get to know Mari</p>
+  <h1 class="page-title fade-up">Stardust <em>Picks</em></h1>
+  <p class="page-sub fade-up">Who I am, what I love, and everything in between. My watchlist, cosplan wishlist, the games I play at 2am, and the random details that make me me. No agenda, no algorithm — just a girl who loves too many things and wants to share all of them. Drop a suggestion at the bottom!</p>
+</section>
+
+<div class="tab-nav">
+  <button class="tab-btn active" onclick="switchTab('about',this)">About Mari</button>
+  <button class="tab-btn" onclick="switchTab('anime',this)">Anime &amp; Manga</button>
+  <button class="tab-btn" onclick="switchTab('movies',this)">Movies &amp; TV</button>
+  <button class="tab-btn" onclick="switchTab('games',this)">Games</button>
+  <button class="tab-btn" onclick="switchTab('cosplan',this)">Cosplan Wishlist</button>
+</div>
+
+<!-- ABOUT MARI -->
+<section class="picks-section active" id="tab-about" style="background:white">
+  <div class="about-split fade-up">
+    <div>
+      <div class="about-photo-wrap">
+        <img src="images/red-dress-port.jpg" alt="Mari in red cosplay dress among tulips">
+        <div class="about-photo-badge">
+          <span class="badge-num">7+</span>
+          <span class="badge-label">Years cosplaying</span>
+        </div>
+      </div>
+    </div>
+    <div>
+      <p class="section-tag">The maker behind the magic</p>
+      <h2 class="about-bio-title">Hello, I'm <em>Mari</em></h2>
+      <p class="about-body">I'm a self-taught cosplayer, former theatre kid, con-going dreamer, and beginner/intermediate cosplayer who stumbled into this craft and never looked back. I'm not a professional. I make mistakes on camera and off. I hot-glue my fingers, prick myself with the needles, and always seem to be reaching toward a seam ripper more than once during every project.</p>
+      <p class="about-body">I want this space to be for anyone who's ever looked at a cosplay and thought "I could never do that." Quit lying to yourself, because you totally can. You just need a starting point and a crew that roots for you. Consider yourself a part of the crew, stardust! We are here to cheer you on every step of the journey.</p>
+      <p class="about-body">When I'm not sewing, you'll find me at conventions, running panels, playing cozy games at midnight, or taste-testing new teas while watching the moon through my studio window.</p>
+      <div class="craft-tags">
+        <span class="craft-tag">Theatre kid energy</span>
+        <span class="craft-tag">Beginner friendly</span>
+        <span class="craft-tag">Storytelling through craft</span>
+        <span class="craft-tag">Community builder</span>
+        <span class="craft-tag">Inclusive space</span>
+        <span class="craft-tag">Con adventures</span>
+        <span class="craft-tag">Moon Crew</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-intro fade-up" style="margin-top:1rem">
+    <p class="section-tag">The random details</p>
+    <h3 class="section-title">A little more <em>about me</em></h3>
+    <p>No cosplay content here. Just the things that make me me — food opinions held with great conviction, color feelings, and the general chaos of being Mari.</p>
+  </div>
+  <div class="about-cards-grid">
+    <div class="about-card fade-up d1">
+      <p class="about-card-title">I am a <em>soup person</em></p>
+      <p>Despite what some people apparently believe, I am not a picky eater — I just have very strong opinions. And my strongest opinion is that soup is one of the greatest foods on this earth. Sopa de Pollo at every Mexican restaurant, ramen, hot pot, Thai coconut shrimp soup, corn soup, Zuppa Toscana... I am a soup wench and I have the shirt to prove it.</p>
+      <br><p>Outside of soup: salmon salad, cajun shrimp tacos, classic street tacos with those crispy fresh onions, and an excellent chicken tender. Taco Bell saw me through high school and college and I will not abandon it now. Also Pita Mediterranean's chicken shawarma is genuinely life-changing and the greek fries are the best fries.</p>
+    </div>
+    <div class="about-card fade-up d2">
+      <p class="about-card-title">My <em>snack lineup</em></p>
+      <p>If you come to my studio you might find: popcorn with extra butter, Chocolate Churro Turtle Chips (if you know you know and if you don't please find them immediately), feta dip with Ritz Thins, chocolate covered peanuts, or the little unwrapped Kit Kat snack bags because I love them specifically in that format and I will not explain why.</p>
+      <br><p>Also pickles. Kimchi. Pickled radish. I am a fermented foods advocate and I stand firmly by this position.</p>
+    </div>
+    <div class="about-card fade-up d1">
+      <p class="about-card-title">My <em>favorite color</em> &amp; style</p>
+      <p>Lilac purple — which, if you have looked at literally any part of this website, will come as absolutely zero surprise. But truly I love all pastels and bright colors. If it is cheerful and soft I am probably already interested.</p>
+      <br><p>My style has evolved a lot. I used to be very preppy and vintage coded. Now I live in lounge wear, a good pair of jeans, and graphic tees. Theatre kid to cozy gremlin is a completely natural evolution and I have fully embraced it.</p>
+      <div class="color-chips">
+        <div class="chip" style="background:#D8A7FF" title="Lilac"></div>
+        <div class="chip" style="background:#FFC8EA" title="Blush"></div>
+        <div class="chip" style="background:#A59EF6" title="Periwinkle"></div>
+        <div class="chip" style="background:#C5DEFF" title="Moonbeam"></div>
+        <div class="chip" style="background:#FFD6A0" title="Apricot"></div>
+        <div class="chip" style="background:#F9C5D1" title="Rose dusk"></div>
+      </div>
+    </div>
+    <div class="about-card fade-up d2">
+      <p class="about-card-title">Theatre kid <em>to cosplayer</em></p>
+      <p>Every costume I make is still, at its core, a performance. I never actually stopped being a theatre kid — I just found a different stage. The convention floor is my stage now and honestly? The cosplay audience is just as enthusiastic as any theatre crowd and significantly more likely to quote Star Wars at me, which I consider a genuine upgrade.</p>
+      <br><p>If you were also a theatre kid: hi, welcome, you are going to love it here. Pull up a chair. The sewing machine is already warm.</p>
+    </div>
+  </div>
+
+  <div class="timeline-wrap fade-up">
+    <div class="timeline-head">
+      <p class="section-tag">The origin story</p>
+      <h3 class="section-title">How it all <em>began</em></h3>
+    </div>
+    <div class="timeline">
+      <div class="tl-item fade-up">
+        <div class="tl-content"><p class="tl-year">2017</p><p class="tl-title">First convention</p><p class="tl-text">Walked into my first anime convention in a store-bought costume and immediately knew I needed to make my own. Bought a glue gun that same week.</p></div>
+        <div class="tl-dot">✦</div>
+        <div></div>
+      </div>
+      <div class="tl-item fade-up">
+        <div></div>
+        <div class="tl-dot">🌙</div>
+        <div class="tl-content"><p class="tl-year">2018</p><p class="tl-title">First handmade build</p><p class="tl-text">Completed my first fully handmade costume — foam armor held together with prayer and contact cement. Won a beginner's craftsmanship award. Cried happy tears.</p></div>
+      </div>
+      <div class="tl-item fade-up">
+        <div class="tl-content"><p class="tl-year">2020</p><p class="tl-title">Started sharing online</p><p class="tl-text">Pandemic gave me time to document my process. Posted my first tutorial. The response was overwhelming and deeply humbling.</p></div>
+        <div class="tl-dot">⭐</div>
+        <div></div>
+      </div>
+      <div class="tl-item fade-up">
+        <div></div>
+        <div class="tl-dot">🎭</div>
+        <div class="tl-content"><p class="tl-year">2022</p><p class="tl-title">First convention panel</p><p class="tl-text">Was invited to run my first panel on beginner foam armor. Shook for the entire hour. The room was full and asked the best questions.</p></div>
+      </div>
+      <div class="tl-item fade-up">
+        <div class="tl-content"><p class="tl-year">2024</p><p class="tl-title">Moonlit Mari is born</p><p class="tl-text">Launched this site, the Moon Crew community, and officially became a full-time cosplay creator. The dream is very much alive under the moonlight.</p></div>
+        <div class="tl-dot">🌸</div>
+        <div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="faq-wrap fade-up">
+    <p class="section-tag">You asked, I answered</p>
+    <h3 class="section-title">Frequently asked <em>things</em></h3>
+    <div class="faq-grid">
+      <div class="faq-item fade-up d1"><p class="faq-q">Are you self-taught?</p><p class="faq-a">100%! No formal training — just YouTube rabbit holes, library books, and a lot of ruined fabric. Everything I know I learned by doing (and undoing).</p></div>
+      <div class="faq-item fade-up d2"><p class="faq-q">How long does a costume take?</p><p class="faq-a">Simple builds: 2–3 weeks. Complex armor: 2–4 months. That enormous dragon build from last year? Seven months and approximately zero sleep.</p></div>
+      <div class="faq-item fade-up d1"><p class="faq-q">Do you take commissions?</p><p class="faq-a">Not at this time! I make everything for myself and for the love of the craft. Maybe one day — but for now I'm just here to share the journey.</p></div>
+      <div class="faq-item fade-up d2"><p class="faq-q">What's your setup like?</p><p class="faq-a">A dedicated craft room with a cutting table, two sewing machines, a heat gun station, and a shelf of reference art that I may have a problem with.</p></div>
+      <div class="faq-item fade-up d1"><p class="faq-q">Can I use your tutorials commercially?</p><p class="faq-a">Personal use is always free. For commercial use of my patterns or techniques, please reach out via the contact page to discuss licensing.</p></div>
+      <div class="faq-item fade-up d2"><p class="faq-q">How can I support you?</p><p class="faq-a">Subscribe on YouTube, follow along on Instagram and TikTok, or just share my content with someone who loves cosplay. That means the world to me.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ANIME -->
+<section class="picks-section" id="tab-anime" style="background:var(--ghost)">
+  <div class="section-intro fade-up">
+    <p class="section-tag">The ones that live in my head rent-free</p>
+    <h2 class="section-title">Anime <em>&amp; Manga</em></h2>
+    <p>Sailor Moon started it all and I will die on that hill. Here is the full chaotic list of everything I love, am currently watching, or have been "about to start" for approximately one to seven years.</p>
+  </div>
+  <div class="list-grid">
+    <div class="list-item fade-up d1"><span class="list-item-cat">All-time favorite</span><p class="list-item-name">Sailor Moon</p><p class="list-item-note">90s original and Eternal. The one that started everything. Usagi Tsukino is my emotional support fictional character and I will not elaborate further.</p></div>
+    <div class="list-item fade-up d2"><span class="list-item-cat">Makes me cry every time</span><p class="list-item-name">Fruits Basket</p><p class="list-item-note">I am not emotionally stable enough for this show and yet I keep coming back. Tohru Honda is the most genuinely pure soul in all of fiction.</p></div>
+    <div class="list-item fade-up d3"><span class="list-item-cat">Comfort anime</span><p class="list-item-name">Snow White with the Red Hair</p><p class="list-item-note">Cozy, beautiful, and genuinely wholesome. I watch this when I need everything to feel okay and it always works.</p></div>
+    <div class="list-item fade-up d1"><span class="list-item-cat">Criminally underrated</span><p class="list-item-name">Yona of the Dawn</p><p class="list-item-note">A princess who grows a spine and an army. The character development is unmatched and it needs more seasons immediately.</p></div>
+    <div class="list-item fade-up d2"><span class="list-item-cat">Currently reading</span><p class="list-item-name">Tamon's B-Side</p><p class="list-item-note">Music, slow burn, feelings — my exact brand of manga. I am invested beyond what is probably reasonable.</p></div>
+    <div class="list-item fade-up d3"><span class="list-item-cat">Obsessed</span><p class="list-item-name">Apothecary Diaries</p><p class="list-item-note">Maomao is a legend. The mystery, the court drama, the herbal medicine deep dives — hooked from episode one and never recovered.</p></div>
+    <div class="list-item fade-up d1"><span class="list-item-cat">Currently watching</span><p class="list-item-name">Frieren: Beyond Journey's End</p><p class="list-item-note">I was not prepared. Beautiful and devastating in equal measure. Also she is absolutely on my cosplan — no further questions.</p></div>
+    <div class="list-item fade-up d2"><span class="list-item-cat">Cosplayer required viewing</span><p class="list-item-name">My Dress-Up Darling</p><p class="list-item-note">A show about cosplay that actually gets cosplay right. Marin Kitagawa is a gift to this earth. I cried at the craftsmanship scenes. No shame.</p></div>
+    <div class="list-item fade-up d3"><span class="list-item-cat">Comfort rewatch</span><p class="list-item-name">Fairy Tail</p><p class="list-item-note">Chaotic, loud, found family in its purest form. I know it's not perfect. I love it anyway. Erza Scarlet is everything I aspire to be.</p></div>
+    <div class="list-item fade-up d1"><span class="list-item-cat">So soft</span><p class="list-item-name">A Condition Called Love</p><p class="list-item-note">Genuinely the sweetest thing I've watched recently. Warm and gentle and made me want to be a kinder person.</p></div>
+    <div class="list-item fade-up d2"><span class="list-item-cat">Made me feel seen</span><p class="list-item-name">A Sign of Affection</p><p class="list-item-note">Beautiful art, beautiful story, beautiful representation. Yuki is one of my favorite protagonists in recent memory.</p></div>
+    <div class="list-item fade-up d3"><span class="list-item-cat">Sports anime converted me</span><p class="list-item-name">Haikyu!!</p><p class="list-item-note">I don't care about volleyball in real life. I care deeply about these fictional volleyball boys and I have absolutely no regrets about this.</p></div>
+    <div class="list-item fade-up d1"><span class="list-item-cat">Underdog energy</span><p class="list-item-name">The Rising of the Shield Hero</p><p class="list-item-note">Started it for the isekai vibes, stayed for Raphtalia. She is precious and must be protected at all costs always.</p></div>
+    <div class="list-item fade-up d2"><span class="list-item-cat">Chaos goddess behavior</span><p class="list-item-name">BOFURI</p><p class="list-item-note">A girl who maxes out her defense and accidentally becomes terrifying. Maple is my spirit animal. She is also very much on my cosplan.</p></div>
+    <div class="list-item fade-up d3"><span class="list-item-cat">Hidden gem</span><p class="list-item-name">Secrets of a Silent Witch</p><p class="list-item-note">Monica is an introvert icon and a magical genius and I am rooting for her with my entire chest.</p></div>
+    <div class="list-item fade-up d1"><span class="list-item-cat">Comfort villain era</span><p class="list-item-name">My Next Life as a Villainess</p><p class="list-item-note">Catarina accidentally befriending everyone instead of becoming the villain she was supposed to be is the content I didn't know I needed.</p></div>
+    <div class="list-item fade-up d2"><span class="list-item-cat">The eternal list item</span><p class="list-item-name">Fullmetal Alchemist: Brotherhood</p><p class="list-item-note">A classic will forever be on my list. I love Ed and Winry. Talk about an emotional rollercoaster.</p></div>
+    <div class="list-item fade-up d3"><span class="list-item-cat">Classic era</span><p class="list-item-name">Sword Art Online</p><p class="list-item-note">It got me into gaming anime and I'll always have a soft spot for it. Asuna deserved significantly better in season 2 and that is simply a fact.</p></div>
+    <div class="list-item fade-up d1"><span class="list-item-cat">Wildly unhinged (compliment)</span><p class="list-item-name">Dan Da Dan</p><p class="list-item-note">Aliens and ghosts and a romance that makes no sense and somehow works perfectly. I was not prepared and I loved every second of it.</p></div>
+    <div class="list-item fade-up d2"><span class="list-item-cat">Visually unfair</span><p class="list-item-name">Demon Slayer</p><p class="list-item-note">The animation is genuinely not fair. Nezuko is a treasure. The Hashira are completely unhinged and I mean that with love.</p></div>
+    <div class="list-item fade-up d3"><span class="list-item-cat">Lives in my head</span><p class="list-item-name">Dungeon Meshi</p><p class="list-item-note">Food. Fantasy. Found family. Every recipe in this show makes me want to bust out my apron.</p></div>
+    <div class="list-item fade-up d1"><span class="list-item-cat">So gentle and good</span><p class="list-item-name">A Fragrant Flower Blooms with Dignity</p><p class="list-item-note">Two kids from rival schools just trying their best. Clean, sweet, and exactly what I needed when I found it.</p></div>
+  </div>
+</section>
+
+<!-- MOVIES & TV -->
+<section class="picks-section" id="tab-movies" style="background:white">
+  <div class="section-intro fade-up">
+    <p class="section-tag">Live action, animated, and everything between</p>
+    <h2 class="section-title">Movies <em>&amp; TV</em></h2>
+    <p>Fandoms are not to be taken lightly. These are the shows and films that have genuinely shaped who I am. The Muppet Christmas Carol is the best Christmas movie ever made and I will not be taking questions.</p>
+  </div>
+  <div class="list-grid">
+    <div class="list-item fade-up d1"><span class="list-item-cat">A whole lifestyle</span><p class="list-item-name">Star Wars Franchise</p><p class="list-item-note">Original Trilogy forever. Clone Wars, Rebels, and Bad Batch are essential. Obi-Wan and The Mandalorian hit different. And the Padme book trilogy — see below.</p></div>
+    <div class="padme-spotlight fade-up" style="grid-column:span 3;background:linear-gradient(135deg,var(--deep-indigo) 0%,#4a1580 50%,#2a1d4d 100%);border-radius:20px;padding:2rem 2.5rem;display:grid;grid-template-columns:auto 1fr;gap:2rem;align-items:center;margin-bottom:0;border:1px solid rgba(216,167,255,0.2);position:relative;overflow:hidden">
+      <div style="position:absolute;top:-20px;right:2rem;opacity:0.08;font-family:'Cormorant Garamond',serif;font-size:8rem;font-weight:300;color:white;line-height:1;pointer-events:none">✦</div>
+      <div style="width:64px;height:64px;border-radius:50%;background:linear-gradient(135deg,var(--lilac),var(--periwinkle));display:flex;align-items:center;justify-content:center;flex-shrink:0;box-shadow:0 8px 24px rgba(216,167,255,0.3)"><svg width="28" height="28" viewBox="0 0 24 24" fill="none"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" fill="white" opacity="0.9"/></svg></div>
+      <div>
+        <p style="font-size:0.62rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--lilac);margin-bottom:0.4rem">Book series spotlight</p>
+        <p style="font-family:'Cormorant Garamond',serif;font-size:1.4rem;color:white;margin-bottom:0.5rem">The Padme Amidala Trilogy <em style="color:var(--lilac)">by E.K. Johnston</em></p>
+        <p style="font-size:0.85rem;line-height:1.75;color:rgba(255,255,255,0.65)">Queen's Peril. Queen's Shadow. Queen's Hope. Three books that follow Padme from her time as Queen of Naboo through her years in the Senate during the Clone Wars — with her handmaidens, her political courage, and her quiet heartbreak all front and center. This trilogy gave Padme Amidala the story she deserved and I think about it constantly. E.K. Johnston understood the assignment completely. If you are a Star Wars fan who has not read these — please. I am asking. Go read them.</p>
+      </div>
+    </div>
+    <div class="list-item fade-up d2"><span class="list-item-cat">Comfort watch</span><p class="list-item-name">XO, Kitty</p><p class="list-item-note">Chaotic, charming, and genuinely fun. Kitty Song Covey is a loveable mess and I root for her unconditionally.</p></div>
+    <div class="list-item fade-up d3"><span class="list-item-cat">Required viewing</span><p class="list-item-name">Avatar: The Last Airbender</p><p class="list-item-note">Suki is the most underrated character in the whole show and I will die on that hill. Azula is one of the greatest written villains ever. And Zuko's redemption arc is the gold standard.</p></div>
+    <div class="list-item fade-up d1"><span class="list-item-cat">Book series &amp; show</span><p class="list-item-name">Percy Jackson and the Olympians</p><p class="list-item-note">Grew up on the books. The TV series is doing them justice. Heroes of Olympus counts too — both series are absolute must-reads.</p></div>
+    <div class="list-item fade-up d2"><span class="list-item-cat">Undefeated holiday film</span><p class="list-item-name">The Muppet Christmas Carol</p><p class="list-item-note">THE best Christmas movie. Not debatable. Rizzo the Rat is the funniest character in the Muppet universe and this is a hill I will absolutely die on.</p></div>
+    <div class="list-item fade-up d3"><span class="list-item-cat">Not immune to regency romance</span><p class="list-item-name">Bridgerton</p><p class="list-item-note">Beautiful costumes, chaotic plot, and Penelope Featherington's entire arc. I am a simple person with simple joys.</p></div>
+    <div class="list-item fade-up d1"><span class="list-item-cat">Animated obsession</span><p class="list-item-name">X-Men Evolution &amp; X-Men '97</p><p class="list-item-note">Evolution got me into X-Men as a kid. '97 emotionally destroyed me as an adult. Both are incredible. Rogue forever and always.</p></div>
+    <div class="list-item fade-up d2"><span class="list-item-cat">Marvel comfort</span><p class="list-item-name">Loki</p><p class="list-item-note">Tom Hiddleston carrying the entire Marvel universe on his back with grace and flair. The TVA lore has my brain in a permanent chokehold.</p></div>
+    <div class="list-item fade-up d3"><span class="list-item-cat">Made me sob (a lot)</span><p class="list-item-name">WandaVision</p><p class="list-item-note">I was not ready. The sitcom format, the grief metaphor, Wanda deserved the world and received nothing. Still thinking about it regularly.</p></div>
+    <div class="list-item fade-up d1"><span class="list-item-cat">Conspiracy board energy</span><p class="list-item-name">Gravity Falls</p><p class="list-item-note">A show that respected its kid audience enough to have genuine stakes and mystery. Dipper and Mabel are siblings of the year every year.</p></div>
+    <div class="list-item fade-up d2"><span class="list-item-cat">Deeply underrated</span><p class="list-item-name">Bravest Warriors</p><p class="list-item-note">A Pendleton Ward web series that deserved so much more than it got. If you know, you know. If you don't — please go find it immediately.</p></div>
+    <div class="list-item fade-up d3"><span class="list-item-cat">Big emotions</span><p class="list-item-name">Big Hero 6</p><p class="list-item-note">Baymax is a perfect being. The grief storyline hits harder every rewatch. The nerd culture representation meant everything to younger me.</p></div>
+    <div class="list-item fade-up d1"><span class="list-item-cat">Theatre kid essential</span><p class="list-item-name">Cinderella (Rodgers &amp; Hammerstein)</p><p class="list-item-note">Brandy and Whitney Houston. That is the complete review. A perfect film. "Impossible" lives in my head permanently and I am grateful for it.</p></div>
+    <div class="list-item fade-up d2"><span class="list-item-cat">Childhood core memory</span><p class="list-item-name">Peter Pan (Cathy Rigby)</p><p class="list-item-note">This film started the theatre obsession and I wore out that VHS. Cathy Rigby flying across that stage changed something in my tiny dramatic brain permanently.</p></div>
+    <div class="list-item fade-up d3"><span class="list-item-cat">Agatha is that girl</span><p class="list-item-name">Agatha All Along</p><p class="list-item-note">Kathryn Hahn giving absolutely everything and I am receiving all of it. The road to Witches has no business being that good.</p></div>
+    <div class="list-item fade-up d1"><span class="list-item-cat">She-ra forever</span><p class="list-item-name">She-Ra and the Princesses of Power</p><p class="list-item-note">The found family. The villain arc. The ending. Catradora. I am completely normal about this show (I am not normal about this show).</p></div>
+    <div class="list-item fade-up d2"><span class="list-item-cat">Films &amp; book</span><p class="list-item-name">Tinkerbell Movies + Wings of Starlight</p><p class="list-item-note">Genuinely good animated films that deserved so much more credit. Wings of Starlight is a beautiful companion book series and if you have not read it please go do that right now.</p></div>
+    <div class="list-item fade-up d3"><span class="list-item-cat">Book series — sci-fi fairy tale perfection</span><p class="list-item-name">The Lunar Chronicles</p><p class="list-item-note">Cinder, Scarlet, Cress, Winter — all of them. A book series I have recommended to every single person I have ever met and I have zero regrets about that.</p></div>
+  </div>
+</section>
+
+<!-- GAMES -->
+<section class="picks-section" id="tab-games" style="background:var(--ghost)">
+  <div class="section-intro fade-up">
+    <p class="section-tag">Currently in my rotation</p>
+    <h2 class="section-title">Games I <em>play</em></h2>
+    <p>Cozy games and chaotic games are my go-tos for relaxing, and if I'm playing an FPS, I'm probably just waiting for a respawn timer. I do love a good co-op, especially couch co-op chaos.</p>
+  </div>
+  <div class="list-grid">
+    <div class="list-item fade-up d1"><span class="list-item-cat">My happy place</span><p class="list-item-name">Animal Crossing: New Horizons</p><p class="list-item-note">I wish Celeste could live on my island full time and I am still searching for the perfect villagers. The island is a work in progress. It has been a work in progress for a while. We do not discuss this.</p></div>
+    <div class="list-item fade-up d2"><span class="list-item-cat">Cozy farming chaos</span><p class="list-item-name">Stardew Valley</p><p class="list-item-note">I have romanced Emily and Maru in hopes for the cute cut scenes. I always forget to water my crops in year two. The mines are still my nemesis and I accept this about myself.</p></div>
+    <div class="list-item fade-up d3"><span class="list-item-cat">Currently playing</span><p class="list-item-name">Marvel Rivals</p><p class="list-item-note">I am a healer main — just like I am a cleric in D&D. My go-to characters are Invisible Woman, Cloak and Dagger, Squirrel Girl, and Penny. I will keep you alive. Please appreciate me.</p></div>
+    <div class="list-item fade-up d1"><span class="list-item-cat">Hidden gem</span><p class="list-item-name">Coral Island</p><p class="list-item-note">Stardew Valley's cozier cousin with incredible diversity representation and an ocean you can actually explore. I mean who doesn't want to romance a mermaid.</p></div>
+    <div class="list-item fade-up d2"><span class="list-item-cat">Creative chaos</span><p class="list-item-name">Minecraft</p><p class="list-item-note">I have bees and a lot of them. I have been to the Bumblezone and back and have claimed the queen bee as my noble steed. I do not know how to do anything else and honestly that feels like enough.</p></div>
+    <div class="list-item fade-up d3"><span class="list-item-cat">Personal favorites</span><p class="list-item-name">Pokemon Series</p><p class="list-item-note">Specifically Pokemon Snap (photographer brain activated), Legends: Arceus (finally exploring the world!), and Sword and Shield — because that is where I got my first Appletun and she means everything to me.</p></div>
+    <div class="list-item fade-up d1"><span class="list-item-cat">Chaotic concept, perfect execution</span><p class="list-item-name">Date Everything</p><p class="list-item-note">You can date literally any object. The writing is funnier than it has any right to be.</p></div>
+    <div class="list-item fade-up d2"><span class="list-item-cat">Star Wars era</span><p class="list-item-name">Star Wars Jedi: Fallen Order</p><p class="list-item-note">Cal Kestis deserves the world. The gameplay is challenging in a rewarding way. BD-1 is my favorite small robot of all time.</p></div>
+    <div class="list-item fade-up d3"><span class="list-item-cat">Open world love</span><p class="list-item-name">Horizon Series</p><p class="list-item-note">Aloy is one of the best written protagonists in gaming. Robot dinosaurs are a wild concept that absolutely works. Zero Dawn and Forbidden West are both incredible.</p></div>
+  </div>
+</section>
+
+<!-- COSPLAN -->
+<section class="picks-section" id="tab-cosplan" style="background:white">
+  <div class="section-intro fade-up">
+    <p class="section-tag">The dream builds</p>
+    <h2 class="section-title">Cosplan <em>wishlist</em></h2>
+    <p>Every cosplayer has a list. Mine is ambitious, slightly terrifying, and changes every time I finish a new show. These are the characters calling to me — some sooner, some when I level up enough to attempt them.</p>
+  </div>
+  <div class="cosplan-grid">
+    <div class="cosplan-item fade-up d1"><div class="cosplan-num">01</div><div><span class="cosplan-status status-active">In progress</span><p class="cosplan-name">Frieren</p><p class="cosplan-from">Frieren: Beyond Journey's End</p></div></div>
+    <div class="cosplan-item fade-up d2"><div class="cosplan-num">02</div><div><span class="cosplan-status status-active">In progress</span><p class="cosplan-name">Snow White — Princess Gown</p><p class="cosplan-from">Snow White and the Seven Dwarfs</p></div></div>
+    <div class="cosplan-item fade-up d1"><div class="cosplan-num">03</div><div><span class="cosplan-status status-active">In progress</span><p class="cosplan-name">Snow White — Peasant Dress</p><p class="cosplan-from">Snow White and the Seven Dwarfs</p></div></div>
+    <div class="cosplan-item fade-up d2"><div class="cosplan-num">04</div><div><span class="cosplan-status status-planning">Planning</span><p class="cosplan-name">Erika</p><p class="cosplan-from">Barbie: The Princess and the Pauper</p></div></div>
+    <div class="cosplan-item fade-up d1"><div class="cosplan-num">05</div><div><span class="cosplan-status status-planning">Planning</span><p class="cosplan-name">Princess Daisy — Ballgown</p><p class="cosplan-from">Super Mario / Nintendo</p></div></div>
+    <div class="cosplan-item fade-up d2"><div class="cosplan-num">06</div><div><span class="cosplan-status status-planning">Planning</span><p class="cosplan-name">Periwinkle</p><p class="cosplan-from">Tinkerbell / Secret of the Wings</p></div></div>
+    <div class="cosplan-item fade-up d1"><div class="cosplan-num">07</div><div><span class="cosplan-status status-dream">Dream build</span><p class="cosplan-name">Padme Amidala — Senate Gown</p><p class="cosplan-from">Star Wars: The Phantom Menace</p></div></div>
+    <div class="cosplan-item fade-up d2"><div class="cosplan-num">08</div><div><span class="cosplan-status status-dream">Dream build</span><p class="cosplan-name">Imogen Temult</p><p class="cosplan-from">Critical Role: Bell's Hells</p></div></div>
+    <div class="cosplan-item fade-up d1"><div class="cosplan-num">09</div><div><span class="cosplan-status status-dream">Dream build</span><p class="cosplan-name">Maple</p><p class="cosplan-from">BOFURI: I Don't Want to Get Hurt</p></div></div>
+    <div class="cosplan-item fade-up d2"><div class="cosplan-num">10</div><div><span class="cosplan-status status-dream">Dream build</span><p class="cosplan-name">Saber</p><p class="cosplan-from">Fate/Stay Night</p></div></div>
+    <div class="cosplan-item fade-up d1"><div class="cosplan-num">11</div><div><span class="cosplan-status status-dream">Dream build</span><p class="cosplan-name">Vex's Dragon Armor</p><p class="cosplan-from">The Legend of Vox Machina / Critical Role</p></div></div>
+    <div class="cosplan-item fade-up d2"><div class="cosplan-num">12</div><div><span class="cosplan-status status-dream">Dream build</span><p class="cosplan-name">Bo-Katan Kryze</p><p class="cosplan-from">Star Wars: The Mandalorian</p></div></div>
+  </div>
+</section>
+
+<!-- SUGGESTIONS -->
+<section class="comment-section">
+  <div class="comment-bg"></div>
+  <div class="comment-inner fade-up">
+    <p class="comment-eyebrow">Tell me things, stardust</p>
+    <h2 class="comment-title">Drop your <em>suggestions</em></h2>
+    <p class="comment-sub">What should I watch next? What cosplay should I attempt that will definitely humble me? What is your favorite thing right now? I genuinely read all of these — this page exists because of you.</p>
+    <div id="commentForm">
+      <div class="c-row">
+        <input type="text" class="c-input" placeholder="Your name (or just 'stardust')">
+        <input type="email" class="c-input" placeholder="Email (optional — only if you want a reply)">
+      </div>
+      <span class="c-type-label">What kind of suggestion?</span>
+      <div class="c-types">
+        <button class="c-type selected" onclick="selectType(this)">Anime / manga rec</button>
+        <button class="c-type" onclick="selectType(this)">Show or movie rec</button>
+        <button class="c-type" onclick="selectType(this)">Game rec</button>
+        <button class="c-type" onclick="selectType(this)">Cosplay idea for Mari</button>
+        <button class="c-type" onclick="selectType(this)">Food rec</button>
+        <button class="c-type" onclick="selectType(this)">Just saying hi</button>
+      </div>
+      <textarea class="c-textarea" placeholder="Tell me everything! The more enthusiastic the better. I love a passionate recommendation."></textarea>
+      <button class="c-submit" onclick="submitComment()">Send it to the stars</button>
+    </div>
+    <div class="c-success" id="commentSuccess">
+      <p class="c-success-title">You are the best, stardust</p>
+      <p class="c-success-text">Your suggestion has been received and will be read with genuine excitement. Thank you for being part of this little corner of the internet.</p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <a href="index.html" class="footer-logo">Moonlit <span>Mari</span></a>
+  <div class="social-links">
+    <a href="https://www.instagram.com/moonlit.mari/" class="social-link" target="_blank" rel="noopener" title="Instagram"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><rect x="2" y="2" width="20" height="20" rx="5" ry="5" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="2"/><circle cx="17.5" cy="6.5" r="1.2" fill="currentColor"/></svg></a>
+    <a href="https://www.tiktok.com/@moonlit.mari" class="social-link" target="_blank" rel="noopener" title="TikTok"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.69a8.18 8.18 0 004.78 1.52V6.75a4.85 4.85 0 01-1.01-.06z"/></svg></a>
+    <a href="https://www.youtube.com/@MoonlitMari/" class="social-link" target="_blank" rel="noopener" title="YouTube"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M23.5 6.19a3.02 3.02 0 00-2.12-2.14C19.54 3.5 12 3.5 12 3.5s-7.54 0-9.38.55A3.02 3.02 0 00.5 6.19C0 8.04 0 12 0 12s0 3.96.5 5.81a3.02 3.02 0 002.12 2.14C4.46 20.5 12 20.5 12 20.5s7.54 0 9.38-.55a3.02 3.02 0 002.12-2.14C24 15.96 24 12 24 12s0-3.96-.5-5.81zM9.75 15.5v-7l6.5 3.5-6.5 3.5z"/></svg></a>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2025 Moonlit Mari. All rights reserved.</span>
+    <span>Be your fullest self · Start your journey · Find your crew</span>
+  </div>
+</footer>
+<script>
+const cursor=document.getElementById('cursor'),trail=document.getElementById('cursorTrail');
+let mx=0,my=0,tx=0,ty=0;
+document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;cursor.style.left=mx+'px';cursor.style.top=my+'px'});
+(function animate(){tx+=(mx-tx)*0.12;ty+=(my-ty)*0.12;trail.style.left=tx+'px';trail.style.top=ty+'px';requestAnimationFrame(animate)})();
+const obs=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target)}}),{threshold:0.08});
+document.querySelectorAll('.fade-up').forEach(el=>obs.observe(el));
+setTimeout(()=>document.querySelectorAll('.page-hero .fade-up').forEach((el,i)=>setTimeout(()=>el.classList.add('visible'),150+i*100)),50);
+function switchTab(id,btn){
+  document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
+  document.querySelectorAll('.picks-section').forEach(s=>s.classList.remove('active'));
+  btn.classList.add('active');
+  const sec=document.getElementById('tab-'+id);
+  sec.classList.add('active');
+  setTimeout(()=>sec.querySelectorAll('.fade-up').forEach(el=>el.classList.add('visible')),80);
+  window.scrollTo({top:document.querySelector('.tab-nav').offsetTop-80,behavior:'smooth'});
+}
+function selectType(btn){document.querySelectorAll('.c-type').forEach(b=>b.classList.remove('selected'));btn.classList.add('selected')}
+function submitComment(){document.getElementById('commentForm').style.display='none';document.getElementById('commentSuccess').style.display='block'}
+</script>
 </body>
 </html>
