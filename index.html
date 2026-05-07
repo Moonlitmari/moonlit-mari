@@ -696,6 +696,22 @@
 .mobile-nav .mobile-cta{color:var(--periwinkle)!important;opacity:1!important;font-weight:500}
 @media(max-width:900px){.nav-hamburger{display:flex}}
 @media(pointer:coarse){body{cursor:auto!important}#cursor,#cursorTrail{display:none!important}}
+.discord-overlay{display:none;position:fixed;inset:0;background:rgba(42,29,77,0.6);backdrop-filter:blur(6px);z-index:1000;align-items:center;justify-content:center;padding:1.5rem}
+.discord-overlay.open{display:flex}
+.discord-modal{background:var(--cream);border-radius:24px;padding:2.5rem 2rem;max-width:460px;width:100%;text-align:center;position:relative;box-shadow:0 30px 80px rgba(42,29,77,0.25);border:1px solid rgba(165,158,246,0.2)}
+.discord-modal-close{position:absolute;top:1rem;right:1rem;background:none;border:none;font-size:1.1rem;color:var(--indigo);opacity:0.35;cursor:pointer;transition:opacity 0.2s;line-height:1}
+.discord-modal-close:hover{opacity:0.7}
+.discord-star{font-size:2rem;margin-bottom:0.8rem;display:block}
+.discord-title{font-family:'Cormorant Garamond',serif;font-size:1.6rem;font-weight:300;color:var(--deep-indigo);margin-bottom:0.8rem;line-height:1.2}
+.discord-body{font-size:0.88rem;line-height:1.75;color:var(--indigo);opacity:0.7;margin-bottom:2rem}
+.discord-btns{display:flex;flex-direction:column;gap:0.75rem}
+.discord-btn-yes{font-family:'Jost',sans-serif;font-size:0.78rem;letter-spacing:0.12em;text-transform:uppercase;background:var(--indigo);color:white;border:none;padding:0.9rem 1.5rem;border-radius:99px;cursor:pointer;transition:background 0.2s,transform 0.2s}
+.discord-btn-yes:hover{background:var(--deep-indigo);transform:translateY(-2px)}
+.discord-btn-no{font-family:'Jost',sans-serif;font-size:0.78rem;letter-spacing:0.12em;text-transform:uppercase;background:transparent;color:var(--indigo);border:1px solid rgba(61,43,107,0.2);padding:0.9rem 1.5rem;border-radius:99px;cursor:pointer;transition:all 0.2s;opacity:0.65}
+.discord-btn-no:hover{opacity:1;border-color:var(--periwinkle);color:var(--periwinkle)}
+.discord-thanks{display:none;padding:1rem 0}
+.discord-thanks-title{font-family:'Cormorant Garamond',serif;font-size:1.4rem;color:var(--deep-indigo);margin-bottom:0.5rem}
+.discord-thanks-body{font-size:0.85rem;color:var(--indigo);opacity:0.6;line-height:1.7}
 </style>
 </head>
 <body>
@@ -993,7 +1009,7 @@
         <li><a href="amongst-the-stars.html">Amongst The Stars</a></li>
         <li><a href="#">YouTube</a></li>
         <li><a href="links.html">Shop Links</a></li>
-        <li><a href="#">Discord</a></li>
+        <li><a href="#" onclick="openDiscordModal(event)">Discord</a></li>
       </ul>
     </div>
     <div>
@@ -1086,6 +1102,45 @@
 const navToggle=document.getElementById('navToggle'),mobileNav=document.getElementById('mobileNav');
 navToggle.addEventListener('click',()=>{navToggle.classList.toggle('open');mobileNav.classList.toggle('open')});
 mobileNav.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{navToggle.classList.remove('open');mobileNav.classList.remove('open')}));
+
+function openDiscordModal(e){e.preventDefault();document.getElementById('discordOverlay').classList.add('open');}
+function closeDiscordModal(){document.getElementById('discordOverlay').classList.remove('open');setTimeout(()=>{document.getElementById('discordForm').style.display='';document.getElementById('discordThanks').style.display='none';},300);}
+document.getElementById('discordOverlay').addEventListener('click',function(e){if(e.target===this)closeDiscordModal();});
+
+async function voteDiscord(vote){
+  const form=document.getElementById('discordForm');
+  const btns=form.querySelectorAll('button[type="button"]');
+  btns.forEach(b=>{b.disabled=true;});
+  try{
+    const data=new FormData();
+    data.append('_subject','Discord Poll Vote: '+vote);
+    data.append('vote',vote);
+    data.append('source','Discord interest poll — moonlitmari.com');
+    await fetch('https://formspree.io/f/xvzlqwrp',{method:'POST',body:data,headers:{Accept:'application/json'}});
+  }catch(e){}
+  form.style.display='none';
+  document.getElementById('discordThanks').style.display='block';
+  setTimeout(closeDiscordModal,2800);
+}
 </script>
+
+<div class="discord-overlay" id="discordOverlay">
+  <div class="discord-modal">
+    <button class="discord-modal-close" onclick="closeDiscordModal()" aria-label="Close">&#x2715;</button>
+    <span class="discord-star">🌙</span>
+    <h2 class="discord-title">Sorry, Stardust!</h2>
+    <p class="discord-body">We don't currently have a Discord, but we'd love to make one if there's enough interest. Would you be interested in joining a Moonlit Mari Discord?</p>
+    <div id="discordForm">
+      <div class="discord-btns">
+        <button type="button" class="discord-btn-yes" onclick="voteDiscord('A Discord would be Stellar!')">A Discord would be Stellar! ⭐</button>
+        <button type="button" class="discord-btn-no" onclick="voteDiscord('No thanks — the stars aren\'t aligned just yet.')">No thanks — the stars aren't aligned just yet.</button>
+      </div>
+    </div>
+    <div class="discord-thanks" id="discordThanks">
+      <p class="discord-thanks-title">Thank you, Stardust! ✨</p>
+      <p class="discord-thanks-body">Your vote has been received. Mari will look at the results and let the Moon Crew know what comes next!</p>
+    </div>
+  </div>
+</div>
 </body>
 </html>
