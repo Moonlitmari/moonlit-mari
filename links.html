@@ -38,7 +38,17 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:cen
 .fade-up.visible{opacity:1;transform:translateY(0)}
 .d1{transition-delay:0.1s}.d2{transition-delay:0.2s}.d3{transition-delay:0.3s}
 
-.page-hero{padding:9rem 5rem 5rem;background:linear-gradient(135deg,#F5F0FF,#EDE5FF 40%,#FFE8F5 100%);position:relative;overflow:hidden}
+/* CAROUSEL */
+.hero-carousel{position:relative;height:62vh;min-height:380px;overflow:hidden;margin-top:72px}
+.carousel-slide{position:absolute;inset:0;opacity:0;transition:opacity 0.9s ease}
+.carousel-slide.active{opacity:1}
+.carousel-slide img{width:100%;height:100%;object-fit:cover;object-position:center top}
+.carousel-overlay{position:absolute;inset:0;background:linear-gradient(to bottom,rgba(42,29,77,0.1) 0%,rgba(42,29,77,0.35) 100%)}
+.carousel-dots{position:absolute;bottom:1.4rem;left:50%;transform:translateX(-50%);display:flex;gap:0.55rem;z-index:5}
+.dot{width:8px;height:8px;border-radius:50%;border:2px solid rgba(255,255,255,0.6);background:transparent;cursor:pointer;transition:background 0.25s,transform 0.25s;padding:0}
+.dot.active{background:white;border-color:white;transform:scale(1.25)}
+
+.page-hero{padding:4rem 5rem 4rem;background:linear-gradient(135deg,#F5F0FF,#EDE5FF 40%,#FFE8F5 100%);position:relative;overflow:hidden}
 
 /* DISCLOSURE */
 .disclosure{background:rgba(165,158,246,0.1);border:1px solid rgba(165,158,246,0.25);border-radius:12px;padding:1rem 1.4rem;margin-top:1.8rem;font-size:0.8rem;line-height:1.65;color:var(--indigo);opacity:0.75;max-width:600px;display:flex;gap:0.8rem;align-items:flex-start}
@@ -98,6 +108,25 @@ footer{background:var(--deep-indigo);color:white;padding:3rem 5rem 2rem}
     <li><a href="contact.html" class="nav-cta">Contact</a></li>
   </ul>
 </nav>
+
+<!-- CAROUSEL -->
+<div class="hero-carousel">
+  <div class="carousel-slide active"><img src="images/belle.jpg" alt="Belle cosplay by Moonlit Mari"></div>
+  <div class="carousel-slide"><img src="images/leia.jpg" alt="Princess Leia cosplay by Moonlit Mari"></div>
+  <div class="carousel-slide"><img src="images/hera.jpg" alt="Hera cosplay by Moonlit Mari"></div>
+  <div class="carousel-slide"><img src="images/red-dress.jpg" alt="Red dress cosplay by Moonlit Mari"></div>
+  <div class="carousel-slide"><img src="images/squirrel.jpg" alt="Squirrel Girl cosplay by Moonlit Mari"></div>
+  <div class="carousel-slide"><img src="images/con-duo.jpg" alt="Convention cosplay by Moonlit Mari"></div>
+  <div class="carousel-overlay"></div>
+  <div class="carousel-dots">
+    <button class="dot active" onclick="goToSlide(0)"></button>
+    <button class="dot" onclick="goToSlide(1)"></button>
+    <button class="dot" onclick="goToSlide(2)"></button>
+    <button class="dot" onclick="goToSlide(3)"></button>
+    <button class="dot" onclick="goToSlide(4)"></button>
+    <button class="dot" onclick="goToSlide(5)"></button>
+  </div>
+</div>
 
 <section class="page-hero">
   <div class="orb orb-1"></div>
@@ -215,13 +244,13 @@ footer{background:var(--deep-indigo);color:white;padding:3rem 5rem 2rem}
       <div class="shop-card fade-up d1">
         <div class="shop-card-top" style="background:linear-gradient(135deg,#a5f3fc,#0891b2)">
           <span class="shop-badge">Fabrics</span>
-          <div class="shop-logo-area"><img src="https://logo.clearbit.com/famcut.com" alt="Famcut" onerror="this.style.display='none'"></div>
-          <p class="shop-name">Famcut</p>
+          <div class="shop-logo-area"><img src="https://logo.clearbit.com/famore.com" alt="Famorè" onerror="this.style.display='none'"></div>
+          <p class="shop-name">Famorè</p>
         </div>
         <div class="shop-card-body">
           <p class="shop-desc">Affordable fabric cutting service — great for getting clean, accurate pieces from your patterns without wrestling with scissors.</p>
           <div class="shop-tags"><span class="shop-tag">Fabrics</span><span class="shop-tag">Cutting</span></div>
-          <a href="https://www.famcut.com" class="shop-link" target="_blank" rel="noopener">Visit shop</a>
+          <a href="https://www.famore.com" class="shop-link" target="_blank" rel="noopener">Visit shop</a>
         </div>
       </div>
       <div class="shop-card fade-up d2">
@@ -321,6 +350,17 @@ const obs=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersect
 document.querySelectorAll('.fade-up').forEach(el=>obs.observe(el));
 setTimeout(()=>document.querySelectorAll('.page-hero .fade-up').forEach((el,i)=>setTimeout(()=>el.classList.add('visible'),150+i*100)),50);
 
+let current=0;
+const slides=document.querySelectorAll('.carousel-slide');
+const dots=document.querySelectorAll('.dot');
+function goToSlide(n){
+  slides[current].classList.remove('active');
+  dots[current].classList.remove('active');
+  current=n;
+  slides[current].classList.add('active');
+  dots[current].classList.add('active');
+}
+setInterval(()=>goToSlide((current+1)%slides.length),3000);
 </script>
 </body>
 </html>
