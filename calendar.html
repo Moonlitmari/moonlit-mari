@@ -66,6 +66,14 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:cen
 .event-link:hover{gap:0.5rem}
 .event-link::after{content:'→'}
 .event-featured-badge{position:absolute;top:1rem;right:1rem;font-size:0.6rem;letter-spacing:0.12em;text-transform:uppercase;background:var(--indigo);color:white;padding:0.25rem 0.7rem;border-radius:99px}
+.event-card.wide{grid-column:span 2}
+.event-schedule{margin-top:0.9rem;border-top:1px solid rgba(165,158,246,0.2);padding-top:0.9rem}
+.event-schedule-day{font-size:0.62rem;letter-spacing:0.16em;text-transform:uppercase;color:var(--periwinkle);margin:0.75rem 0 0.35rem;font-weight:500}
+.event-schedule-day:first-child{margin-top:0}
+.event-schedule-list{list-style:none;display:flex;flex-direction:column;gap:0.3rem}
+.event-schedule-list li{font-size:0.78rem;line-height:1.55;color:var(--indigo);opacity:0.7;padding-left:0.9rem;position:relative}
+.event-schedule-list li::before{content:'·';position:absolute;left:0;color:var(--periwinkle)}
+@media(max-width:900px){.event-card.wide{grid-column:span 1}}
 
 /* CALENDAR */
 .calendar-section{padding:5rem;background:var(--ghost)}
@@ -257,6 +265,47 @@ function renderCard(event, idx) {
     </div>`;
 }
 
+const MOMOCON_CARD = `<div class="event-card wide featured fade-up d1">
+  <div class="event-featured-badge">Next Up</div>
+  <div class="event-date">
+    <div class="event-month">May</div>
+    <div class="event-day">22</div>
+    <div class="event-year">2026</div>
+  </div>
+  <div class="event-info">
+    <span class="event-type type-con">Convention</span>
+    <p class="event-name">MomoCon 2026</p>
+    <p class="event-location">Atlanta, GA</p>
+    <p class="event-desc">I'll be there Friday through Sunday! Check my Instagram stories to see what I'm up to — and never hesitate to say hello!</p>
+    <div class="event-schedule">
+      <p class="event-schedule-day">Friday</p>
+      <ul class="event-schedule-list">
+        <li>Cosplay Photography: Both Sides of the Lens &nbsp;/&nbsp; Oh, Stitch! Hand Sewing Works &nbsp;@ 1:00 PM</li>
+        <li>Voices of Frieren Panel @ 2:30 PM</li>
+        <li>Princely Women in Anime &nbsp;/&nbsp; Fit &amp; Size Challenges in Cosplay @ 4:00 PM</li>
+        <li>Large Scale Armor Cosplays from Scratch @ 5:30 PM</li>
+        <li>Disney Sing Contest @ 7:00 PM &nbsp;/&nbsp; Cosplay Showcase @ 7:30 PM</li>
+        <li>Now That's What I Call Disney Jeopardy @ 8:30 PM</li>
+      </ul>
+      <p class="event-schedule-day">Saturday</p>
+      <ul class="event-schedule-list">
+        <li>Critical Role @ 10:00 AM</li>
+        <li>Meet the Cast of Dan Da Dan @ 11:30 AM</li>
+        <li>The Future of Fandom: Experiences, Exclusives, &amp; Engagement @ 1:00 PM</li>
+        <li>Cosplay Guesting: Networking &amp; Sponsorships @ 2:30 PM</li>
+        <li>Philosophy in Sailor Moon @ 7:00 PM</li>
+        <li>Craftsmanship Costume Contest @ 7:30 PM</li>
+      </ul>
+      <p class="event-schedule-day">Sunday</p>
+      <ul class="event-schedule-list">
+        <li>Cosplay Supplies &amp; Fabrics: Where to Start? @ 11:30 AM</li>
+        <li>Cosplay Tools of the Trade @ 2:30 PM</li>
+      </ul>
+    </div>
+    <a href="https://www.instagram.com/moonlit.mari/" class="event-link" target="_blank" rel="noopener">Follow along on Instagram</a>
+  </div>
+</div>`;
+
 async function loadEvents() {
   const grid = document.getElementById('events-grid');
   const now  = new Date().toISOString();
@@ -265,14 +314,12 @@ async function loadEvents() {
     const res = await fetch(url);
     if (!res.ok) throw new Error(res.status);
     const data = await res.json();
-    if (!data.items?.length) {
-      grid.innerHTML = '<p style="grid-column:span 2;text-align:center;padding:3rem 0;opacity:0.5">No upcoming events right now — check back soon!</p>';
-      return;
-    }
-    grid.innerHTML = data.items.map(renderCard).join('');
+    const extra = data.items?.length ? data.items.map((e, i) => renderCard(e, i + 1)).join('') : '';
+    grid.innerHTML = MOMOCON_CARD + extra;
     grid.querySelectorAll('.fade-up').forEach(el => obs.observe(el));
   } catch {
-    grid.innerHTML = '<p style="grid-column:span 2;text-align:center;padding:3rem 0;opacity:0.5">Couldn\'t load events right now — check the full calendar below!</p>';
+    grid.innerHTML = MOMOCON_CARD;
+    grid.querySelectorAll('.fade-up').forEach(el => obs.observe(el));
   }
 }
 
