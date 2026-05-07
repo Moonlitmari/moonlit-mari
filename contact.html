@@ -171,30 +171,34 @@ footer{background:var(--deep-indigo);color:white;padding:3rem 5rem 2rem}
         </div>
       </div>
 
+      <form id="contactFormEl">
+      <input type="hidden" name="inquiry_type" id="inquiryTypeInput" value="general">
       <div class="form-row">
         <div class="form-group">
           <label class="form-label">Your name</label>
-          <input type="text" class="form-input" placeholder="What should I call you?">
+          <input type="text" name="name" class="form-input" placeholder="What should I call you?" required>
         </div>
         <div class="form-group">
           <label class="form-label">Your email</label>
-          <input type="email" class="form-input" placeholder="So I can write back!">
+          <input type="email" name="email" class="form-input" placeholder="So I can write back!" required>
         </div>
       </div>
       <div class="form-group">
         <label class="form-label">Subject</label>
-        <input type="text" class="form-input" placeholder="Give me a little preview">
+        <input type="text" name="subject" class="form-input" placeholder="Give me a little preview">
       </div>
       <div class="form-group">
         <label class="form-label">Your message</label>
-        <textarea class="form-textarea" placeholder="Tell me everything! The more detail the better — I love a thorough message "></textarea>
+        <textarea name="message" class="form-textarea" placeholder="Tell me everything! The more detail the better — I love a thorough message " required></textarea>
       </div>
       <div class="form-group" id="eventGroup" style="display:none">
         <label class="form-label">Event name & date (if applicable)</label>
-        <input type="text" class="form-input" placeholder="e.g. MomoCon, June 2026, Atlanta GA">
+        <input type="text" name="event_details" class="form-input" placeholder="e.g. MomoCon, June 2026, Atlanta GA">
       </div>
 
-      <button class="btn-submit" onclick="submitForm()">Send it into the stars </button>
+      <button type="button" class="btn-submit" onclick="submitForm()">Send it into the stars ✨</button>
+      <p id="formError" style="display:none;margin-top:0.8rem;font-size:0.82rem;color:#c0392b;text-align:center">Something went wrong — please try again or reach out on social media!</p>
+      </form>
 
       <div class="faq-note">
          <strong>Quick note:</strong> I'm one person! I do my best to respond to everything but during busy con seasons it may take a little longer. Brand inquiries and panel bookings are responded to within 5–7 business days. Fan mail might take a bit longer but I read every single one. Thank you for your patience and kindness!
@@ -232,12 +236,32 @@ setTimeout(()=>document.querySelectorAll('.contact-left .fade-up,.contact-right.
 function selectType(el,type){
   document.querySelectorAll('.inq-type').forEach(t=>t.classList.remove('selected'));
   el.classList.add('selected');
+  document.getElementById('inquiryTypeInput').value=type;
   document.getElementById('eventGroup').style.display=(type==='panel'||type==='brand')?'block':'none';
 }
 
-function submitForm(){
-  document.getElementById('contactForm').style.display='none';
-  document.getElementById('successState').style.display='block';
+async function submitForm(){
+  const form=document.getElementById('contactFormEl');
+  if(!form.checkValidity()){form.reportValidity();return;}
+  const btn=document.querySelector('.btn-submit');
+  btn.disabled=true;btn.textContent='Sending…';
+  document.getElementById('formError').style.display='none';
+  try{
+    const res=await fetch('https://formspree.io/f/xvzlqwrp',{
+      method:'POST',
+      body:new FormData(form),
+      headers:{Accept:'application/json'}
+    });
+    if(res.ok){
+      document.getElementById('contactForm').style.display='none';
+      document.getElementById('successState').style.display='block';
+    } else {
+      throw new Error(res.status);
+    }
+  } catch {
+    btn.disabled=false;btn.textContent='Send it into the stars ✨';
+    document.getElementById('formError').style.display='block';
+  }
 }
 </script>
 </body>
