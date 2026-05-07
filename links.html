@@ -379,8 +379,8 @@ const obs=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersect
 document.querySelectorAll('.fade-up').forEach(el=>obs.observe(el));
 setTimeout(()=>document.querySelectorAll('.page-hero .fade-up').forEach((el,i)=>setTimeout(()=>el.classList.add('visible'),150+i*100)),50);
 
-const carouselImgs=['images/belle-sq.jpg','images/leia-sq.jpg','images/hera-sq.jpg','images/red-dress-sq.jpg','images/squirrel-sq.jpg','images/con-duo-sq.jpg'];
-const carouselAlts=['Belle','Leia','Hera','Red Dress','Squirrel Girl','Con Duo'];
+const carouselImgs=['images/belle-sq.jpg','images/leia-sq.jpg','images/hera-sq.jpg','images/red-dress-sq.jpg','images/squirrel-sq.jpg','images/con-duo-sq.jpg','images/serenity-sq.jpg','images/celeste2-sq.jpg','images/imogen-collab-sq.jpg'];
+const carouselAlts=['Belle','Leia','Hera','Red Dress','Squirrel Girl','Con Duo','Princess Serenity','Celeste','Marion Lavorre'];
 let carouselIdx=0;
 const cCards=document.querySelectorAll('.carousel-card');
 const cDots=document.querySelectorAll('.dot');
