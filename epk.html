@@ -151,8 +151,9 @@ footer{background:var(--deep-indigo);color:white;padding:2.5rem 5rem}
 .mobile-nav ul li a{display:block;padding:0.85rem 2rem;font-size:0.78rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--indigo);text-decoration:none;opacity:0.7;transition:background 0.15s,opacity 0.15s;border-bottom:1px solid rgba(165,158,246,0.08)}
 .mobile-nav ul li a:hover,.mobile-nav ul li a.active{background:var(--ghost);opacity:1}
 .mobile-nav .mobile-cta{color:var(--periwinkle)!important;opacity:1!important;font-weight:500}
-@media(max-width:900px){nav{padding:1rem 1.5rem}.nav-links{display:none}.nav-hamburger{display:flex}.epk-hero,.about-section,.audience-section,.pillars-section,.collab-section,.past-section,.contact-section,.epk-photo-section{padding-left:1.5rem;padding-right:1.5rem}.audience-grid,.pillars-grid,.collab-grid,.past-grid{grid-template-columns:1fr 1fr}.epk-photo-grid{grid-template-columns:1fr 1fr!important;padding-left:1.5rem;padding-right:1.5rem}footer{padding:2rem 1.5rem}}
+@media(max-width:900px){nav{padding:1rem 1.5rem}.nav-links{display:none}.nav-hamburger{display:flex}.epk-hero,.about-section,.audience-section,.pillars-section,.collab-section,.past-section,.contact-section,.epk-photo-section{padding-left:1.5rem;padding-right:1.5rem}.audience-grid,.pillars-grid,.collab-grid,.past-grid{grid-template-columns:1fr 1fr}.epk-photo-grid{grid-template-columns:1fr 1fr!important;padding-left:1.5rem;padding-right:1.5rem}.epk-why-grid{grid-template-columns:1fr!important}footer{padding:2rem 1.5rem}}
 @media(max-width:550px){.audience-grid,.pillars-grid,.collab-grid,.past-grid{grid-template-columns:1fr}.epk-photo-grid{grid-template-columns:1fr!important}}
+@media(pointer:coarse){body{cursor:auto!important}#cursor,#cursorTrail{display:none!important}}
 </style>
 </head>
 <body>
@@ -497,7 +498,7 @@ footer{background:var(--deep-indigo);color:white;padding:2.5rem 5rem}
   <div style="position:relative;z-index:2;max-width:800px;margin:0 auto;text-align:center">
     <p class="section-tag fade-up" style="justify-content:center;color:var(--lilac)">Why work with Mari</p>
     <h2 class="section-title fade-up d1" style="color:white;text-align:center">More than a <em style="color:var(--lilac)">content creator</em></h2>
-    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:1.5rem;margin-top:3rem;text-align:left">
+    <div class="epk-why-grid" style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:1.5rem;margin-top:3rem;text-align:left">
       <div style="background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);border-radius:16px;padding:1.5rem" class="fade-up d1">
         <p style="font-size:0.65rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--lilac);margin-bottom:0.6rem">Stage presence</p>
         <p style="font-family:'Cormorant Garamond',serif;font-size:1.1rem;color:white;margin-bottom:0.5rem">Born to host</p>
