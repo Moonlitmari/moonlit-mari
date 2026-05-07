@@ -260,21 +260,22 @@ footer{background:var(--deep-indigo);color:white;padding:3rem 5rem 2rem}
     <p class="booking-body">Fill out the inquiry form and I'll get back to you within 5–7 business days. Can't wait to hear about your event! </p>
   </div>
   <div class="booking-form fade-up d1">
+    <form id="bookingFormEl">
     <div class="form-group">
       <label class="form-label">Your name</label>
-      <input type="text" class="form-input" placeholder="Convention coordinator name">
+      <input type="text" name="name" class="form-input" placeholder="Convention coordinator name" required>
     </div>
     <div class="form-group">
       <label class="form-label">Event name & location</label>
-      <input type="text" class="form-input" placeholder="e.g. MomoCon, Atlanta GA">
+      <input type="text" name="event_location" class="form-input" placeholder="e.g. MomoCon, Atlanta GA" required>
     </div>
     <div class="form-group">
       <label class="form-label">Event date(s)</label>
-      <input type="text" class="form-input" placeholder="e.g. June 14–16, 2026">
+      <input type="text" name="event_dates" class="form-input" placeholder="e.g. June 14–16, 2026">
     </div>
     <div class="form-group">
       <label class="form-label">Panel topic interest</label>
-      <select class="form-select">
+      <select name="panel_topic" class="form-select">
         <option value="">Select a topic...</option>
         <option>So You Want to Start Cosplaying?</option>
         <option>The Price is Fright</option>
@@ -287,9 +288,15 @@ footer{background:var(--deep-indigo);color:white;padding:3rem 5rem 2rem}
     </div>
     <div class="form-group">
       <label class="form-label">Anything else?</label>
-      <textarea class="form-textarea" placeholder="Tell me about your event, audience size, or any special requests!"></textarea>
+      <textarea name="message" class="form-textarea" placeholder="Tell me about your event, audience size, or any special requests!"></textarea>
     </div>
-    <button class="btn-primary" style="width:100%;justify-content:center">Send my inquiry </button>
+    <button type="button" id="bookingSubmitBtn" class="btn-primary" style="width:100%;justify-content:center" onclick="submitBooking()">Send my inquiry</button>
+    <p id="bookingError" style="display:none;margin-top:0.8rem;font-size:0.82rem;color:#ffaaaa;text-align:center">Something went wrong — please try again or email stardusted.journeys@gmail.com directly!</p>
+    </form>
+    <div id="bookingSuccess" style="display:none;text-align:center;padding:2rem 0">
+      <p style="font-family:'Cormorant Garamond',serif;font-size:1.5rem;color:white;margin-bottom:0.7rem">Inquiry received!</p>
+      <p style="font-size:0.88rem;color:rgba(255,255,255,0.6);line-height:1.75">Thank you so much — I'll get back to you within 5–7 business days. Can't wait to hear more about your event!</p>
+    </div>
   </div>
 </section>
 
@@ -312,6 +319,19 @@ document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;cursor.style
 const obs=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target)}}),{threshold:0.1});
 document.querySelectorAll('.fade-up').forEach(el=>obs.observe(el));
 setTimeout(()=>document.querySelectorAll('.page-hero .fade-up').forEach((el,i)=>setTimeout(()=>el.classList.add('visible'),150+i*100)),50);
+
+async function submitBooking(){
+  const form=document.getElementById('bookingFormEl');
+  if(!form.checkValidity()){form.reportValidity();return;}
+  const btn=document.getElementById('bookingSubmitBtn');
+  btn.disabled=true;btn.textContent='Sending…';
+  document.getElementById('bookingError').style.display='none';
+  try{
+    const res=await fetch('https://formspree.io/f/xvzlqwrp',{method:'POST',body:new FormData(form),headers:{Accept:'application/json'}});
+    if(res.ok){form.style.display='none';document.getElementById('bookingSuccess').style.display='block';}
+    else{throw new Error(res.status);}
+  }catch(e){document.getElementById('bookingError').style.display='block';btn.disabled=false;btn.textContent='Send my inquiry';}
+}
 
 const navToggle=document.getElementById('navToggle'),mobileNav=document.getElementById('mobileNav');
 navToggle.addEventListener('click',()=>{navToggle.classList.toggle('open');mobileNav.classList.toggle('open')});

@@ -530,23 +530,25 @@ img{display:block;border:none;outline:none}
     <p class="comment-eyebrow">Tell me things, stardust</p>
     <h2 class="comment-title">Drop your <em>suggestions</em></h2>
     <p class="comment-sub">What should I watch next? What cosplay should I attempt that will definitely humble me? What is your favorite thing right now? I genuinely read all of these — this page exists because of you.</p>
-    <div id="commentForm">
+    <form id="commentForm">
+      <input type="hidden" name="suggestion_type" id="suggestionTypeInput" value="Anime / manga rec">
       <div class="c-row">
-        <input type="text" class="c-input" placeholder="Your name (or just 'stardust')">
-        <input type="email" class="c-input" placeholder="Email (optional — only if you want a reply)">
+        <input type="text" name="name" class="c-input" placeholder="Your name (or just 'stardust')">
+        <input type="email" name="email" class="c-input" placeholder="Email (optional — only if you want a reply)">
       </div>
       <span class="c-type-label">What kind of suggestion?</span>
       <div class="c-types">
-        <button class="c-type selected" onclick="selectType(this)">Anime / manga rec</button>
-        <button class="c-type" onclick="selectType(this)">Show or movie rec</button>
-        <button class="c-type" onclick="selectType(this)">Game rec</button>
-        <button class="c-type" onclick="selectType(this)">Cosplay idea for Mari</button>
-        <button class="c-type" onclick="selectType(this)">Food rec</button>
-        <button class="c-type" onclick="selectType(this)">Just saying hi</button>
+        <button type="button" class="c-type selected" onclick="selectType(this)">Anime / manga rec</button>
+        <button type="button" class="c-type" onclick="selectType(this)">Show or movie rec</button>
+        <button type="button" class="c-type" onclick="selectType(this)">Game rec</button>
+        <button type="button" class="c-type" onclick="selectType(this)">Cosplay idea for Mari</button>
+        <button type="button" class="c-type" onclick="selectType(this)">Food rec</button>
+        <button type="button" class="c-type" onclick="selectType(this)">Just saying hi</button>
       </div>
-      <textarea class="c-textarea" placeholder="Tell me everything! The more enthusiastic the better. I love a passionate recommendation."></textarea>
-      <button class="c-submit" onclick="submitComment()">Send it to the stars</button>
-    </div>
+      <textarea name="message" class="c-textarea" placeholder="Tell me everything! The more enthusiastic the better. I love a passionate recommendation."></textarea>
+      <button type="button" class="c-submit" onclick="submitComment()">Send it to the stars</button>
+      <p id="commentError" style="display:none;margin-top:0.8rem;font-size:0.82rem;color:#c0392b;text-align:center">Something went wrong — please try again or reach out on social media!</p>
+    </form>
     <div class="c-success" id="commentSuccess">
       <p class="c-success-title">You are the best, stardust</p>
       <p class="c-success-text">Your suggestion has been received and will be read with genuine excitement. Thank you for being part of this little corner of the internet.</p>
@@ -583,8 +585,18 @@ function switchTab(id,btn){
   setTimeout(()=>sec.querySelectorAll('.fade-up').forEach(el=>el.classList.add('visible')),80);
   window.scrollTo({top:document.querySelector('.tab-nav').offsetTop-80,behavior:'smooth'});
 }
-function selectType(btn){document.querySelectorAll('.c-type').forEach(b=>b.classList.remove('selected'));btn.classList.add('selected')}
-function submitComment(){document.getElementById('commentForm').style.display='none';document.getElementById('commentSuccess').style.display='block'}
+function selectType(btn){document.querySelectorAll('.c-type').forEach(b=>b.classList.remove('selected'));btn.classList.add('selected');document.getElementById('suggestionTypeInput').value=btn.textContent}
+async function submitComment(){
+  const form=document.getElementById('commentForm');
+  const btn=form.querySelector('.c-submit');
+  btn.disabled=true;btn.textContent='Sending…';
+  document.getElementById('commentError').style.display='none';
+  try{
+    const res=await fetch('https://formspree.io/f/xvzlqwrp',{method:'POST',body:new FormData(form),headers:{Accept:'application/json'}});
+    if(res.ok){form.style.display='none';document.getElementById('commentSuccess').style.display='block';}
+    else{throw new Error(res.status);}
+  }catch(e){document.getElementById('commentError').style.display='block';btn.disabled=false;btn.textContent='Send it to the stars';}
+}
 
 const navToggle=document.getElementById('navToggle'),mobileNav=document.getElementById('mobileNav');
 navToggle.addEventListener('click',()=>{navToggle.classList.toggle('open');mobileNav.classList.toggle('open')});
