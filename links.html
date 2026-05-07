@@ -103,8 +103,16 @@ footer{background:var(--deep-indigo);color:white;padding:3rem 5rem 2rem}
 .social-links{display:flex;gap:0.7rem;margin-top:1rem}
 .social-link{width:34px;height:34px;border:1px solid rgba(255,255,255,0.12);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:0.75rem;color:rgba(255,255,255,0.5);text-decoration:none;transition:border-color 0.2s,color 0.2s}
 .social-link:hover{border-color:var(--lilac);color:var(--lilac)}
-@media(max-width:900px){nav{padding:1rem 1.5rem}.nav-links{display:none}.page-hero,.shop-section,.shops-section{padding-left:1.5rem;padding-right:1.5rem}.items-grid{grid-template-columns:1fr 1fr}.shops-grid{grid-template-columns:1fr 1fr}footer{padding:2rem 1.5rem}}
-@media(max-width:600px){.items-grid,.shops-grid{grid-template-columns:1fr}}
+.shops-subsection{margin-bottom:3.5rem}
+.shops-subsection-header{display:flex;align-items:flex-start;gap:1rem;margin-bottom:1.8rem;padding:1.2rem 1.5rem;background:var(--pale-lav);border-radius:16px;border:1px solid rgba(165,158,246,0.2)}
+.shops-subsection-icon{font-size:1.4rem;flex-shrink:0;margin-top:0.1rem}
+.shops-subsection-title{font-family:'Cormorant Garamond',serif;font-size:1.2rem;color:var(--deep-indigo);margin-bottom:0.2rem}
+.shops-subsection-sub{font-size:0.8rem;color:var(--indigo);opacity:0.65;line-height:1.5}
+.shop-code{font-size:0.74rem;color:var(--indigo);margin-bottom:0.8rem;background:var(--ghost);padding:0.3rem 0.8rem;border-radius:8px;display:inline-block;letter-spacing:0.04em;border:1px solid rgba(165,158,246,0.2)}
+.shop-code strong{color:var(--periwinkle);font-weight:600;letter-spacing:0.1em}
+.shops-grid-wide{display:grid;grid-template-columns:repeat(4,1fr);gap:1.2rem;margin-top:0}
+@media(max-width:900px){nav{padding:1rem 1.5rem}.nav-links{display:none}.page-hero,.shop-section,.shops-section{padding-left:1.5rem;padding-right:1.5rem}.items-grid{grid-template-columns:1fr 1fr}.shops-grid{grid-template-columns:1fr 1fr}.shops-grid-wide{grid-template-columns:1fr 1fr}footer{padding:2rem 1.5rem}}
+@media(max-width:600px){.items-grid,.shops-grid,.shops-grid-wide{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
@@ -303,50 +311,126 @@ footer{background:var(--deep-indigo);color:white;padding:3rem 5rem 2rem}
   <p class="section-tag fade-up">The destinations</p>
   <h2 class="section-title fade-up d1">Favourite <em>shops & suppliers</em></h2>
   <p class="section-sub fade-up d2">Places I actually return to — for supplies, inspiration, and the occasional "wow I didn't know I needed that" moment.</p>
-  <div class="shops-grid">
-    <div class="shop-card fade-up d1">
-      <div class="shop-logo-area"></div>
-      <p class="shop-name">Cosplay Supplies US</p>
-      <p class="shop-desc">My number one for worbla, specialty foam, thermoplastics and imported craft materials that are hard to find locally. Fast shipping, great customer service.</p>
-      <div class="shop-tags"><span class="shop-tag">Worbla</span><span class="shop-tag">Thermoplastics</span><span class="shop-tag">Specialty foam</span></div>
-      <a href="#" class="shop-link">Visit shop</a>
+
+  <!-- Affiliate Partners -->
+  <div class="shops-subsection fade-up d1">
+    <div class="shops-subsection-header">
+      <div class="shops-subsection-icon">🌟</div>
+      <div>
+        <div class="shops-subsection-title">Affiliate Partners</div>
+        <div class="shops-subsection-sub">These shops support Moonlit Mari with a small commission when you use my links or codes — at no extra cost to you. I only partner with shops I genuinely use and love. ♡</div>
+      </div>
     </div>
-    <div class="shop-card fade-up d2">
-      <div class="shop-logo-area"></div>
-      <p class="shop-name">TNT Cosplay Supply</p>
-      <p class="shop-desc">Excellent range of dyes, paints, and finishing supplies. Their tutorials are also genuinely helpful and the community there is super welcoming.</p>
-      <div class="shop-tags"><span class="shop-tag">Paints</span><span class="shop-tag">Dyes</span><span class="shop-tag">Finishing</span></div>
-      <a href="#" class="shop-link">Visit shop</a>
-    </div>
-    <div class="shop-card fade-up d3">
-      <div class="shop-logo-area"></div>
-      <p class="shop-name">Mood Fabrics</p>
-      <p class="shop-desc">When you need that specific fabric and you need it right. Huge selection, designer quality, and the swatch service is a lifesaver for planning builds.</p>
-      <div class="shop-tags"><span class="shop-tag">Fabrics</span><span class="shop-tag">Designer</span><span class="shop-tag">Trims</span></div>
-      <a href="#" class="shop-link">Visit shop</a>
-    </div>
-    <div class="shop-card fade-up d1">
-      <div class="shop-logo-area"></div>
-      <p class="shop-name">RockyWoods Fabrics</p>
-      <p class="shop-desc">Specialty technical fabrics — perfect for armour undergarments, wicking layers, and anything that needs to be both functional and wearable all day at a con.</p>
-      <div class="shop-tags"><span class="shop-tag">Technical fabrics</span><span class="shop-tag">Performance</span></div>
-      <a href="#" class="shop-link">Visit shop</a>
-    </div>
-    <div class="shop-card fade-up d2">
-      <div class="shop-logo-area"></div>
-      <p class="shop-name">Etsy — Cosplay Sellers</p>
-      <p class="shop-desc">For pre-made accessories, specialty trims, resin pieces, and those beautiful little details you can't make yourself but can shop from another small creator.</p>
-      <div class="shop-tags"><span class="shop-tag">Accessories</span><span class="shop-tag">Small makers</span><span class="shop-tag">Resin</span></div>
-      <a href="#" class="shop-link">Explore Etsy</a>
-    </div>
-    <div class="shop-card fade-up d3">
-      <div class="shop-logo-area"></div>
-      <p class="shop-name">Amazon Storefront</p>
-      <p class="shop-desc">My personal Amazon list — curated over years of trial and error. Everything I've actually bought, tested, and would buy again. Fully disclosed affiliate links.</p>
-      <div class="shop-tags"><span class="shop-tag">Affiliate</span><span class="shop-tag">All categories</span><span class="shop-tag">Tested</span></div>
-      <a href="#" class="shop-link">View my Amazon list</a>
+    <div class="shops-grid">
+      <div class="shop-card fade-up d1">
+        <div class="shop-logo-area"></div>
+        <p class="shop-name">Kiki Textiles</p>
+        <p class="shop-desc">Beautiful fabrics perfect for cosplay builds — from silks and brocades to stretch and specialty materials. One of my go-to sources for that perfect fabric match.</p>
+        <div class="shop-code">Use code <strong>IKJO</strong> for a discount!</div>
+        <div class="shop-tags"><span class="shop-tag">Fabrics</span><span class="shop-tag">Specialty</span><span class="shop-tag">Affiliate</span></div>
+        <a href="https://www.kikitextiles.com/discount/IKJO?rs_ref=mMCuyk8u" class="shop-link" target="_blank" rel="noopener">Shop Kiki Textiles</a>
+      </div>
+      <div class="shop-card fade-up d2">
+        <div class="shop-logo-area"></div>
+        <p class="shop-name">Comfrt</p>
+        <p class="shop-desc">Cozy, high-quality comfort wear that's perfect for convention downtime and casual cosplay-adjacent outfits. Soft, stylish, and worth every bit.</p>
+        <div class="shop-code">Use code <strong>LINDSEY470</strong> for a discount!</div>
+        <div class="shop-tags"><span class="shop-tag">Apparel</span><span class="shop-tag">Comfort wear</span><span class="shop-tag">Affiliate</span></div>
+        <a href="https://comfrt.com/LINDSEY470" class="shop-link" target="_blank" rel="noopener">Shop Comfrt</a>
+      </div>
+      <div class="shop-card fade-up d3">
+        <div class="shop-logo-area"></div>
+        <p class="shop-name">Mood Fabrics</p>
+        <p class="shop-desc">When you need that specific fabric and you need it right. Huge selection, designer quality, and the swatch service is a lifesaver for planning builds.</p>
+        <div class="shop-tags"><span class="shop-tag">Fabrics</span><span class="shop-tag">Designer</span><span class="shop-tag">Trims</span><span class="shop-tag">Affiliate</span></div>
+        <a href="https://www.awin1.com/cread.php?awinmid=53817&awinaffid=2885375" class="shop-link" target="_blank" rel="noopener">Shop Mood Fabrics</a>
+      </div>
     </div>
   </div>
+
+  <!-- Worth Checking Out -->
+  <div class="shops-subsection fade-up d2">
+    <div class="shops-subsection-header">
+      <div class="shops-subsection-icon">✨</div>
+      <div>
+        <div class="shops-subsection-title">Also Worth Checking Out</div>
+        <div class="shops-subsection-sub">No affiliate relationship here — just shops I think are genuinely great resources for cosplayers of all levels.</div>
+      </div>
+    </div>
+    <div class="shops-grid shops-grid-wide">
+      <div class="shop-card fade-up d1">
+        <div class="shop-logo-area"></div>
+        <p class="shop-name">The Foamory</p>
+        <p class="shop-desc">Specialised foam products and cosplay armour supplies. Great selection for EVA foam builds of all skill levels.</p>
+        <div class="shop-tags"><span class="shop-tag">Foam</span><span class="shop-tag">Armour</span></div>
+        <a href="https://thefoamory.com" class="shop-link" target="_blank" rel="noopener">Visit shop</a>
+      </div>
+      <div class="shop-card fade-up d2">
+        <div class="shop-logo-area"></div>
+        <p class="shop-name">The Cosplay Pros</p>
+        <p class="shop-desc">Tutorials, patterns, and supplies all in one place. Especially useful if you're learning new construction techniques.</p>
+        <div class="shop-tags"><span class="shop-tag">Patterns</span><span class="shop-tag">Tutorials</span></div>
+        <a href="https://thecosplaypros.com" class="shop-link" target="_blank" rel="noopener">Visit shop</a>
+      </div>
+      <div class="shop-card fade-up d3">
+        <div class="shop-logo-area"></div>
+        <p class="shop-name">Arda Wigs</p>
+        <p class="shop-desc">The gold standard for cosplay wigs. Excellent quality, huge colour range, and they even have a styling guide to help you get the look right.</p>
+        <div class="shop-tags"><span class="shop-tag">Wigs</span><span class="shop-tag">Styling</span></div>
+        <a href="https://www.arda-wigs.com" class="shop-link" target="_blank" rel="noopener">Visit shop</a>
+      </div>
+      <div class="shop-card fade-up d1">
+        <div class="shop-logo-area"></div>
+        <p class="shop-name">Famcut</p>
+        <p class="shop-desc">Affordable fabric cutting service — great for getting clean, accurate pieces from your patterns without wrestling with scissors.</p>
+        <div class="shop-tags"><span class="shop-tag">Fabrics</span><span class="shop-tag">Cutting</span></div>
+        <a href="https://www.famcut.com" class="shop-link" target="_blank" rel="noopener">Visit shop</a>
+      </div>
+      <div class="shop-card fade-up d2">
+        <div class="shop-logo-area"></div>
+        <p class="shop-name">Worbla</p>
+        <p class="shop-desc">The official source for Worbla thermoplastics. If you're doing armour, props, or structural pieces, this is where to start.</p>
+        <div class="shop-tags"><span class="shop-tag">Thermoplastics</span><span class="shop-tag">Armour</span></div>
+        <a href="https://www.worbla.com" class="shop-link" target="_blank" rel="noopener">Visit shop</a>
+      </div>
+      <div class="shop-card fade-up d3">
+        <div class="shop-logo-area"></div>
+        <p class="shop-name">Cosplay Supplies</p>
+        <p class="shop-desc">Wide range of specialty materials — foam, thermoplastics, and imported craft supplies that are hard to track down elsewhere.</p>
+        <div class="shop-tags"><span class="shop-tag">Foam</span><span class="shop-tag">Thermoplastics</span><span class="shop-tag">Specialty</span></div>
+        <a href="https://www.cosplaysupplies.com" class="shop-link" target="_blank" rel="noopener">Visit shop</a>
+      </div>
+      <div class="shop-card fade-up d1">
+        <div class="shop-logo-area"></div>
+        <p class="shop-name">Wig Is Fashion</p>
+        <p class="shop-desc">Budget-friendly wigs with a surprisingly decent quality range. Good for experimental characters or when you need a base to style from scratch.</p>
+        <div class="shop-tags"><span class="shop-tag">Wigs</span><span class="shop-tag">Budget</span></div>
+        <a href="https://www.wigisfashion.com" class="shop-link" target="_blank" rel="noopener">Visit shop</a>
+      </div>
+      <div class="shop-card fade-up d2">
+        <div class="shop-logo-area"></div>
+        <p class="shop-name">Weave Got Maille</p>
+        <p class="shop-desc">Chainmaille rings, tutorials, and tools for any build that needs that authentic medieval or fantasy armour texture.</p>
+        <div class="shop-tags"><span class="shop-tag">Chainmaille</span><span class="shop-tag">Armour</span></div>
+        <a href="https://www.weavegotmaille.com" class="shop-link" target="_blank" rel="noopener">Visit shop</a>
+      </div>
+      <div class="shop-card fade-up d3">
+        <div class="shop-logo-area"></div>
+        <p class="shop-name">Fabric Wholesale Direct</p>
+        <p class="shop-desc">Bulk fabric at wholesale prices — useful when you need large quantities of lining, base layers, or background fabrics without breaking the budget.</p>
+        <div class="shop-tags"><span class="shop-tag">Fabrics</span><span class="shop-tag">Wholesale</span><span class="shop-tag">Budget</span></div>
+        <a href="https://www.fabricwholesaledirect.com" class="shop-link" target="_blank" rel="noopener">Visit shop</a>
+      </div>
+      <div class="shop-card fade-up d1">
+        <div class="shop-logo-area"></div>
+        <p class="shop-name">Wawak</p>
+        <p class="shop-desc">Professional sewing notions and tailoring supplies. The place to go for quality zippers, thread, interfacing, and all the small finishing details that matter.</p>
+        <div class="shop-tags"><span class="shop-tag">Notions</span><span class="shop-tag">Tailoring</span><span class="shop-tag">Finishing</span></div>
+        <a href="https://www.wawak.com" class="shop-link" target="_blank" rel="noopener">Visit shop</a>
+      </div>
+    </div>
+  </div>
+
 </section>
 
 <footer>
