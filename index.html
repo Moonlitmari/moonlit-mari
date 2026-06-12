@@ -52,9 +52,8 @@
     position: fixed;
     pointer-events: none;
     z-index: 9999;
-    transform: translate(-50%, -50%);
-    transition: transform 0.1s;
-    filter: drop-shadow(0 0 5px rgba(216,167,255,0.7));
+    left: 0; top: 0;
+    will-change: transform;
   }
   .cursor-trail {
     width: 40px; height: 40px;
@@ -63,8 +62,8 @@
     position: fixed;
     pointer-events: none;
     z-index: 9998;
-    transform: translate(-50%, -50%);
-    transition: transform 0.28s ease, opacity 0.3s;
+    left: 0; top: 0;
+    will-change: transform;
     opacity: 0.45;
   }
 
@@ -1090,14 +1089,12 @@ body{-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
   let mx = 0, my = 0, tx = 0, ty = 0;
   document.addEventListener('mousemove', e => {
     mx = e.clientX; my = e.clientY;
-    cursor.style.left = mx + 'px';
-    cursor.style.top = my + 'px';
+    cursor.style.transform = `translate(${mx - 14}px, ${my - 14}px)`;
   });
   function animateTrail() {
     tx += (mx - tx) * 0.12;
     ty += (my - ty) * 0.12;
-    trail.style.left = tx + 'px';
-    trail.style.top = ty + 'px';
+    trail.style.transform = `translate(${tx - 20}px, ${ty - 20}px)`;
     requestAnimationFrame(animateTrail);
   }
   animateTrail();
