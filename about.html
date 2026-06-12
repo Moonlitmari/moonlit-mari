@@ -29,7 +29,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:cen
 .nav-links a:hover,.nav-links a.active{opacity:1}
 .nav-cta{border:1px solid var(--periwinkle);padding:0.45rem 1.1rem;border-radius:99px;opacity:1!important;transition:background 0.2s,color 0.2s!important}
 .nav-cta:hover{background:var(--periwinkle)!important;color:white!important}
-.orb{position:absolute;border-radius:50%;filter:blur(60px);pointer-events:none;animation:floatOrb 8s ease-in-out infinite alternate}
+.orb{position:absolute;border-radius:50%;filter:blur(30px);pointer-events:none;animation:floatOrb 8s ease-in-out infinite alternate}
 .orb-1{width:350px;height:350px;background:rgba(216,167,255,0.3);top:-80px;right:5%}
 .orb-2{width:200px;height:200px;background:rgba(255,200,234,0.35);bottom:-40px;left:10%;animation-delay:-3s}
 @keyframes floatOrb{from{transform:translate(0,0)}to{transform:translate(15px,20px)}}
@@ -647,8 +647,8 @@ body{-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
 <script>
 const cursor=document.getElementById('cursor'),trail=document.getElementById('cursorTrail');
 let mx=0,my=0,tx=0,ty=0;
-document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;cursor.style.transform=`translate(${mx-14}px,${my-14}px)`});
-(function animate(){tx+=(mx-tx)*0.12;ty+=(my-ty)*0.12;trail.style.transform=`translate(${tx-20}px,${ty-20}px)`;requestAnimationFrame(animate)})();
+document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY});
+(function animate(){cursor.style.transform=`translate(${mx-14}px,${my-14}px)`;tx+=(mx-tx)*0.12;ty+=(my-ty)*0.12;trail.style.transform=`translate(${tx-20}px,${ty-20}px)`;requestAnimationFrame(animate)})();
 const obs=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target)}}),{threshold:0.08});
 document.querySelectorAll('.fade-up').forEach(el=>obs.observe(el));
 setTimeout(()=>document.querySelectorAll('.page-hero .fade-up').forEach((el,i)=>setTimeout(()=>el.classList.add('visible'),150+i*100)),50);

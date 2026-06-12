@@ -601,8 +601,8 @@ navToggle.addEventListener('click',()=>{navToggle.classList.toggle('open');mobil
 mobileNav.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{navToggle.classList.remove('open');mobileNav.classList.remove('open')}));
 const cursor=document.getElementById('cursor'),trail=document.getElementById('cursorTrail');
 let mx=0,my=0,tx=0,ty=0;
-document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;cursor.style.transform=`translate(${mx-14}px,${my-14}px)`});
-(function animate(){tx+=(mx-tx)*0.12;ty+=(my-ty)*0.12;trail.style.transform=`translate(${tx-20}px,${ty-20}px)`;requestAnimationFrame(animate)})();
+document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY});
+(function animate(){cursor.style.transform=`translate(${mx-14}px,${my-14}px)`;tx+=(mx-tx)*0.12;ty+=(my-ty)*0.12;trail.style.transform=`translate(${tx-20}px,${ty-20}px)`;requestAnimationFrame(animate)})();
 const obs=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target)}}),{threshold:0.1});
 document.querySelectorAll('.fade-up').forEach(el=>obs.observe(el));
 setTimeout(()=>document.querySelectorAll('.epk-hero .fade-up').forEach((el,i)=>setTimeout(()=>el.classList.add('visible'),200+i*150)),50);

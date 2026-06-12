@@ -128,7 +128,7 @@
   /* floating orbs */
   .orb {
     position: absolute; border-radius: 50%;
-    filter: blur(60px); pointer-events: none; z-index: 0;
+    filter: blur(30px); pointer-events: none; z-index: 0;
     animation: floatOrb 8s ease-in-out infinite alternate;
   }
   .orb-1 { width: 420px; height: 420px; background: rgba(216,167,255,0.35); top: -80px; right: 10%; }
@@ -1089,9 +1089,9 @@ body{-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
   let mx = 0, my = 0, tx = 0, ty = 0;
   document.addEventListener('mousemove', e => {
     mx = e.clientX; my = e.clientY;
-    cursor.style.transform = `translate(${mx - 14}px, ${my - 14}px)`;
   });
   function animateTrail() {
+    cursor.style.transform = `translate(${mx - 14}px, ${my - 14}px)`;
     tx += (mx - tx) * 0.12;
     ty += (my - ty) * 0.12;
     trail.style.transform = `translate(${tx - 20}px, ${ty - 20}px)`;
