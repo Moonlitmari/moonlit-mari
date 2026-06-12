@@ -4,6 +4,15 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Media Kit — Moonlit Mari</title>
+<meta name="description" content="Moonlit Mari's media kit — bio, stats, photos, and booking info for event organizers and press.">
+<meta name="theme-color" content="#FDF8FF">
+<meta property="og:title" content="Media Kit — Moonlit Mari">
+<meta property="og:description" content="Moonlit Mari's media kit — bio, stats, photos, and booking info for event organizers and press.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Moonlit Mari">
+<link rel="icon" href='data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" fill="%23A59EF6"/></svg>'>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Dancing+Script:wght@500;700&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
@@ -154,6 +163,36 @@ footer{background:var(--deep-indigo);color:white;padding:2.5rem 5rem}
 @media(max-width:900px){nav{padding:1rem 1.5rem}.nav-links{display:none}.nav-hamburger{display:flex}.epk-hero,.about-section,.audience-section,.pillars-section,.collab-section,.past-section,.contact-section,.epk-photo-section{padding-left:1.5rem;padding-right:1.5rem}.audience-grid,.pillars-grid,.collab-grid,.past-grid{grid-template-columns:1fr 1fr}.epk-photo-grid{grid-template-columns:1fr 1fr!important;padding-left:1.5rem;padding-right:1.5rem}.epk-why-grid{grid-template-columns:1fr!important}footer{padding:2rem 1.5rem}}
 @media(max-width:550px){.audience-grid,.pillars-grid,.collab-grid,.past-grid{grid-template-columns:1fr}.epk-photo-grid{grid-template-columns:1fr!important}}
 @media(pointer:coarse){body{cursor:auto!important}#cursor,#cursorTrail{display:none!important}}
+
+footer .social-links{margin-bottom:2rem}
+/* Shooting star */
+.shooting-star{position:fixed;width:130px;height:2px;z-index:50;pointer-events:none;opacity:0;border-radius:99px;
+  background:linear-gradient(90deg,rgba(109,94,196,0),rgba(139,111,208,.85) 55%,#fff);
+  filter:drop-shadow(0 0 6px rgba(165,158,246,.85))}
+.shooting-star::after{content:'';position:absolute;right:-3px;top:-2.5px;width:7px;height:7px;border-radius:50%;
+  background:#fff;box-shadow:0 0 12px 3px rgba(216,167,255,.95)}
+@media (prefers-reduced-motion:reduce){.shooting-star{display:none!important}}
+/* ── Upgrade pack: polish, accessibility & performance ── */
+::selection{background:rgba(216,167,255,.5);color:var(--deep-indigo)}
+html{scroll-padding-top:5.5rem}
+body{-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+:focus-visible{outline:2px solid var(--periwinkle);outline-offset:3px;border-radius:4px}
+::-webkit-scrollbar{width:10px}
+::-webkit-scrollbar-track{background:var(--ghost)}
+::-webkit-scrollbar-thumb{background:#cfc3e6;border-radius:99px;border:2px solid var(--ghost)}
+::-webkit-scrollbar-thumb:hover{background:var(--periwinkle)}
+.orb{will-change:transform}
+.btn-primary:hover,.discord-btn-yes:hover{box-shadow:0 10px 28px rgba(165,158,246,.4)}
+@media (hover:none),(pointer:coarse){
+  body,body *{cursor:auto!important}
+  .cursor,.cursor-trail{display:none!important}
+}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
+  .cursor,.cursor-trail{display:none!important}
+  .fade-up{opacity:1!important;transform:none!important}
+}
 </style>
 </head>
 <body>
@@ -192,7 +231,7 @@ footer{background:var(--deep-indigo);color:white;padding:2.5rem 5rem}
 <!-- HERO -->
 <section class="epk-hero" style="background:none;position:relative">
   <div style="position:absolute;inset:0;background:linear-gradient(135deg,rgba(42,29,77,0.92) 0%,rgba(74,21,128,0.88) 50%,rgba(42,29,77,0.95) 100%);z-index:1"></div>
-  <img src="images/serenity.jpg" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:top;opacity:0.25;z-index:0">
+  <img src="images/serenity.jpg" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:top;opacity:0.25;z-index:0" loading="lazy" decoding="async">
   <div class="hero-bg-deco" style="z-index:1"></div>
   <svg class="star-deco" style="position:absolute;top:12%;right:48%;opacity:0.3;width:50px" viewBox="0 0 50 50" fill="none"><path d="M25 2L27 23L48 25L27 27L25 48L23 27L2 25L23 23Z" fill="white"/></svg>
   <svg class="star-deco" style="position:absolute;bottom:15%;right:3%;opacity:0.2;width:30px;animation-delay:-2s" viewBox="0 0 30 30" fill="none"><path d="M15 1L16 14L29 15L16 16L15 29L14 16L1 15L14 14Z" fill="#D8A7FF"/></svg>
@@ -318,7 +357,7 @@ footer{background:var(--deep-indigo);color:white;padding:2.5rem 5rem}
   <div class="epk-photo-grid fade-up d2" style="display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:1rem;margin-top:2.5rem">
 
     <div style="border-radius:16px;overflow:hidden;box-shadow:0 12px 40px rgba(61,43,107,0.12);position:relative;cursor:none">
-      <img src="images/serenity.jpg" alt="Princess Serenity — Sailor Moon" style="width:100%;height:320px;object-fit:cover;object-position:top;display:block;">
+      <img src="images/serenity.jpg" alt="Princess Serenity — Sailor Moon" style="width:100%;height:320px;object-fit:cover;object-position:top;display:block;" loading="lazy" decoding="async">
       <div style="position:absolute;bottom:0;left:0;right:0;background:linear-gradient(to top,rgba(42,29,77,0.85),transparent);padding:1rem">
         <p style="font-family:'Cormorant Garamond',serif;font-style:italic;color:white;font-size:0.95rem">Princess Serenity</p>
         <p style="font-size:0.65rem;color:rgba(255,255,255,0.55);letter-spacing:0.1em;text-transform:uppercase">Sailor Moon</p>
@@ -326,7 +365,7 @@ footer{background:var(--deep-indigo);color:white;padding:2.5rem 5rem}
     </div>
 
     <div style="border-radius:16px;overflow:hidden;box-shadow:0 12px 40px rgba(61,43,107,0.12);position:relative;cursor:none">
-      <img src="images/celeste2.jpg" alt="Celeste — Animal Crossing" style="width:100%;height:320px;object-fit:cover;object-position:top;display:block;">
+      <img src="images/celeste2.jpg" alt="Celeste — Animal Crossing" style="width:100%;height:320px;object-fit:cover;object-position:top;display:block;" loading="lazy" decoding="async">
       <div style="position:absolute;bottom:0;left:0;right:0;background:linear-gradient(to top,rgba(42,29,77,0.85),transparent);padding:1rem">
         <p style="font-family:'Cormorant Garamond',serif;font-style:italic;color:white;font-size:0.95rem">Celeste</p>
         <p style="font-size:0.65rem;color:rgba(255,255,255,0.55);letter-spacing:0.1em;text-transform:uppercase">Animal Crossing</p>
@@ -334,7 +373,7 @@ footer{background:var(--deep-indigo);color:white;padding:2.5rem 5rem}
     </div>
 
     <div style="border-radius:16px;overflow:hidden;box-shadow:0 12px 40px rgba(61,43,107,0.12);position:relative;cursor:none">
-      <img src="images/imogen-collab.jpg" alt="Marion Lavorre — Critical Role" style="width:100%;height:320px;object-fit:cover;object-position:top;display:block;">
+      <img src="images/imogen-collab.jpg" alt="Marion Lavorre — Critical Role" style="width:100%;height:320px;object-fit:cover;object-position:top;display:block;" loading="lazy" decoding="async">
       <div style="position:absolute;bottom:0;left:0;right:0;background:linear-gradient(to top,rgba(42,29,77,0.85),transparent);padding:1rem">
         <p style="font-family:'Cormorant Garamond',serif;font-style:italic;color:white;font-size:0.95rem">Marion Lavorre</p>
         <p style="font-size:0.65rem;color:rgba(255,255,255,0.55);letter-spacing:0.1em;text-transform:uppercase">Critical Role · The Mighty Nein</p>
@@ -342,7 +381,7 @@ footer{background:var(--deep-indigo);color:white;padding:2.5rem 5rem}
     </div>
 
     <div style="border-radius:16px;overflow:hidden;box-shadow:0 12px 40px rgba(61,43,107,0.12);position:relative;cursor:none">
-      <img src="images/msmarvel-collab.jpg" alt="Daniela — Game Gyaru" style="width:100%;height:320px;object-fit:cover;object-position:center;display:block;">
+      <img src="images/msmarvel-collab.jpg" alt="Daniela — Game Gyaru" style="width:100%;height:320px;object-fit:cover;object-position:center;display:block;" loading="lazy" decoding="async">
       <div style="position:absolute;bottom:0;left:0;right:0;background:linear-gradient(to top,rgba(42,29,77,0.85),transparent);padding:1rem">
         <p style="font-family:'Cormorant Garamond',serif;font-style:italic;color:white;font-size:0.95rem">Daniela</p>
         <p style="font-size:0.65rem;color:rgba(255,255,255,0.55);letter-spacing:0.1em;text-transform:uppercase">Game Gyaru</p>
@@ -567,6 +606,33 @@ document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;cursor.style
 const obs=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target)}}),{threshold:0.1});
 document.querySelectorAll('.fade-up').forEach(el=>obs.observe(el));
 setTimeout(()=>document.querySelectorAll('.epk-hero .fade-up').forEach((el,i)=>setTimeout(()=>el.classList.add('visible'),200+i*150)),50);
+
+// Shooting star — random intervals, random heights
+(function(){
+  if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  const star = document.createElement('div');
+  star.className = 'shooting-star';
+  star.setAttribute('aria-hidden', 'true');
+  document.body.appendChild(star);
+  function shoot(){
+    const y = 6 + Math.random() * 60;                 // random height
+    const goRight = Math.random() < 0.5;              // random direction
+    const angle = goRight ? (5 + Math.random() * 25)  // down-right
+                          : (150 + Math.random() * 25); // down-left
+    const x = goRight ? (5 + Math.random() * 50)      // start left side
+                      : (45 + Math.random() * 50);    // start right side
+    const dist = 30 + Math.random() * 28;
+    star.style.top = y + 'vh';
+    star.style.left = x + 'vw';
+    star.animate([
+      { transform: `rotate(${angle}deg) translateX(0)`, opacity: 0 },
+      { opacity: .95, offset: .12 },
+      { transform: `rotate(${angle}deg) translateX(${dist}vw)`, opacity: 0 }
+    ], { duration: 900 + Math.random() * 600, easing: 'ease-out' });
+    setTimeout(shoot, 5000 + Math.random() * 10000);
+  }
+  setTimeout(shoot, 2000 + Math.random() * 4000);
+})();
 </script>
 </body>
 </html>

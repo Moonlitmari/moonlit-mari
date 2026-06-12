@@ -4,6 +4,15 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Mari's Picks — Moonlit Mari</title>
+<meta name="description" content="Mari's Picks — shop links to favorite cosplay tools, materials, and accessories.">
+<meta name="theme-color" content="#FDF8FF">
+<meta property="og:title" content="Mari's Picks — Moonlit Mari">
+<meta property="og:description" content="Mari's Picks — shop links to favorite cosplay tools, materials, and accessories.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Moonlit Mari">
+<link rel="icon" href='data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" fill="%23A59EF6"/></svg>'>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Dancing+Script:wght@500;700&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
@@ -107,6 +116,36 @@ footer{background:var(--deep-indigo);color:white;padding:3rem 5rem 2rem}
 .mobile-nav .mobile-cta{color:var(--periwinkle)!important;opacity:1!important;font-weight:500}
 @media(max-width:900px){.nav-hamburger{display:flex}}
 @media(pointer:coarse){body{cursor:auto!important}#cursor,#cursorTrail{display:none!important}}
+
+footer .social-links{margin-bottom:2rem}
+/* Shooting star */
+.shooting-star{position:fixed;width:130px;height:2px;z-index:50;pointer-events:none;opacity:0;border-radius:99px;
+  background:linear-gradient(90deg,rgba(109,94,196,0),rgba(139,111,208,.85) 55%,#fff);
+  filter:drop-shadow(0 0 6px rgba(165,158,246,.85))}
+.shooting-star::after{content:'';position:absolute;right:-3px;top:-2.5px;width:7px;height:7px;border-radius:50%;
+  background:#fff;box-shadow:0 0 12px 3px rgba(216,167,255,.95)}
+@media (prefers-reduced-motion:reduce){.shooting-star{display:none!important}}
+/* ── Upgrade pack: polish, accessibility & performance ── */
+::selection{background:rgba(216,167,255,.5);color:var(--deep-indigo)}
+html{scroll-padding-top:5.5rem}
+body{-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+:focus-visible{outline:2px solid var(--periwinkle);outline-offset:3px;border-radius:4px}
+::-webkit-scrollbar{width:10px}
+::-webkit-scrollbar-track{background:var(--ghost)}
+::-webkit-scrollbar-thumb{background:#cfc3e6;border-radius:99px;border:2px solid var(--ghost)}
+::-webkit-scrollbar-thumb:hover{background:var(--periwinkle)}
+.orb{will-change:transform}
+.btn-primary:hover,.discord-btn-yes:hover{box-shadow:0 10px 28px rgba(165,158,246,.4)}
+@media (hover:none),(pointer:coarse){
+  body,body *{cursor:auto!important}
+  .cursor,.cursor-trail{display:none!important}
+}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
+  .cursor,.cursor-trail{display:none!important}
+  .fade-up{opacity:1!important;transform:none!important}
+}
 </style>
 </head>
 <body>
@@ -155,9 +194,9 @@ footer{background:var(--deep-indigo);color:white;padding:3rem 5rem 2rem}
     </div>
   </div>
   <div class="hero-carousel">
-    <div class="carousel-card pos-left"><img src="images/con-duo-sq.jpg" alt="Cosplay by Moonlit Mari"></div>
-    <div class="carousel-card pos-center"><img src="images/belle-sq.jpg" alt="Cosplay by Moonlit Mari"></div>
-    <div class="carousel-card pos-right"><img src="images/leia-sq.jpg" alt="Cosplay by Moonlit Mari"></div>
+    <div class="carousel-card pos-left"><img src="images/con-duo-sq.jpg" alt="Cosplay by Moonlit Mari" loading="lazy" decoding="async"></div>
+    <div class="carousel-card pos-center"><img src="images/belle-sq.jpg" alt="Cosplay by Moonlit Mari" loading="lazy" decoding="async"></div>
+    <div class="carousel-card pos-right"><img src="images/leia-sq.jpg" alt="Cosplay by Moonlit Mari" loading="lazy" decoding="async"></div>
     <div class="carousel-dots">
       <button class="dot active"></button>
       <button class="dot"></button>
@@ -188,7 +227,7 @@ footer{background:var(--deep-indigo);color:white;padding:3rem 5rem 2rem}
       <div class="shop-card fade-up d1">
         <div class="shop-card-top" style="background:linear-gradient(135deg,#a59ef6,#5b4dc4)">
           <span class="shop-badge">Affiliate</span>
-          <div class="shop-logo-area"><img src="https://logo.clearbit.com/kikitextiles.com" alt="Kiki Textiles" onerror="this.style.display='none'"></div>
+          <div class="shop-logo-area"><img src="https://logo.clearbit.com/kikitextiles.com" alt="Kiki Textiles" onerror="this.style.display='none'" loading="lazy" decoding="async"></div>
           <p class="shop-name">Kiki Textiles</p>
         </div>
         <div class="shop-card-body">
@@ -200,7 +239,7 @@ footer{background:var(--deep-indigo);color:white;padding:3rem 5rem 2rem}
       <div class="shop-card fade-up d2">
         <div class="shop-card-top" style="background:linear-gradient(135deg,#ffc8ea,#d6367a)">
           <span class="shop-badge">Affiliate</span>
-          <div class="shop-logo-area"><img src="https://logo.clearbit.com/comfrt.com" alt="Comfrt" onerror="this.style.display='none'"></div>
+          <div class="shop-logo-area"><img src="https://logo.clearbit.com/comfrt.com" alt="Comfrt" onerror="this.style.display='none'" loading="lazy" decoding="async"></div>
           <p class="shop-name">Comfrt</p>
         </div>
         <div class="shop-card-body">
@@ -212,7 +251,7 @@ footer{background:var(--deep-indigo);color:white;padding:3rem 5rem 2rem}
       <div class="shop-card fade-up d3">
         <div class="shop-card-top" style="background:linear-gradient(135deg,#c5deff,#3a7bd5)">
           <span class="shop-badge">Affiliate</span>
-          <div class="shop-logo-area"><img src="https://logo.clearbit.com/moodfabrics.com" alt="Mood Fabrics" onerror="this.style.display='none'"></div>
+          <div class="shop-logo-area"><img src="https://logo.clearbit.com/moodfabrics.com" alt="Mood Fabrics" onerror="this.style.display='none'" loading="lazy" decoding="async"></div>
           <p class="shop-name">Mood Fabrics</p>
         </div>
         <div class="shop-card-body">
@@ -237,7 +276,7 @@ footer{background:var(--deep-indigo);color:white;padding:3rem 5rem 2rem}
       <div class="shop-card fade-up d1">
         <div class="shop-card-top" style="background:linear-gradient(135deg,#ffd6a0,#e8922a)">
           <span class="shop-badge">Foam</span>
-          <div class="shop-logo-area"><img src="https://logo.clearbit.com/thefoamory.com" alt="The Foamory" onerror="this.style.display='none'"></div>
+          <div class="shop-logo-area"><img src="https://logo.clearbit.com/thefoamory.com" alt="The Foamory" onerror="this.style.display='none'" loading="lazy" decoding="async"></div>
           <p class="shop-name">The Foamory</p>
         </div>
         <div class="shop-card-body">
@@ -249,7 +288,7 @@ footer{background:var(--deep-indigo);color:white;padding:3rem 5rem 2rem}
       <div class="shop-card fade-up d2">
         <div class="shop-card-top" style="background:linear-gradient(135deg,#d8a7ff,#8b3fcf)">
           <span class="shop-badge">Patterns</span>
-          <div class="shop-logo-area"><img src="https://logo.clearbit.com/thecosplaypros.com" alt="The Cosplay Pros" onerror="this.style.display='none'"></div>
+          <div class="shop-logo-area"><img src="https://logo.clearbit.com/thecosplaypros.com" alt="The Cosplay Pros" onerror="this.style.display='none'" loading="lazy" decoding="async"></div>
           <p class="shop-name">The Cosplay Pros</p>
         </div>
         <div class="shop-card-body">
@@ -261,7 +300,7 @@ footer{background:var(--deep-indigo);color:white;padding:3rem 5rem 2rem}
       <div class="shop-card fade-up d3">
         <div class="shop-card-top" style="background:linear-gradient(135deg,#f9c5d1,#d64474)">
           <span class="shop-badge">Wigs</span>
-          <div class="shop-logo-area"><img src="https://logo.clearbit.com/arda-wigs.com" alt="Arda Wigs" onerror="this.style.display='none'"></div>
+          <div class="shop-logo-area"><img src="https://logo.clearbit.com/arda-wigs.com" alt="Arda Wigs" onerror="this.style.display='none'" loading="lazy" decoding="async"></div>
           <p class="shop-name">Arda Wigs</p>
         </div>
         <div class="shop-card-body">
@@ -273,7 +312,7 @@ footer{background:var(--deep-indigo);color:white;padding:3rem 5rem 2rem}
       <div class="shop-card fade-up d1">
         <div class="shop-card-top" style="background:linear-gradient(135deg,#a5f3fc,#0891b2)">
           <span class="shop-badge">Fabrics</span>
-          <div class="shop-logo-area"><img src="https://logo.clearbit.com/famore.com" alt="Famoré" onerror="this.style.display='none'"></div>
+          <div class="shop-logo-area"><img src="https://logo.clearbit.com/famore.com" alt="Famoré" onerror="this.style.display='none'" loading="lazy" decoding="async"></div>
           <p class="shop-name">Famoré</p>
         </div>
         <div class="shop-card-body">
@@ -285,7 +324,7 @@ footer{background:var(--deep-indigo);color:white;padding:3rem 5rem 2rem}
       <div class="shop-card fade-up d2">
         <div class="shop-card-top" style="background:linear-gradient(135deg,#ffd6a0,#b45309)">
           <span class="shop-badge">Armour</span>
-          <div class="shop-logo-area"><img src="https://logo.clearbit.com/worbla.com" alt="Worbla" onerror="this.style.display='none'"></div>
+          <div class="shop-logo-area"><img src="https://logo.clearbit.com/worbla.com" alt="Worbla" onerror="this.style.display='none'" loading="lazy" decoding="async"></div>
           <p class="shop-name">Worbla</p>
         </div>
         <div class="shop-card-body">
@@ -297,7 +336,7 @@ footer{background:var(--deep-indigo);color:white;padding:3rem 5rem 2rem}
       <div class="shop-card fade-up d3">
         <div class="shop-card-top" style="background:linear-gradient(135deg,#a59ef6,#2a1d4d)">
           <span class="shop-badge">Supplies</span>
-          <div class="shop-logo-area"><img src="https://logo.clearbit.com/cosplaysupplies.com" alt="Cosplay Supplies" onerror="this.style.display='none'"></div>
+          <div class="shop-logo-area"><img src="https://logo.clearbit.com/cosplaysupplies.com" alt="Cosplay Supplies" onerror="this.style.display='none'" loading="lazy" decoding="async"></div>
           <p class="shop-name">Cosplay Supplies</p>
         </div>
         <div class="shop-card-body">
@@ -309,7 +348,7 @@ footer{background:var(--deep-indigo);color:white;padding:3rem 5rem 2rem}
       <div class="shop-card fade-up d1">
         <div class="shop-card-top" style="background:linear-gradient(135deg,#ffc8ea,#be185d)">
           <span class="shop-badge">Wigs</span>
-          <div class="shop-logo-area"><img src="https://logo.clearbit.com/wigisfashion.com" alt="Wig Is Fashion" onerror="this.style.display='none'"></div>
+          <div class="shop-logo-area"><img src="https://logo.clearbit.com/wigisfashion.com" alt="Wig Is Fashion" onerror="this.style.display='none'" loading="lazy" decoding="async"></div>
           <p class="shop-name">Wig Is Fashion</p>
         </div>
         <div class="shop-card-body">
@@ -321,7 +360,7 @@ footer{background:var(--deep-indigo);color:white;padding:3rem 5rem 2rem}
       <div class="shop-card fade-up d2">
         <div class="shop-card-top" style="background:linear-gradient(135deg,#d4c8e8,#6952a3)">
           <span class="shop-badge">Armour</span>
-          <div class="shop-logo-area"><img src="https://logo.clearbit.com/weavegotmaille.com" alt="Weave Got Maille" onerror="this.style.display='none'"></div>
+          <div class="shop-logo-area"><img src="https://logo.clearbit.com/weavegotmaille.com" alt="Weave Got Maille" onerror="this.style.display='none'" loading="lazy" decoding="async"></div>
           <p class="shop-name">Weave Got Maille</p>
         </div>
         <div class="shop-card-body">
@@ -333,7 +372,7 @@ footer{background:var(--deep-indigo);color:white;padding:3rem 5rem 2rem}
       <div class="shop-card fade-up d3">
         <div class="shop-card-top" style="background:linear-gradient(135deg,#c5deff,#1d4ed8)">
           <span class="shop-badge">Wholesale</span>
-          <div class="shop-logo-area"><img src="https://logo.clearbit.com/fabricwholesaledirect.com" alt="Fabric Wholesale Direct" onerror="this.style.display='none'"></div>
+          <div class="shop-logo-area"><img src="https://logo.clearbit.com/fabricwholesaledirect.com" alt="Fabric Wholesale Direct" onerror="this.style.display='none'" loading="lazy" decoding="async"></div>
           <p class="shop-name">Fabric Wholesale Direct</p>
         </div>
         <div class="shop-card-body">
@@ -345,7 +384,7 @@ footer{background:var(--deep-indigo);color:white;padding:3rem 5rem 2rem}
       <div class="shop-card fade-up d1">
         <div class="shop-card-top" style="background:linear-gradient(135deg,#d8a7ff,#5b4dc4)">
           <span class="shop-badge">Notions</span>
-          <div class="shop-logo-area"><img src="https://logo.clearbit.com/wawak.com" alt="Wawak" onerror="this.style.display='none'"></div>
+          <div class="shop-logo-area"><img src="https://logo.clearbit.com/wawak.com" alt="Wawak" onerror="this.style.display='none'" loading="lazy" decoding="async"></div>
           <p class="shop-name">Wawak</p>
         </div>
         <div class="shop-card-body">
@@ -365,7 +404,7 @@ footer{background:var(--deep-indigo);color:white;padding:3rem 5rem 2rem}
     <a href="https://www.instagram.com/moonlit.mari/" class="social-link" target="_blank" rel="noopener" title="Instagram"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="2" y="2" width="20" height="20" rx="5" ry="5" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="2"/><circle cx="17.5" cy="6.5" r="1.2" fill="currentColor"/></svg></a><a href="https://www.tiktok.com/@moonlit.mari" class="social-link" target="_blank" rel="noopener" title="TikTok"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.69a8.18 8.18 0 004.78 1.52V6.75a4.85 4.85 0 01-1.01-.06z"/></svg></a><a href="https://www.youtube.com/@MoonlitMari/" class="social-link" target="_blank" rel="noopener" title="YouTube"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M23.5 6.19a3.02 3.02 0 00-2.12-2.14C19.54 3.5 12 3.5 12 3.5s-7.54 0-9.38.55A3.02 3.02 0 00.5 6.19C0 8.04 0 12 0 12s0 3.96.5 5.81a3.02 3.02 0 002.12 2.14C4.46 20.5 12 20.5 12 20.5s7.54 0 9.38-.55a3.02 3.02 0 002.12-2.14C24 15.96 24 12 24 12s0-3.96-.5-5.81zM9.75 15.5v-7l6.5 3.5-6.5 3.5z"/></svg></a>
   </div>
   <div class="footer-bottom">
-    <span>© 2025 Moonlit Mari. All rights reserved.</span>
+    <span>© 2026 Moonlit Mari. All rights reserved.</span>
     <span>Be your fullest self · Start your journey · Find your crew</span>
   </div>
 </footer>
@@ -400,6 +439,33 @@ setInterval(advanceCarousel,3000);
 const navToggle=document.getElementById('navToggle'),mobileNav=document.getElementById('mobileNav');
 navToggle.addEventListener('click',()=>{navToggle.classList.toggle('open');mobileNav.classList.toggle('open')});
 mobileNav.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{navToggle.classList.remove('open');mobileNav.classList.remove('open')}));
+
+// Shooting star — random intervals, random heights
+(function(){
+  if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  const star = document.createElement('div');
+  star.className = 'shooting-star';
+  star.setAttribute('aria-hidden', 'true');
+  document.body.appendChild(star);
+  function shoot(){
+    const y = 6 + Math.random() * 60;                 // random height
+    const goRight = Math.random() < 0.5;              // random direction
+    const angle = goRight ? (5 + Math.random() * 25)  // down-right
+                          : (150 + Math.random() * 25); // down-left
+    const x = goRight ? (5 + Math.random() * 50)      // start left side
+                      : (45 + Math.random() * 50);    // start right side
+    const dist = 30 + Math.random() * 28;
+    star.style.top = y + 'vh';
+    star.style.left = x + 'vw';
+    star.animate([
+      { transform: `rotate(${angle}deg) translateX(0)`, opacity: 0 },
+      { opacity: .95, offset: .12 },
+      { transform: `rotate(${angle}deg) translateX(${dist}vw)`, opacity: 0 }
+    ], { duration: 900 + Math.random() * 600, easing: 'ease-out' });
+    setTimeout(shoot, 5000 + Math.random() * 10000);
+  }
+  setTimeout(shoot, 2000 + Math.random() * 4000);
+})();
 </script>
 </body>
 </html>

@@ -5,6 +5,16 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="fo-verify" content="2ca5ed89-a136-429a-9bca-c4078a08d0d6" />
 <title>Moonlit Mari — Celestial Cosplay</title>
+<meta name="description" content="Moonlit Mari is a celestial cosplay corner of the internet — builds, tutorials, panels, and a welcoming crew for beginner-friendly cosplayers.">
+<meta name="theme-color" content="#FDF8FF">
+<meta property="og:title" content="Moonlit Mari — Celestial Cosplay">
+<meta property="og:description" content="Moonlit Mari is a celestial cosplay corner of the internet — builds, tutorials, panels, and a welcoming crew for beginner-friendly cosplayers.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Moonlit Mari">
+<link rel="icon" href='data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" fill="%23A59EF6"/></svg>'>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://feeds.behold.so">
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Dancing+Script:wght@500;700&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
   *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
@@ -712,6 +722,51 @@
 .discord-thanks{display:none;padding:1rem 0}
 .discord-thanks-title{font-family:'Cormorant Garamond',serif;font-size:1.4rem;color:var(--deep-indigo);margin-bottom:0.5rem}
 .discord-thanks-body{font-size:0.85rem;color:var(--indigo);opacity:0.6;line-height:1.7}
+
+footer .social-links{margin-bottom:2rem}
+/* Shooting star */
+.shooting-star{position:fixed;width:130px;height:2px;z-index:50;pointer-events:none;opacity:0;border-radius:99px;
+  background:linear-gradient(90deg,rgba(109,94,196,0),rgba(139,111,208,.85) 55%,#fff);
+  filter:drop-shadow(0 0 6px rgba(165,158,246,.85))}
+.shooting-star::after{content:'';position:absolute;right:-3px;top:-2.5px;width:7px;height:7px;border-radius:50%;
+  background:#fff;box-shadow:0 0 12px 3px rgba(216,167,255,.95)}
+@media (prefers-reduced-motion:reduce){.shooting-star{display:none!important}}
+/* ── Upgrade pack: polish, accessibility & performance ── */
+::selection{background:rgba(216,167,255,.5);color:var(--deep-indigo)}
+html{scroll-padding-top:5.5rem}
+body{-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+:focus-visible{outline:2px solid var(--periwinkle);outline-offset:3px;border-radius:4px}
+::-webkit-scrollbar{width:10px}
+::-webkit-scrollbar-track{background:var(--ghost)}
+::-webkit-scrollbar-thumb{background:#cfc3e6;border-radius:99px;border:2px solid var(--ghost)}
+::-webkit-scrollbar-thumb:hover{background:var(--periwinkle)}
+.orb{will-change:transform}
+.btn-primary:hover,.discord-btn-yes:hover{box-shadow:0 10px 28px rgba(165,158,246,.4)}
+@media (hover:none),(pointer:coarse){
+  body,body *{cursor:auto!important}
+  .cursor,.cursor-trail{display:none!important}
+}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
+  .cursor,.cursor-trail{display:none!important}
+  .fade-up{opacity:1!important;transform:none!important}
+}
+
+/* Hero micro-starfield */
+.hero-sparkles{position:absolute;inset:0;z-index:1;pointer-events:none;
+  background-image:
+    radial-gradient(circle,rgba(165,158,246,.85) 1px,transparent 1.6px),
+    radial-gradient(circle,rgba(216,167,255,.75) 1px,transparent 1.6px),
+    radial-gradient(circle,rgba(255,200,234,.7) 1px,transparent 1.6px);
+  background-size:230px 230px,340px 340px,280px 280px;
+  background-position:30px 60px,140px 210px,80px 120px;
+  opacity:.45;
+  animation:sparkleFade 4.5s ease-in-out infinite alternate;
+  -webkit-mask-image:linear-gradient(to bottom,black 65%,transparent);
+  mask-image:linear-gradient(to bottom,black 65%,transparent);
+}
+@keyframes sparkleFade{from{opacity:.22}to{opacity:.55}}
 </style>
 </head>
 <body>
@@ -755,6 +810,7 @@
   <div class="orb orb-1"></div>
   <div class="orb orb-2"></div>
   <div class="orb orb-3"></div>
+  <div class="hero-sparkles" aria-hidden="true"></div>
 
   <!-- Celestial deco -->
   <svg class="deco-stars" style="top:15%;left:8%;width:60px" viewBox="0 0 60 60" fill="none">
@@ -810,7 +866,7 @@
 
   <div class="hero-right">
     <div class="hero-photo-wrap">
-      <img src="images/leia-port.jpg" alt="Princess Leia cosplay by Moonlit Mari">
+      <img src="images/leia-port.jpg" alt="Princess Leia cosplay by Moonlit Mari" fetchpriority="high" decoding="async">
     </div>
   </div>
 </section>
@@ -1022,7 +1078,7 @@
     </div>
   </div>
   <div class="footer-bottom">
-    <span>© 2025 Moonlit Mari. All rights reserved.</span>
+    <span>© 2026 Moonlit Mari. All rights reserved.</span>
     <span>Made with love and a whole lot of chaos</span>
   </div>
 </footer>
@@ -1074,7 +1130,7 @@
         const caption = (p.prunedCaption || '').replace(/</g, '&lt;');
         const short = caption.length > 72 ? caption.slice(0, 72) + '…' : caption;
         return `<a href="${p.permalink || 'https://www.instagram.com/moonlit.mari/'}" target="_blank" rel="noopener" class="ig-item">
-          <img src="${src}" alt="Moonlit Mari cosplay" loading="lazy">
+          <img src="${src}" alt="Moonlit Mari cosplay" loading="lazy" decoding="async">
           <div class="ig-overlay"><span class="ig-caption">${short}</span></div>
         </a>`;
       }).join('');
@@ -1094,7 +1150,7 @@
       const grid = document.getElementById('crew-preview-grid');
       grid.innerHTML = posts.map(p => {
         const src = p.sizes?.large?.mediaUrl || p.sizes?.medium?.mediaUrl || p.thumbnailUrl;
-        return `<a href="amongst-the-stars.html" class="crew-preview-item"><img src="${src}" alt="Moon Crew cosplay" loading="lazy"></a>`;
+        return `<a href="amongst-the-stars.html" class="crew-preview-item"><img src="${src}" alt="Moon Crew cosplay" loading="lazy" decoding="async"></a>`;
       }).join('');
     } catch(e) { /* silently keep gradient placeholders */ }
   })();
@@ -1122,6 +1178,33 @@ async function voteDiscord(vote){
   document.getElementById('discordThanks').style.display='block';
   setTimeout(closeDiscordModal,2800);
 }
+
+// Shooting star — random intervals, random heights
+(function(){
+  if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  const star = document.createElement('div');
+  star.className = 'shooting-star';
+  star.setAttribute('aria-hidden', 'true');
+  document.body.appendChild(star);
+  function shoot(){
+    const y = 6 + Math.random() * 60;                 // random height
+    const goRight = Math.random() < 0.5;              // random direction
+    const angle = goRight ? (5 + Math.random() * 25)  // down-right
+                          : (150 + Math.random() * 25); // down-left
+    const x = goRight ? (5 + Math.random() * 50)      // start left side
+                      : (45 + Math.random() * 50);    // start right side
+    const dist = 30 + Math.random() * 28;
+    star.style.top = y + 'vh';
+    star.style.left = x + 'vw';
+    star.animate([
+      { transform: `rotate(${angle}deg) translateX(0)`, opacity: 0 },
+      { opacity: .95, offset: .12 },
+      { transform: `rotate(${angle}deg) translateX(${dist}vw)`, opacity: 0 }
+    ], { duration: 900 + Math.random() * 600, easing: 'ease-out' });
+    setTimeout(shoot, 5000 + Math.random() * 10000);
+  }
+  setTimeout(shoot, 2000 + Math.random() * 4000);
+})();
 </script>
 
 <div class="discord-overlay" id="discordOverlay">

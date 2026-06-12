@@ -4,6 +4,16 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Portfolio — Moonlit Mari</title>
+<meta name="description" content="A portfolio of Moonlit Mari's cosplay builds, from first stitches to finished costumes.">
+<meta name="theme-color" content="#FDF8FF">
+<meta property="og:title" content="Portfolio — Moonlit Mari">
+<meta property="og:description" content="A portfolio of Moonlit Mari's cosplay builds, from first stitches to finished costumes.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Moonlit Mari">
+<link rel="icon" href='data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" fill="%23A59EF6"/></svg>'>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://feeds.behold.so">
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Dancing+Script:wght@500;700&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
@@ -103,6 +113,36 @@ img[alt*="celeste"],.celeste-image,.cosplay-image{border-bottom:none;outline:non
 .mobile-nav .mobile-cta{color:var(--periwinkle)!important;opacity:1!important;font-weight:500}
 @media(max-width:900px){.nav-hamburger{display:flex}}
 @media(pointer:coarse){body{cursor:auto!important}#cursor,#cursorTrail{display:none!important}}
+
+footer .social-links{margin-bottom:2rem}
+/* Shooting star */
+.shooting-star{position:fixed;width:130px;height:2px;z-index:50;pointer-events:none;opacity:0;border-radius:99px;
+  background:linear-gradient(90deg,rgba(109,94,196,0),rgba(139,111,208,.85) 55%,#fff);
+  filter:drop-shadow(0 0 6px rgba(165,158,246,.85))}
+.shooting-star::after{content:'';position:absolute;right:-3px;top:-2.5px;width:7px;height:7px;border-radius:50%;
+  background:#fff;box-shadow:0 0 12px 3px rgba(216,167,255,.95)}
+@media (prefers-reduced-motion:reduce){.shooting-star{display:none!important}}
+/* ── Upgrade pack: polish, accessibility & performance ── */
+::selection{background:rgba(216,167,255,.5);color:var(--deep-indigo)}
+html{scroll-padding-top:5.5rem}
+body{-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+:focus-visible{outline:2px solid var(--periwinkle);outline-offset:3px;border-radius:4px}
+::-webkit-scrollbar{width:10px}
+::-webkit-scrollbar-track{background:var(--ghost)}
+::-webkit-scrollbar-thumb{background:#cfc3e6;border-radius:99px;border:2px solid var(--ghost)}
+::-webkit-scrollbar-thumb:hover{background:var(--periwinkle)}
+.orb{will-change:transform}
+.btn-primary:hover,.discord-btn-yes:hover{box-shadow:0 10px 28px rgba(165,158,246,.4)}
+@media (hover:none),(pointer:coarse){
+  body,body *{cursor:auto!important}
+  .cursor,.cursor-trail{display:none!important}
+}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
+  .cursor,.cursor-trail{display:none!important}
+  .fade-up{opacity:1!important;transform:none!important}
+}
 </style>
 </head>
 <body>
@@ -162,52 +202,52 @@ img[alt*="celeste"],.celeste-image,.cosplay-image{border-bottom:none;outline:non
   <div class="masonry" id="gallery">
 
     <div class="masonry-item fade-up" data-cat="game">
-      <img src="images/squirrel.jpg" alt="Squirrel Girl cosplay" style="width:100%;height:360px;object-fit:cover;object-position:top;display:block;">
+      <img src="images/squirrel.jpg" alt="Squirrel Girl cosplay" style="width:100%;height:360px;object-fit:cover;object-position:top;display:block;" loading="lazy" decoding="async">
       <div class="overlay"><p class="overlay-title">Squirrel Girl</p><p class="overlay-tag">Marvel · 2024</p></div>
     </div>
 
     <div class="masonry-item fade-up" data-cat="anime">
-      <img src="images/belle.jpg" alt="Belle cosplay" style="width:100%;height:260px;object-fit:cover;object-position:top;display:block;">
+      <img src="images/belle.jpg" alt="Belle cosplay" style="width:100%;height:260px;object-fit:cover;object-position:top;display:block;" loading="lazy" decoding="async">
       <div class="overlay"><p class="overlay-title">Belle</p><p class="overlay-tag">Disney · Beauty and the Beast · 2024</p></div>
     </div>
 
     <div class="masonry-item fade-up" data-cat="game">
-      <img src="images/hera.jpg" alt="Hera Syndulla cosplay" style="width:100%;height:300px;object-fit:cover;object-position:top;display:block;">
+      <img src="images/hera.jpg" alt="Hera Syndulla cosplay" style="width:100%;height:300px;object-fit:cover;object-position:top;display:block;" loading="lazy" decoding="async">
       <div class="overlay"><p class="overlay-title">Hera Syndulla</p><p class="overlay-tag">Star Wars Rebels · 2024</p></div>
     </div>
 
     <div class="masonry-item fade-up" data-cat="anime fantasy">
-      <img src="images/leia.jpg" alt="Princess Leia cosplay" style="width:100%;height:220px;object-fit:cover;object-position:top;display:block;">
+      <img src="images/leia.jpg" alt="Princess Leia cosplay" style="width:100%;height:220px;object-fit:cover;object-position:top;display:block;" loading="lazy" decoding="async">
       <div class="overlay"><p class="overlay-title">Princess Leia</p><p class="overlay-tag">Star Wars · 2024</p></div>
     </div>
 
     <div class="masonry-item fade-up" data-cat="armor game">
-      <img src="images/red-dress.jpg" alt="Celeste from Animal Crossing cosplay" style="width:100%;height:340px;object-fit:cover;object-position:top;display:block;">
+      <img src="images/red-dress.jpg" alt="Celeste from Animal Crossing cosplay" style="width:100%;height:340px;object-fit:cover;object-position:top;display:block;" loading="lazy" decoding="async">
       <div class="overlay"><p class="overlay-title">Celestial Knight</p><p class="overlay-tag">Game · Armor · 2023</p></div>
     </div>
 
     <div class="masonry-item fade-up" data-cat="wip">
-      <img src="images/con-duo.jpg" alt="Convention cosplay duo" style="width:100%;height:240px;object-fit:cover;object-position:top;display:block;">
+      <img src="images/con-duo.jpg" alt="Convention cosplay duo" style="width:100%;height:240px;object-fit:cover;object-position:top;display:block;" loading="lazy" decoding="async">
       <div class="overlay"><p class="overlay-title">Con Meetup</p><p class="overlay-tag">DragonCon · 2024</p></div>
     </div>
 
     <div class="masonry-item fade-up" data-cat="anime fantasy">
-      <img src="images/serenity.jpg" alt="Princess Serenity cosplay — Sailor Moon" style="width:100%;height:280px;object-fit:cover;object-position:top;display:block;">
+      <img src="images/serenity.jpg" alt="Princess Serenity cosplay — Sailor Moon" style="width:100%;height:280px;object-fit:cover;object-position:top;display:block;" loading="lazy" decoding="async">
       <div class="overlay"><p class="overlay-title">Princess Serenity</p><p class="overlay-tag">Sailor Moon · Anime · 2024</p></div>
     </div>
 
     <div class="masonry-item fade-up" data-cat="game anime">
-      <img src="images/celeste2.jpg" alt="Celeste cosplay — Animal Crossing" style="width:100%;height:320px;object-fit:cover;object-position:top;display:block;">
+      <img src="images/celeste2.jpg" alt="Celeste cosplay — Animal Crossing" style="width:100%;height:320px;object-fit:cover;object-position:top;display:block;" loading="lazy" decoding="async">
       <div class="overlay"><p class="overlay-title">Celeste</p><p class="overlay-tag">Animal Crossing · Game · 2024</p></div>
     </div>
 
     <div class="masonry-item fade-up" data-cat="fantasy anime">
-      <img src="images/imogen-collab.jpg" alt="Marion Lavorre cosplay — Critical Role" style="width:100%;height:260px;object-fit:cover;object-position:top;display:block;">
+      <img src="images/imogen-collab.jpg" alt="Marion Lavorre cosplay — Critical Role" style="width:100%;height:260px;object-fit:cover;object-position:top;display:block;" loading="lazy" decoding="async">
       <div class="overlay"><p class="overlay-title">Marion Lavorre</p><p class="overlay-tag">Critical Role · The Mighty Nein · 2024</p></div>
     </div>
 
     <div class="masonry-item fade-up" data-cat="con anime">
-      <img src="images/msmarvel-collab.jpg" alt="Daniela — Game Gyaru cosplay collab" style="width:100%;height:300px;object-fit:cover;object-position:center;display:block;">
+      <img src="images/msmarvel-collab.jpg" alt="Daniela — Game Gyaru cosplay collab" style="width:100%;height:300px;object-fit:cover;object-position:center;display:block;" loading="lazy" decoding="async">
       <div class="overlay"><p class="overlay-title">Daniela</p><p class="overlay-tag">Game Gyaru · Collab · 2024</p></div>
     </div>
 
@@ -228,7 +268,7 @@ img[alt*="celeste"],.celeste-image,.cosplay-image{border-bottom:none;outline:non
 <div class="lightbox" id="lightbox">
   <div class="lightbox-inner">
     <button class="lightbox-close" onclick="closeLightbox()">&#x2715;</button>
-    <img id="lightbox-img" class="lightbox-img" src="" alt="" style="display:none">
+    <img id="lightbox-img" class="lightbox-img" src="" alt="" style="display:none" loading="lazy" decoding="async">
     <div id="lightbox-content" style="width:100%;height:300px;border-radius:16px;display:none"></div>
     <p class="lightbox-caption" id="lightbox-caption"></p>
     <a id="lightbox-link" href="#" target="_blank" rel="noopener" style="display:none;text-align:center;margin-top:0.6rem;font-size:0.72rem;letter-spacing:0.12em;text-transform:uppercase;color:rgba(255,255,255,0.45);text-decoration:none">View on Instagram &#x2192;</a>
@@ -241,7 +281,7 @@ img[alt*="celeste"],.celeste-image,.cosplay-image{border-bottom:none;outline:non
     <a href="https://www.instagram.com/moonlit.mari/" class="social-link" target="_blank" rel="noopener" title="Instagram"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="2" y="2" width="20" height="20" rx="5" ry="5" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="2"/><circle cx="17.5" cy="6.5" r="1.2" fill="currentColor"/></svg></a><a href="https://www.tiktok.com/@moonlit.mari" class="social-link" target="_blank" rel="noopener" title="TikTok"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.69a8.18 8.18 0 004.78 1.52V6.75a4.85 4.85 0 01-1.01-.06z"/></svg></a><a href="https://www.youtube.com/@MoonlitMari/" class="social-link" target="_blank" rel="noopener" title="YouTube"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M23.5 6.19a3.02 3.02 0 00-2.12-2.14C19.54 3.5 12 3.5 12 3.5s-7.54 0-9.38.55A3.02 3.02 0 00.5 6.19C0 8.04 0 12 0 12s0 3.96.5 5.81a3.02 3.02 0 002.12 2.14C4.46 20.5 12 20.5 12 20.5s7.54 0 9.38-.55a3.02 3.02 0 002.12-2.14C24 15.96 24 12 24 12s0-3.96-.5-5.81zM9.75 15.5v-7l6.5 3.5-6.5 3.5z"/></svg></a>
   </div>
   <div class="footer-bottom">
-    <span>© 2025 Moonlit Mari. All rights reserved.</span>
+    <span>© 2026 Moonlit Mari. All rights reserved.</span>
     <span>Made with love and a whole lot of chaos</span>
   </div>
 </footer>
@@ -345,7 +385,7 @@ async function loadInstagram() {
       const title = igTitle(p);
       const date  = new Date(p.timestamp).toLocaleString('en-US', { month: 'short', year: 'numeric' });
       return `<div class="masonry-item fade-up ${delays[i % 3]}" data-cat="${esc(cat)}" data-permalink="${esc(p.permalink)}">
-        <img src="${esc(igSrc(p))}" alt="${esc(title || 'Cosplay by Moonlit Mari')}" class="item-img" loading="lazy">
+        <img src="${esc(igSrc(p))}" alt="${esc(title || 'Cosplay by Moonlit Mari')}" class="item-img" loading="lazy" decoding="async">
         <div class="overlay">
           <p class="overlay-title">${esc(title || 'View on Instagram')}</p>
           <p class="overlay-tag">${esc(date)}</p>
@@ -365,6 +405,33 @@ loadInstagram();
 const navToggle=document.getElementById('navToggle'),mobileNav=document.getElementById('mobileNav');
 navToggle.addEventListener('click',()=>{navToggle.classList.toggle('open');mobileNav.classList.toggle('open')});
 mobileNav.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{navToggle.classList.remove('open');mobileNav.classList.remove('open')}));
+
+// Shooting star — random intervals, random heights
+(function(){
+  if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  const star = document.createElement('div');
+  star.className = 'shooting-star';
+  star.setAttribute('aria-hidden', 'true');
+  document.body.appendChild(star);
+  function shoot(){
+    const y = 6 + Math.random() * 60;                 // random height
+    const goRight = Math.random() < 0.5;              // random direction
+    const angle = goRight ? (5 + Math.random() * 25)  // down-right
+                          : (150 + Math.random() * 25); // down-left
+    const x = goRight ? (5 + Math.random() * 50)      // start left side
+                      : (45 + Math.random() * 50);    // start right side
+    const dist = 30 + Math.random() * 28;
+    star.style.top = y + 'vh';
+    star.style.left = x + 'vw';
+    star.animate([
+      { transform: `rotate(${angle}deg) translateX(0)`, opacity: 0 },
+      { opacity: .95, offset: .12 },
+      { transform: `rotate(${angle}deg) translateX(${dist}vw)`, opacity: 0 }
+    ], { duration: 900 + Math.random() * 600, easing: 'ease-out' });
+    setTimeout(shoot, 5000 + Math.random() * 10000);
+  }
+  setTimeout(shoot, 2000 + Math.random() * 4000);
+})();
 </script>
 </body>
 </html>
