@@ -129,15 +129,10 @@
   .orb {
     position: absolute; border-radius: 50%;
     filter: blur(30px); pointer-events: none; z-index: 0;
-    animation: floatOrb 8s ease-in-out infinite alternate;
   }
   .orb-1 { width: 420px; height: 420px; background: rgba(216,167,255,0.35); top: -80px; right: 10%; }
-  .orb-2 { width: 300px; height: 300px; background: rgba(255,200,234,0.4); bottom: 10%; left: 5%; animation-delay: -3s; }
-  .orb-3 { width: 250px; height: 250px; background: rgba(165,158,246,0.3); top: 40%; left: 40%; animation-delay: -5s; }
-  @keyframes floatOrb {
-    from { transform: translate(0,0) scale(1); }
-    to   { transform: translate(20px,30px) scale(1.06); }
-  }
+  .orb-2 { width: 300px; height: 300px; background: rgba(255,200,234,0.4); bottom: 10%; left: 5%; }
+  .orb-3 { width: 250px; height: 250px; background: rgba(165,158,246,0.3); top: 40%; left: 40%; }
 
   .hero-left {
     position: relative; z-index: 2;
@@ -739,7 +734,7 @@ body{-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
 ::-webkit-scrollbar-track{background:var(--ghost)}
 ::-webkit-scrollbar-thumb{background:#cfc3e6;border-radius:99px;border:2px solid var(--ghost)}
 ::-webkit-scrollbar-thumb:hover{background:var(--periwinkle)}
-.orb{will-change:transform}
+.orb{}
 .btn-primary:hover,.discord-btn-yes:hover{box-shadow:0 10px 28px rgba(165,158,246,.4)}
 @media (hover:none),(pointer:coarse){
   body,body *{cursor:auto!important}
@@ -764,6 +759,7 @@ body{-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
   animation:sparkleFade 4.5s ease-in-out infinite alternate;
   -webkit-mask-image:linear-gradient(to bottom,black 65%,transparent);
   mask-image:linear-gradient(to bottom,black 65%,transparent);
+  will-change:opacity;
 }
 @keyframes sparkleFade{from{opacity:.22}to{opacity:.55}}
 </style>
@@ -818,11 +814,11 @@ body{-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
     <circle cx="50" cy="50" r="1.5" fill="#D8A7FF"/>
     <circle cx="50" cy="12" r="1" fill="#FFC8EA"/>
   </svg>
-  <svg class="deco-stars" style="bottom:25%;right:5%;width:40px;animation-delay:-2s" viewBox="0 0 40 40" fill="none">
+  <svg class="deco-stars" style="bottom:25%;right:5%;width:40px" viewBox="0 0 40 40" fill="none">
     <path d="M20 2 L21.5 18.5 L38 20 L21.5 21.5 L20 38 L18.5 21.5 L2 20 L18.5 18.5 Z" fill="#D8A7FF"/>
     <circle cx="5" cy="8" r="1.5" fill="#A59EF6"/>
   </svg>
-  <svg class="deco-stars" style="top:60%;left:45%;width:24px;animation-delay:-4s" viewBox="0 0 24 24" fill="none">
+  <svg class="deco-stars" style="top:60%;left:45%;width:24px" viewBox="0 0 24 24" fill="none">
     <path d="M12 1 L13 11 L23 12 L13 13 L12 23 L11 13 L1 12 L11 11 Z" fill="#FFC8EA"/>
   </svg>
 
@@ -993,8 +989,8 @@ body{-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
 
 <!-- STARDUST PICKS TEASER -->
 <section class="picks-teaser">
-  <div class="orb" style="width:260px;height:260px;background:rgba(255,186,133,0.2);top:-50px;left:5%;animation-duration:10s"></div>
-  <div class="orb" style="width:200px;height:200px;background:rgba(216,167,255,0.2);bottom:-30px;right:8%;animation-delay:-5s"></div>
+  <div class="orb" style="width:260px;height:260px;background:rgba(255,186,133,0.2);top:-50px;left:5%"></div>
+  <div class="orb" style="width:200px;height:200px;background:rgba(216,167,255,0.2);bottom:-30px;right:8%"></div>
   <svg style="position:absolute;top:14%;left:20%;opacity:0.1;width:44px;pointer-events:none" viewBox="0 0 60 60" fill="none"><path d="M30 2L32 28L58 30L32 32L30 58L28 32L2 30L28 28Z" fill="#3D2B6B"/></svg>
   <svg style="position:absolute;bottom:16%;right:22%;opacity:0.09;width:28px;pointer-events:none" viewBox="0 0 40 40" fill="none"><path d="M20 2L21.5 18.5L38 20L21.5 21.5L20 38L18.5 21.5L2 20L18.5 18.5Z" fill="#3D2B6B"/></svg>
   <div class="picks-teaser-inner">
@@ -1014,8 +1010,8 @@ body{-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
 
 <!-- MOON CREW TEASER -->
 <section class="crew-teaser">
-  <div class="orb" style="width:300px;height:300px;background:rgba(197,222,255,0.3);top:-60px;right:8%;animation-duration:9s"></div>
-  <div class="orb" style="width:180px;height:180px;background:rgba(216,167,255,0.25);bottom:-40px;left:5%;animation-delay:-4s"></div>
+  <div class="orb" style="width:300px;height:300px;background:rgba(197,222,255,0.3);top:-60px;right:8%"></div>
+  <div class="orb" style="width:180px;height:180px;background:rgba(216,167,255,0.25);bottom:-40px;left:5%"></div>
   <svg style="position:absolute;top:12%;right:22%;opacity:0.12;width:50px;pointer-events:none" viewBox="0 0 60 60" fill="none"><path d="M30 2L32 28L58 30L32 32L30 58L28 32L2 30L28 28Z" fill="#3D2B6B"/></svg>
   <svg style="position:absolute;bottom:18%;left:38%;opacity:0.1;width:32px;pointer-events:none" viewBox="0 0 40 40" fill="none"><path d="M20 2L21.5 18.5L38 20L21.5 21.5L20 38L18.5 21.5L2 20L18.5 18.5Z" fill="#3D2B6B"/></svg>
   <div class="crew-teaser-inner">
